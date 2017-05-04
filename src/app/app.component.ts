@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app works!';
+    title = 'app works! ';
+
+    navItems = [
+        {route: "dashboard", name: "Dashboard", icon: "home"},
+        {route: "attendance", name: "Attendance", icon: "perm_contact_calendar"},
+        {route: "calendar", name: "Calendar", icon: "date_range"},
+        {route: "patient", name: "Patient", icon: "person"},
+        {route: "financial", name: "Financial", icon: "attach_money"},
+        {route: "report", name: "report", icon: "description"}
+    ];
 }

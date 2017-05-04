@@ -1,3 +1,26 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container fullscreen>
+    <md-sidenav #start  mode="side" opened="true"  >
+        <md-nav-list>
+            <md-list-item *ngFor="let navItem of navItems"
+                [routerLink]="[navItem.route]" >
+                <md-icon md-list-icon >{{navItem.icon}}</md-icon>
+                <h4 md-line>{{navItem.name}}</h4>
+            </md-list-item>
+        </md-nav-list>
+    </md-sidenav>
+    
+    <div >
+        <md-toolbar color="primary">
+            <button md-icon-button (click)="start.toggle()">
+                    <md-icon class="md-24" >menu</md-icon>
+            </button>
+            <div class="demo-toolbar">
+                <h1>Clinic</h1>
+                <!--        <button md-button (click)="toggleFullscreen()" title="Toggle fullscreen">
+                          Fullscreen
+                        </button>-->
+            </div>
+        </md-toolbar>
+        <router-outlet></router-outlet>
+    </div>
+</md-sidenav-container>
