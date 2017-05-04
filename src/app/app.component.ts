@@ -9,6 +9,7 @@ export class AppComponent {
     title = 'app works! ';
 
     navItems = [
+        {route: "login", name: "Login", icon: "vpn_key"},
         {route: "dashboard", name: "Dashboard", icon: "home"},
         {route: "attendance", name: "Attendance", icon: "perm_contact_calendar"},
         {route: "calendar", name: "Calendar", icon: "date_range"},

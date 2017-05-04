@@ -1,3 +1,20 @@
 <p>
-  patient works!
+    patient works!
 </p>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Endereço</th>
+    </tr>
+    <tr *ngFor="let patient of patients">
+        <td>{{patient.name}}</td>
+        <td>{{patient.email}}</td>
+        <td>{{patient.address}}</td>
+    </tr>
+</table>
+<ul>
+    
+    
+</ul>

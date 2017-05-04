@@ -6,9 +6,11 @@ import {CalendarComponent} from './calendar/calendar.component';
 import {PatientComponent} from './patient/patient.component';
 import {FinancialComponent} from './financial/financial.component';
 import {ReportComponent} from './report/report.component';
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
-    {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+    {path: '', redirectTo: '/login', pathMatch: 'full'},
+    {path: 'login', component: LoginComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'attendance', component: AttendanceComponent},
     {path: 'calendar', component: CalendarComponent},

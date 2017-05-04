@@ -21,9 +21,13 @@ import {CalendarComponent} from './calendar/calendar.component';
 import {PatientComponent} from './patient/patient.component';
 import {FinancialComponent} from './financial/financial.component';
 import {ReportComponent} from './report/report.component';
+import { LoginComponent } from './login/login.component';
 //import {WeeklyViewComponent} from './calendar/weekly-view/weekly-view.component';
 //import {MonthlyViewComponent} from './calendar/monthly-view/monthly-view.component';
 //import {DailyViewComponent} from './calendar/daily-view/daily-view.component';
+
+import {PatientService} from './patient/patient.service';
+import {LoginService} from './login/login.service';
 
 @NgModule({
     declarations: [
@@ -33,7 +37,8 @@ import {ReportComponent} from './report/report.component';
         PatientComponent,
         AttendanceComponent,
         FinancialComponent,
-        ReportComponent
+        ReportComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -50,7 +55,10 @@ import {ReportComponent} from './report/report.component';
         FlexLayoutModule,
         BrowserAnimationsModule
     ],
-    providers: [],
+    providers: [
+        PatientService,
+        LoginService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
