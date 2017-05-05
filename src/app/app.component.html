@@ -1,5 +1,5 @@
 <md-sidenav-container fullscreen>
-    <md-sidenav #start  mode="side" opened="true"  >
+    <md-sidenav #start  mode="side" opened="true" fxHide.sm="TRUE"  >
         <md-nav-list>
             <md-list-item *ngFor="let navItem of navItems"
                 [routerLink]="[navItem.route]" >
@@ -8,7 +8,7 @@
             </md-list-item>
         </md-nav-list>
     </md-sidenav>
-    
+
     <div >
         <md-toolbar color="primary">
             <button md-icon-button (click)="start.toggle()">
@@ -21,6 +21,9 @@
                         </button>-->
             </div>
         </md-toolbar>
-        <router-outlet></router-outlet>
+
+        <md-card style="margin:3px">
+            <router-outlet></router-outlet>
+        </md-card>
     </div>
 </md-sidenav-container>

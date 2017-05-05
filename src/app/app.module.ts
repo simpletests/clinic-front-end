@@ -4,15 +4,14 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {AppRoutingModule} from './app-routing.module';
-import {
-    MdButtonModule, MdCheckboxModule, MdToolbarModule, MdSidenavModule, MdMenuModule, MdListModule,
-    MdIconModule, MdDialogModule
-} from '@angular/material';
+import {MaterialComponentsModule} from './material-components/material-components.module'
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
 
 import {FlexLayoutModule} from '@angular/flex-layout';
+
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
@@ -48,14 +47,8 @@ import {CalendarDailyViewComponent} from './calendar/calendar-daily-view/calenda
         FormsModule,
         HttpModule,
         AppRoutingModule,
-        MdButtonModule,
-        MdCheckboxModule,
-        MdToolbarModule,
-        MdSidenavModule,
-        MdMenuModule,
-        MdListModule,
-        MdIconModule,
-        MdDialogModule,
+        MaterialComponentsModule,
+        ReactiveFormsModule,
         FlexLayoutModule,
         BrowserAnimationsModule
     ],

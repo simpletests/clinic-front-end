@@ -1,6 +1,3 @@
-<p >
-    calendar works!
-</p>
 <div fxLayout="row" fxLayoutWrap >
     <button md-raised-button fxFlex="auto" (click)="periodView=0">Month</button>
     <button md-raised-button fxFlex="auto"  (click)="periodView=1">Week</button>
@@ -18,7 +15,7 @@
     <button fxFlex="50px" md-raised-button (click)="calendar.centerOnNow()"   >
             <i class="material-icons">gps_fixed</i>
     </button>
-    <button fxFlex="50px" md-raised-button (click)="openDialog()"   >
+    <button fxFlex="50px" md-raised-button (click)="dialogOpened=!dialogOpened"   >
             <i class="material-icons">add</i>
     </button>
 </div>
@@ -30,3 +27,22 @@
     <app-calendar-daily-view [weeks]="calendar.weeks" *ngSwitchCase="2">
     </app-calendar-daily-view>
 </div>
+
+<dialog id="dialog" open="dialogOpened">
+    <h1 md-dialog-title>Event</h1>
+    <md-dialog-content>
+        <md-input-container>
+            <input mdInput [formControl]="myControl" placeholder="Patient" type="text" 
+                   [mdAutocomplete]="autoPatient">
+        </md-input-container>
+        <md-autocomplete #autoPatient="mdAutocomplete">
+            <md-option *ngFor="let val of filteredOptions | async" [value]="val">{{val}}</md-option>
+        </md-autocomplete>
+        <md-input-container>
+            <input mdInput placeholder="Date" type="datetime-local" >
+        </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions>
+
+    </md-dialog-actions>
+</dialog>
