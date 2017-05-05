@@ -6,7 +6,7 @@ import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app-routing.module';
 import {
     MdButtonModule, MdCheckboxModule, MdToolbarModule, MdSidenavModule, MdMenuModule, MdListModule,
-    MdIconModule
+    MdIconModule, MdDialogModule
 } from '@angular/material';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -21,13 +21,13 @@ import {CalendarComponent} from './calendar/calendar.component';
 import {PatientComponent} from './patient/patient.component';
 import {FinancialComponent} from './financial/financial.component';
 import {ReportComponent} from './report/report.component';
-import { LoginComponent } from './login/login.component';
-//import {WeeklyViewComponent} from './calendar/weekly-view/weekly-view.component';
-//import {MonthlyViewComponent} from './calendar/monthly-view/monthly-view.component';
-//import {DailyViewComponent} from './calendar/daily-view/daily-view.component';
+import {LoginComponent} from './login/login.component';
 
 import {PatientService} from './patient/patient.service';
 import {LoginService} from './login/login.service';
+import {CalendarMonthlyViewComponent} from './calendar/calendar-monthly-view/calendar-monthly-view.component';
+import {CalendarWeeklyViewComponent} from './calendar/calendar-weekly-view/calendar-weekly-view.component';
+import {CalendarDailyViewComponent} from './calendar/calendar-daily-view/calendar-daily-view.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +38,10 @@ import {LoginService} from './login/login.service';
         AttendanceComponent,
         FinancialComponent,
         ReportComponent,
-        LoginComponent
+        LoginComponent,
+        CalendarMonthlyViewComponent,
+        CalendarWeeklyViewComponent,
+        CalendarDailyViewComponent
     ],
     imports: [
         BrowserModule,
@@ -52,6 +55,7 @@ import {LoginService} from './login/login.service';
         MdMenuModule,
         MdListModule,
         MdIconModule,
+        MdDialogModule,
         FlexLayoutModule,
         BrowserAnimationsModule
     ],
