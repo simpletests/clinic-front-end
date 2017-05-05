@@ -9,7 +9,10 @@ import {LoginService} from './login.service';
 })
 export class LoginComponent implements OnInit {
     
-    usuario = {};
+    usuario = {
+        username: 'wesley',
+        password: '123'
+    };
 
     constructor(private loginService: LoginService) {}
 
@@ -17,7 +20,10 @@ export class LoginComponent implements OnInit {
     }
     
     login(): void {
-        this.loginService.login(this.usuario)
-            .subscribe(data => console.log(data));
+        this.loginService.login(this.usuario);
+    }
+
+    logout(): void {
+        this.loginService.logout();
     }
 }
