@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {CalendarPeriodView} from './calendar-period-view.enum'
-import {Calendar} from './calendar';
-import {FormControl} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { CalendarPeriodView } from './calendar-period-view.enum'
+import { Calendar } from './calendar';
+import { FormControl } from '@angular/forms';
+import { EventService } from './event/event.service'
 
 @Component({
     selector: 'app-calendar',
@@ -17,8 +18,7 @@ export class CalendarComponent implements OnInit {
     patients = ["Brasil", "Argentina", "Bolivia"];
     filteredOptions: Observable<string[]>;
 
-
-    constructor() {}
+    constructor(private eventService: EventService) { }
 
     ngOnInit() {
         this.filteredOptions = this.myControl.valueChanges.startWith(null).map(
@@ -27,15 +27,19 @@ export class CalendarComponent implements OnInit {
         this.pagination = {
             first: false, last: false
         }
-        this.calendar = new Calendar();
+        this.calendar = new Calendar(this.eventService);
     }
 
     filter(val: string): string[] {
         return this.patients.filter(p => new RegExp(`^${val}`, 'gi').test(p));
     }
 
-    changeDate(i) {
+    eventClick(event) {
+        console.log("Event click on calendar");
+    }
 
+    changeDate(i) {
+        this.calendar.changeDate(i, this.periodView);
     }
 
     openDialog() {

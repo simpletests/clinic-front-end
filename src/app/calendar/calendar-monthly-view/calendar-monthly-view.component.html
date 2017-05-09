@@ -3,8 +3,8 @@
     {{weeks[1][0].date| date:"MM/yy"}}
 </h3>
 
-<table style="width:100%" >
-    <thead >
+<table style="width:100%;">
+    <thead>
         <tr>
             <th class="weekDays">{{'Sun'}}</th>
             <th class="weekDays">{{'Mon'}}</th>
@@ -15,19 +15,16 @@
             <th class="weekDays">{{'Sat'}}</th>
         </tr>
     </thead>
-    <tbody >
-        <tr *ngFor="let week of weeks" >
+    <tbody>
+        <tr *ngFor="let week of weeks">
             <td class="daysMonthlyView" style="height:100px" *ngFor="let day of week">
-            <p class="calendarDayNumber" >
-                    <span  >
-                        {{day}}
+                <p class="calendarDayNumber">
+                    <span>
+                        {{day.date| date:"dd"}}
                     </span>
                 </p>
-                <!--                <p style="{{event.style}}" ng-repeat="event in day.events"
-                                   ng-click="editEvent(event)" class="eventoCalendario" >
-                                    {{event.start.getHours() + ":" + event.start.getMinutes() + "-"
-                                                                                + event.end.getHours() + ":" + event.end.getMinutes() + " "
-                                                                                + event.patient.name}}</p>-->
+                <p  *ngFor="let event of day.events" (click)="this.eventClick.emit(event)" class="eventoCalendario">
+                    {{event.start | date:"HH:mm"}} + "-" + {{event.end | date:"HH:mm"}}  + event.patient.name}}</p>
             </td>
         </tr>
     </tbody>

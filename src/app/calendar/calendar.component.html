@@ -20,7 +20,8 @@
     </button>
 </div>
 <div [ngSwitch]="periodView">
-    <app-calendar-monthly-view [weeks]="calendar.weeks" *ngSwitchCase="0">
+    <app-calendar-monthly-view [weeks]="calendar.weeks" *ngSwitchCase="0"
+    (eventClick)="eventClick($event)">
     </app-calendar-monthly-view >
     <app-calendar-weekly-view [weeks]="calendar.weeks" *ngSwitchCase="1">
     </app-calendar-weekly-view>

@@ -22,6 +22,7 @@ import {FinancialComponent} from './financial/financial.component';
 import {ReportComponent} from './report/report.component';
 import {LoginComponent} from './login/login.component';
 
+import {EventService} from './calendar/event/event.service';
 import {PatientService} from './patient/patient.service';
 import {LoginService} from './login/login.service';
 import {CalendarMonthlyViewComponent} from './calendar/calendar-monthly-view/calendar-monthly-view.component';
@@ -54,7 +55,8 @@ import {CalendarDailyViewComponent} from './calendar/calendar-daily-view/calenda
     ],
     providers: [
         PatientService,
-        LoginService
+        LoginService,
+        EventService
     ],
     bootstrap: [AppComponent]
 })
