@@ -11,7 +11,7 @@ export class EventService {
 
   getEvents(start: Date, end: Date): Observable<Response> {
     let headers = new Headers({ 'Authorization': 'Bearer f50be128-e481-449a-96ba-9999ba11e01a' });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({ headers: headers,params:"" });
     options.params.append("start", start.toJSON());
     options.params.append("end", end.toJSON());
     return this.http.get(this.url, options);
