@@ -28,12 +28,12 @@ export class LoginService {
             .post(url, {}, options)
             .subscribe(response => {
                 if (response.ok) {
-                    this.authService.saveUser(JSON.stringify(response.json()));
+                    this.authService.saveCredentials(JSON.stringify(response.json()));
                 }
             });
     }
 
     logout(): void {
-        this.authService.removeUser();
+        this.authService.removeCredentials();
     }
 }

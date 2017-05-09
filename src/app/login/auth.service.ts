@@ -4,24 +4,29 @@ import { Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class AuthService {
 
-  userString: string = 'USER';
+  key: string = 'USER';
 
   constructor() { }
 
-  saveUser(user: string): void {
-    sessionStorage.setItem(this.userString, user);
+  saveCredentials(user: string): void {
+    console.log(user);
+    sessionStorage.setItem(this.key, user);
   }
 
-  getUser(): string {
-    return sessionStorage.getItem(this.userString);
+  getCredentials(): string {
+    return sessionStorage.getItem(this.key);
   }
 
-  removeUser(): void {
-    sessionStorage.removeItem(this.userString);
+  removeCredentials(): void {
+    sessionStorage.removeItem(this.key);
+  }
+
+  isLogged(): boolean {
+    return this.getCredentials() ? true : false;
   }
 
   authOptions(): RequestOptions {
-    let user = JSON.parse(this.getUser());
+    let user = JSON.parse(this.getCredentials());
 
     let headers = new Headers();
     if (user) {

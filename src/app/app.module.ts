@@ -30,6 +30,8 @@ import { PatientService } from './patient/patient.service';
 import { LoginService } from './login/login.service';
 import { AuthService } from "./login/auth.service";
 
+import { AuthGuard } from "./login/auth.guard";
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -61,6 +63,7 @@ import { AuthService } from "./login/auth.service";
         BrowserAnimationsModule
     ],
     providers: [
+        AuthGuard,
         PatientService,
         LoginService,
         AuthService
