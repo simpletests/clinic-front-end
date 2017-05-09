@@ -2,12 +2,12 @@ import { Injectable } from "@angular/core";
 import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { Subject, Observable } from 'rxjs';
 
+import { AuthService } from "app/login/auth.service";
+
 @Injectable()
 export class LoginService {
 
-    subject: Subject<boolean> = new Subject();
-
-    constructor(private http: Http) { }
+    constructor(private http: Http, private authService: AuthService) { }
 
     login(usuario): void {
         let url = 'http://localhost:8080/oauth/token';
@@ -28,13 +28,12 @@ export class LoginService {
             .post(url, {}, options)
             .subscribe(response => {
                 if (response.ok) {
-                    console.log(response);
-                    this.subject.next(true);
+                    this.authService.saveUser(JSON.stringify(response.json()));
                 }
             });
     }
 
     logout(): void {
-        this.subject.next(false);
+        this.authService.removeUser();
     }
 }
