@@ -23,9 +23,9 @@
     <app-calendar-monthly-view [weeks]="calendar.weeks" *ngSwitchCase="0"
     (eventClick)="eventClick($event)">
     </app-calendar-monthly-view >
-    <app-calendar-weekly-view [weeks]="calendar.weeks" *ngSwitchCase="1">
+    <app-calendar-weekly-view [week]="calendar.weeks[calendar.currentWeekOfMonth]" *ngSwitchCase="1">
     </app-calendar-weekly-view>
-    <app-calendar-daily-view [weeks]="calendar.weeks" *ngSwitchCase="2">
+    <app-calendar-daily-view [day]="calendar.weeks[calendar.currentWeekOfMonth][calendar.currentDayOfWeek]" *ngSwitchCase="2">
     </app-calendar-daily-view>
 </div>
 

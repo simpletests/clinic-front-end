@@ -7,7 +7,7 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class CalendarWeeklyViewComponent implements OnInit {
 
-    @Input() weeks;
+    @Input() week;
     constructor() {}
 
     ngOnInit() {

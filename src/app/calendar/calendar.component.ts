@@ -33,8 +33,6 @@ export class CalendarComponent implements OnInit {
         
     }
 
-   
-
     filter(val: string): string[] {
         return this.patients.filter(p => new RegExp(`^${val}`, 'gi').test(p));
     }
