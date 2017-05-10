@@ -28,6 +28,7 @@ import { AuthService } from "./login/auth.service";
 import { EventService } from "./calendar/event/event.service";
 
 import { AuthGuard } from "./login/auth.guard";
+import { EventDialogComponent } from './calendar/event/event-dialog/event-dialog.component';
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import { AuthGuard } from "./login/auth.guard";
         LoginComponent,
         CalendarMonthlyViewComponent,
         CalendarWeeklyViewComponent,
-        CalendarDailyViewComponent
+        CalendarDailyViewComponent,
+        EventDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -59,6 +61,9 @@ import { AuthGuard } from "./login/auth.guard";
         LoginService,
         EventService,
         AuthService
+    ],
+    entryComponents: [
+        EventDialogComponent
     ],
     bootstrap: [AppComponent]
 })

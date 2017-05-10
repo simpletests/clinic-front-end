@@ -15,7 +15,7 @@
     <button fxFlex="50px" md-raised-button (click)="calendar.centerOnNow()">
             <i class="material-icons">gps_fixed</i>
     </button>
-    <button fxFlex="50px" md-raised-button (click)="dialogOpened=!dialogOpened">
+    <button fxFlex="50px" md-raised-button (click)="openDialog()">
             <i class="material-icons">add</i>
     </button>
 </div>
@@ -29,10 +29,15 @@
 </div>
 
 <div id="dialog" open="dialogOpened">
-    <h1 >Event</h1>
+    <h1>Event</h1>
     <ul>
-        <li *ngFor="let patient of patientsOptions"
-        >{{patient.name}}</li>
+        <li *ngFor="let patient of patientsOptions">{{patient.name}}</li>
     </ul>
 
+</div>
+
+<div>
+    <md-dialog-container>
+        content
+    </md-dialog-container>
 </div>

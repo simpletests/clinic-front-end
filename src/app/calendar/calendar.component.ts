@@ -5,6 +5,8 @@ import { Calendar } from './calendar';
 import { FormControl } from '@angular/forms';
 import { EventService } from './event/event.service'
 import { PatientService } from "app/patient/patient.service";
+import { MdDialog } from "@angular/material";
+import { EventDialogComponent } from './event/event-dialog/event-dialog.component';
 
 @Component({
     selector: 'app-calendar',
@@ -19,9 +21,9 @@ export class CalendarComponent implements OnInit {
     periodView: CalendarPeriodView;
     patientsOptions: Observable<any[]>;
 
-    constructor(private eventService: EventService,private patientService:PatientService) { 
-        this.patientService.getPatients().map(content=>content.json())
-        .subscribe(patients=>this.patientsOptions=patients.content);
+    constructor(private eventService: EventService, private patientService: PatientService, public dialog: MdDialog) {
+        this.patientService.getPatients().map(content => content.json())
+            .subscribe(patients => this.patientsOptions = patients.content);
         this.periodView = CalendarPeriodView.MONTHLY;
         this.pagination = {
             first: false, last: false
@@ -30,7 +32,7 @@ export class CalendarComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+
     }
 
     eventClick(event) {
@@ -42,6 +44,10 @@ export class CalendarComponent implements OnInit {
     }
 
     openDialog() {
-
+        this.dialog.open(EventDialogComponent, {
+            height: '400px',
+            width: '600px',
+        });
     }
 }
+
