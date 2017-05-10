@@ -12,6 +12,13 @@ import { EventService } from './event/event.service'
 })
 export class CalendarComponent implements OnInit {
 
+    myControl = new FormControl();
+    calendar: Calendar;
+    pagination;
+    periodView: CalendarPeriodView;
+    patients = ["Brasil", "Argentina", "Bolivia"];
+    filteredOptions: Observable<string[]>;
+
     constructor(private eventService: EventService) { 
         this.filteredOptions = this.myControl.valueChanges.startWith(null).map(
             val => val ? this.filter(val) : this.patients.slice());
@@ -26,12 +33,7 @@ export class CalendarComponent implements OnInit {
         
     }
 
-    myControl = new FormControl();
-    calendar: Calendar;
-    pagination;
-    periodView: CalendarPeriodView;
-    patients = ["Brasil", "Argentina", "Bolivia"];
-    filteredOptions: Observable<string[]>;
+   
 
     filter(val: string): string[] {
         return this.patients.filter(p => new RegExp(`^${val}`, 'gi').test(p));
