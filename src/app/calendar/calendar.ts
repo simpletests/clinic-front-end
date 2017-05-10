@@ -76,10 +76,10 @@ export class Calendar {
         this.currentDayOfWeek = currentDate.getDay();
     }
     getStartDate(): Date {
-        return this.weeks[0].date;
+        return this.weeks[0][0].date;
     }
     getEndDate(): Date {
-        return this.weeks[this.weeks.length - 1].date;
+        return this.weeks[this.weeks.length - 1][this.weeks[this.weeks.length - 1].length - 1].date;
     }
     changeDate(i: number, periodView: CalendarPeriodView) {
         switch (periodView) {
@@ -229,7 +229,8 @@ export class Calendar {
     }
 
     fillEvents() {
-        this.eventService.getEvents(this.getStartDate(), this.getEndDate()).map(event => event.json)
+        this.eventService.getEvents(this.getStartDate(), this.getEndDate())
+            .map(response => response.json())
             .subscribe(events => {
                 this.clearEvents();
                 for (var i = 0; i < events.length; i++) {

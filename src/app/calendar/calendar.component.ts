@@ -4,6 +4,7 @@ import { CalendarPeriodView } from './calendar-period-view.enum'
 import { Calendar } from './calendar';
 import { FormControl } from '@angular/forms';
 import { EventService } from './event/event.service'
+import { PatientService } from "app/patient/patient.service";
 
 @Component({
     selector: 'app-calendar',
@@ -16,12 +17,11 @@ export class CalendarComponent implements OnInit {
     calendar: Calendar;
     pagination;
     periodView: CalendarPeriodView;
-    patients = ["Brasil", "Argentina", "Bolivia"];
-    filteredOptions: Observable<string[]>;
+    patientsOptions: Observable<any[]>;
 
-    constructor(private eventService: EventService) { 
-        this.filteredOptions = this.myControl.valueChanges.startWith(null).map(
-            val => val ? this.filter(val) : this.patients.slice());
+    constructor(private eventService: EventService,private patientService:PatientService) { 
+        this.patientService.getPatients().map(content=>content.json())
+        .subscribe(patients=>this.patientsOptions=patients.content);
         this.periodView = CalendarPeriodView.MONTHLY;
         this.pagination = {
             first: false, last: false
@@ -31,10 +31,6 @@ export class CalendarComponent implements OnInit {
 
     ngOnInit() {
         
-    }
-
-    filter(val: string): string[] {
-        return this.patients.filter(p => new RegExp(`^${val}`, 'gi').test(p));
     }
 
     eventClick(event) {

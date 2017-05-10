@@ -33,7 +33,7 @@ export class AuthService {
       headers.append('Authorization', user.token_type + ' ' + user.access_token);
     }
 
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({ headers: headers, params: new URLSearchParams() });
 
     return options;
   }
