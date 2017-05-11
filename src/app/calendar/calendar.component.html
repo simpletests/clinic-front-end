@@ -27,17 +27,3 @@
     <app-calendar-daily-view [day]="calendar.weeks[calendar.currentWeekOfMonth][calendar.currentDayOfWeek]" *ngSwitchCase="2">
     </app-calendar-daily-view>
 </div>
-
-<div id="dialog" open="dialogOpened">
-    <h1>Event</h1>
-    <ul>
-        <li *ngFor="let patient of patientsOptions">{{patient.name}}</li>
-    </ul>
-
-</div>
-
-<div>
-    <md-dialog-container>
-        content
-    </md-dialog-container>
-</div>

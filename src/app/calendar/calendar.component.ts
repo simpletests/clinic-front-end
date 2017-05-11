@@ -5,7 +5,7 @@ import { Calendar } from './calendar';
 import { FormControl } from '@angular/forms';
 import { EventService } from './event/event.service'
 import { PatientService } from "app/patient/patient.service";
-import { MdDialog } from "@angular/material";
+import { MdDialog, MdDialogRef } from "@angular/material";
 import { EventDialogComponent } from './event/event-dialog/event-dialog.component';
 
 @Component({
@@ -15,15 +15,12 @@ import { EventDialogComponent } from './event/event-dialog/event-dialog.componen
 })
 export class CalendarComponent implements OnInit {
 
-    myControl = new FormControl();
     calendar: Calendar;
     pagination;
     periodView: CalendarPeriodView;
-    patientsOptions: Observable<any[]>;
+    selectedEvent;
 
     constructor(private eventService: EventService, private patientService: PatientService, public dialog: MdDialog) {
-        this.patientService.getPatients().map(content => content.json())
-            .subscribe(patients => this.patientsOptions = patients.content);
         this.periodView = CalendarPeriodView.MONTHLY;
         this.pagination = {
             first: false, last: false
@@ -36,17 +33,21 @@ export class CalendarComponent implements OnInit {
     }
 
     eventClick(event) {
-        console.log("Event click on calendar");
+        this.openDialog(event);
     }
 
     changeDate(i) {
         this.calendar.changeDate(i, this.periodView);
     }
 
-    openDialog() {
-        this.dialog.open(EventDialogComponent, {
-            height: '400px',
-            width: '600px',
+    openDialog(event) {
+        let d = this.dialog.open(EventDialogComponent, {
+            width: '250px'
+        });
+        event = event || { start: new Date(), end: new Date(), patient: undefined };
+        d.componentInstance.event = event;
+        d.afterClosed().subscribe(result => {
+            this.selectedEvent = result;
         });
     }
 }

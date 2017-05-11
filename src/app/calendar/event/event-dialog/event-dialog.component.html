@@ -1,3 +1,20 @@
-<p>
-  event-dialog works!
-</p>
+<h1 md-dialog-title>Dialog</h1>
+<div md-dialog-content>
+  <md-input-container>
+    <input mdInput placeholder="Start Date" type="datetime-local" value="event.start">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput placeholder="End Date" type="datetime-local" value="event.end">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput value="event.patient" [formControl]="myControl" placeholder="Patient" type="text" [mdAutocomplete]="autoPatient">
+  </md-input-container>
+  <md-autocomplete #autoPatient="mdAutocomplete">
+    <md-option *ngFor="let val of filteredOptions | async" [value]="val">{{val.name}}</md-option>
+  </md-autocomplete>
+</div>
+<div md-dialog-actions>
+  <button md-raised-button md-dialog-close>Close</button>
+  <button md-raised-button md-dialog-close (click)="dialogRef.close(event)" *ngIf="event.id">Delete</button>
+  <button md-raised-button md-dialog-close (click)="dialogRef.close(event)" *ngIf="!event.id">Insert</button>
+</div>

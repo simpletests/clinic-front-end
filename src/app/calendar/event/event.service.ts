@@ -8,7 +8,7 @@ export class EventService {
 
   url = 'http://localhost:8080/1/event';
 
-  constructor(private authService: AuthService, private http: Http) {}
+  constructor(private authService: AuthService, private http: Http) { }
 
   getEvents(start: Date, end: Date): Observable<Response> {
     let options = this.authService.authOptions();
