@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import {
     MdButtonModule, MdCheckboxModule, MdToolbarModule, MdSidenavModule, MdMenuModule, MdListModule,
-    MdIconModule, MdDialogModule
+    MdIconModule, MdDialogModule, MdInputModule
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,9 +28,11 @@ import { CalendarDailyViewComponent } from './calendar/calendar-daily-view/calen
 
 import { PatientService } from './patient/patient.service';
 import { LoginService } from './login/login.service';
-import { AuthService } from "./login/auth.service";
+import { AuthService } from './login/auth.service';
+import { UserService } from 'app/user/user.service';
 
-import { AuthGuard } from "./login/auth.guard";
+import { AuthGuard } from './login/auth.guard';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
     declarations: [
@@ -44,7 +46,8 @@ import { AuthGuard } from "./login/auth.guard";
         LoginComponent,
         CalendarMonthlyViewComponent,
         CalendarWeeklyViewComponent,
-        CalendarDailyViewComponent
+        CalendarDailyViewComponent,
+        UserComponent
     ],
     imports: [
         BrowserModule,
@@ -59,6 +62,7 @@ import { AuthGuard } from "./login/auth.guard";
         MdListModule,
         MdIconModule,
         MdDialogModule,
+        MdInputModule,
         FlexLayoutModule,
         BrowserAnimationsModule
     ],
@@ -66,7 +70,8 @@ import { AuthGuard } from "./login/auth.guard";
         AuthGuard,
         PatientService,
         LoginService,
-        AuthService
+        AuthService,
+        UserService
     ],
     bootstrap: [AppComponent]
 })

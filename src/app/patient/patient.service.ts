@@ -7,7 +7,7 @@ import { AuthService } from "app/login/auth.service";
 @Injectable()
 export class PatientService {
 
-    url = 'http://localhost:8080/1/patient?page=0&size=20&search=0';
+    url = 'http://localhost:8080/1/patient?page=0&size=20&search=';
 
     constructor(private authService: AuthService, private http: Http) {}
 
