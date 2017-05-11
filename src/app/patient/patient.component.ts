@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 
-import {PatientService} from './patient.service';
+import { PatientService } from './patient.service';
 
 @Component({
     selector: 'app-patient',
@@ -10,10 +10,10 @@ import {PatientService} from './patient.service';
 })
 export class PatientComponent implements OnInit {
 
-    patients:any[];
+    patients: any[];
 
     constructor(
-        private patientService: PatientService) {}
+        private patientService: PatientService) { }
 
     ngOnInit() {
         this.getPatients();
@@ -21,7 +21,6 @@ export class PatientComponent implements OnInit {
 
     getPatients() {
         this.patientService.getPatients()
-            .map(response => response.json())
             .subscribe(data => {
                 this.patients = data.content;
             });

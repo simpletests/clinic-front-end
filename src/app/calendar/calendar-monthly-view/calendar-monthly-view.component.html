@@ -23,8 +23,7 @@
                         {{day.date| date:"dd"}}
                     </span>
                 </p>
-                <div *ngFor="let event of day.events" (click)="this.eventClick.emit(event)" 
-                style="background-color:brown;color:white">
+                <div *ngFor="let event of day.events" (click)="this.eventClick.emit(event)" style="background-color:brown;color:white">
                     <p>
                         {{event.start | date:"HH:mm"}} - {{event.end | date:"HH:mm"}} {{event.patient.name}}</p>
                 </div>

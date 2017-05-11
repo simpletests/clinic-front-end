@@ -234,9 +234,9 @@ export class Calendar {
             .subscribe(events => {
                 this.clearEvents();
                 for (var i = 0; i < events.length; i++) {
-                    var start = new Date(events[i].start);
-                    var end = new Date(events[i].end);
-                    var date = this.findDate(start);
+                    events[i].start = new Date(events[i].start);
+                    events[i].end = new Date(events[i].end);
+                    var date = this.findDate(events[i].start);
                     date.events.push(events[i]);
                 }
             });

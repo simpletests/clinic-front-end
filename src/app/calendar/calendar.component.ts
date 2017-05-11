@@ -18,7 +18,6 @@ export class CalendarComponent implements OnInit {
     calendar: Calendar;
     pagination;
     periodView: CalendarPeriodView;
-    selectedEvent;
 
     constructor(private eventService: EventService, private patientService: PatientService, public dialog: MdDialog) {
         this.periodView = CalendarPeriodView.MONTHLY;
@@ -42,12 +41,14 @@ export class CalendarComponent implements OnInit {
 
     openDialog(event) {
         let d = this.dialog.open(EventDialogComponent, {
-            width: '250px'
+            width: '300px'
         });
-        event = event || { start: new Date(), end: new Date(), patient: undefined };
-        d.componentInstance.event = event;
-        d.afterClosed().subscribe(result => {
-            this.selectedEvent = result;
+        let otherEvent = event.clone;
+        d.componentInstance.editEvent = otherEvent;
+        d.afterClosed().subscribe(hasChanged => {
+            if (hasChanged) {
+                this.calendar = new Calendar(this.eventService);
+            }
         });
     }
 }

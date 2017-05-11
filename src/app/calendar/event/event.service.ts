@@ -17,4 +17,8 @@ export class EventService {
     return this.http.get(this.url, options);
   }
 
+  saveOrUpdate(event): Observable<Response> {
+    let options = this.authService.authOptions();
+    return this.http.post(this.url, event, options);
+  }
 }
