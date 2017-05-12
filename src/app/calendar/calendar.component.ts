@@ -40,11 +40,15 @@ export class CalendarComponent implements OnInit {
     }
 
     openDialog(event) {
+        Observable.of(event).map(e => Object.assign(Object.create(e), e) ? e : this.eventService.getNew())
+            .subscribe(e => this.createDialog(e));
+    };
+
+    private createDialog(event) {
         let d = this.dialog.open(EventDialogComponent, {
             width: '300px'
         });
-        let otherEvent = event.clone;
-        d.componentInstance.editEvent = otherEvent;
+        d.componentInstance.event = event;
         d.afterClosed().subscribe(hasChanged => {
             if (hasChanged) {
                 this.calendar = new Calendar(this.eventService);

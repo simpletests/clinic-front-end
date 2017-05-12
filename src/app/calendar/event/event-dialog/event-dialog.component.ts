@@ -14,7 +14,7 @@ import { EventService } from "app/calendar/event/event.service";
 })
 export class EventDialogComponent implements OnInit {
 
-  editEvent;
+  event;
   myControl = new FormControl();
   filteredOptions: Observable<any[]>;
 
@@ -33,7 +33,7 @@ export class EventDialogComponent implements OnInit {
   }
 
   saveOrUpdate() {
-    this.eventService.saveOrUpdate(this.editEvent).subscribe(response => {
+    this.eventService.saveOrUpdate(this.event).subscribe(response => {
       if (response.ok) {
         console.log("save event ok");
         this.dialogRef.close(true);
@@ -42,6 +42,22 @@ export class EventDialogComponent implements OnInit {
         this.dialogRef.close(true);
       }
     });
+  }
+
+  delete(event) {
+    this.eventService.delete(event.id).subscribe(response => {
+      if (response.ok) {
+        console.log("delete event ok");
+        this.dialogRef.close(true);
+      } else {
+        console.log("delete event failed");
+        this.dialogRef.close(true);
+      }
+    });
+  }
+
+  displayFn(obj: any): string {
+    return (obj && obj.name) ? obj.name : "";
   }
 
   cancel() {
