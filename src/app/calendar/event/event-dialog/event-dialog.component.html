@@ -1,0 +1,22 @@
+<h1 md-dialog-title>Dialog</h1>
+<div md-dialog-content>
+  <md-input-container>
+    <input mdInput placeholder="Start Date" [ngModel]="event.start | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="event.start = $event"
+      type="datetime-local">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput placeholder="End Date" [ngModel]="event.end | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="event.end = $event"
+      type="datetime-local">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput [(ngModel)]="event.patient" [formControl]="myControl" placeholder="Patient" type="text" [mdAutocomplete]="autoPatient">
+  </md-input-container>
+  <md-autocomplete #autoPatient="mdAutocomplete" [displayWith]="displayFn">
+    <md-option *ngFor="let val of filteredOptions | async" [value]="val">{{val.name}}</md-option>
+  </md-autocomplete>
+</div>
+<div md-dialog-actions>
+  <button md-raised-button md-dialog-close>Close</button>
+  <button md-raised-button (click)="delete(event)" *ngIf="event.id">Delete</button>
+  <button md-raised-button (click)="saveOrUpdate()">{{event.id?"Update":"Insert"}}</button>
+</div>

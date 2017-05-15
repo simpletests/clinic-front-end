@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output} from '@angular/core';
 
 @Component({
     selector: 'app-calendar-daily-view',
@@ -7,10 +7,14 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class CalendarDailyViewComponent implements OnInit {
 
-    @Input() weeks;
+    @Input() day;
     constructor() {}
 
     ngOnInit() {
+    }
+
+    onclick() {
+
     }
 
 }

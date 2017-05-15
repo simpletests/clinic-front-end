@@ -1,3 +1,48 @@
-<p>
-  attendance works!
-</p>
+<div fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="5%" >
+    <md-card fxFlex>
+        <md-card-header >
+            <div fxFlex fxLayoutWrap>
+                <button fxFlex="50px" md-raised-button (click)="changeDate(-1)" [disabled]="first" >
+                        <i class="material-icons">keyboard_arrow_left</i>
+                </button>
+                <p fxFlex style="text-align:center">Handbook</p>
+                <button fxFlex="50px" md-raised-button (click)="changeDate(1)" [disabled]="last">
+                        <i class="material-icons">keyboard_arrow_right</i>
+                </button>
+            </div>
+        </md-card-header>
+        <md-card-content>
+            <div fxFlex >
+                <md-input-container>
+                    <input mdInput placeholder="Disease" [disabled]="true" value="Cold" >
+                </md-input-container>
+                <md-input-container>
+                    <textarea mdInput placeholder="Observations" [disabled]="true">Blablablblal balb ablablab alb alallaal blala</textarea>
+                </md-input-container>
+            </div>
+        </md-card-content>
+    </md-card>
+    <md-card fxFlex>
+        <md-card-header >
+            <div fxFlex fxLayoutWrap>
+                <button fxFlex="50px" md-raised-button (click)="changeDate(-1)" [disabled]="first" >
+                        <i class="material-icons">keyboard_arrow_left</i>
+                </button>
+                <p fxFlex style="text-align:center">Handbook</p>
+                <button fxFlex="50px" md-raised-button (click)="changeDate(1)" [disabled]="last">
+                        <i class="material-icons">keyboard_arrow_right</i>
+                </button>
+            </div>
+        </md-card-header>
+        <md-card-content>
+            <div fxFlex >
+                <md-input-container>
+                    <input mdInput placeholder="Disease" >
+                </md-input-container>
+                <md-input-container>
+                    <textarea mdInput placeholder="Observations"></textarea>
+                </md-input-container>
+            </div>
+        </md-card-content>
+    </md-card>
+</div>

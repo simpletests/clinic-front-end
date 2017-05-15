@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-calendar-monthly-view',
@@ -7,8 +7,10 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class CalendarMonthlyViewComponent implements OnInit {
 
-    @Input() weeks;
-    constructor() {}
+    @Output() eventClick = new EventEmitter<any>();
+
+    @Input() weeks: string[];
+    constructor() { }
 
     ngOnInit() {
     }

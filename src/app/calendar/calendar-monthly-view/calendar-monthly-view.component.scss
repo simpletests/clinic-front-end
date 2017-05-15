@@ -1,0 +1,8 @@
+table{
+     table-layout: fixed;
+     border: 0px;
+}
+
+tbody tr:nth-child(even) td:nth-child(even),tbody tr:nth-child(odd) td:nth-child(odd){
+   background-color:#F4F4F4;
+}

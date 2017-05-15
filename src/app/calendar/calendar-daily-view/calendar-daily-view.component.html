@@ -1,3 +1,30 @@
-<p>
-  calendar-daily-view works!
-</p>
+<h3 style="text-align:center;width:100%">
+    {{day.date| date:"dd/MM/yy"}}
+</h3>
+
+<table style="width:100%;">
+    <thead>
+        <tr [ngSwitch]="day.date.getDay()">
+            <th class="weekDays" *ngSwitchCase="0">{{'Sun'}}</th>
+            <th class="weekDays" *ngSwitchCase="1">{{'Mon'}}</th>
+            <th class="weekDays" *ngSwitchCase="2">{{'Tue'}}</th>
+            <th class="weekDays" *ngSwitchCase="3">{{'Wed'}}</th>
+            <th class="weekDays" *ngSwitchCase="4">{{'Thr'}}</th>
+            <th class="weekDays" *ngSwitchCase="5">{{'Fri'}}</th>
+            <th class="weekDays" *ngSwitchCase="6">{{'Sat'}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="daysMonthlyView" style="height:100px">
+                <p class="calendarDayNumber">
+                    <span>
+                        {{day.date| date:"dd"}}
+                    </span>
+                </p>
+                <p *ngFor="let event of day.events" (click)="this.eventClick.emit(event)" class="eventoCalendario">
+                    {{event.start | date:"HH:mm"}} + "-" + {{event.end | date:"HH:mm"}} + event.patient.name}}</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
