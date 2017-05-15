@@ -2,15 +2,38 @@
   user works!
 </p>
 
+<md-input-container>
+    <input mdInput placeholder="Name" ([ngModel])="user.name" />
+</md-input-container>
+<md-input-container>
+    <input mdInput placeholder="Username" ([ngModel])="user.username" />
+</md-input-container>
+<md-input-container>
+    <input mdInput placeholder="Password" type="password" ([ngModel])="user.password" />
+</md-input-container>
+<md-checkbox ([ngModel])="user.enabled">
+    Enabled
+</md-checkbox>
+
+<button md-raised-button (click)="saveUser(user)" >
+    Save
+</button>
+
+<br />
+
 <table>
     <tr>
+        <th>Name</th>
         <th>Username</th>
         <th>Password</th>
+        <th>Enabled</th>
         <th>Roles</th>
     </tr>
     <tr *ngFor="let user of users">
+        <td>{{user.name}}</td>
         <td>{{user.username}}</td>
         <td>{{user.password}}</td>
+        <td>{{user.enabled}}</td>
         <td>{{user.roles}}</td>
     </tr>
 </table>

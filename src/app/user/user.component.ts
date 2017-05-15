@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "app/user/user.service";
+import { RoleService } from "app/user/role.service";
 
 @Component({
   selector: 'app-user',
@@ -8,18 +9,32 @@ import { UserService } from "app/user/user.service";
 })
 export class UserComponent implements OnInit {
 
+  user;
   users: any[];
+  roles: any[];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private roleService: RoleService) { }
 
   ngOnInit() {
     this.getUsers();
+    this.getRoles();
   }
 
   getUsers() {
     this.userService.getUsers()
       .map(response => response.json())
-      .subscribe(data => this.users = data.content)
+      .subscribe(data => this.users = data.content);
   }
 
+  getRoles() {
+    this.roleService.getRoles()
+      .map(response => response.json())
+      .subscribe(data => this.roles = data.content);
+  }
+
+  saveUser(user) {
+    this.userService.saveUser(user)
+      .map(response => response.json())
+      .subscribe(data => this.getUsers());
+  }
 }

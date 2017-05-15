@@ -30,6 +30,7 @@ import { PatientService } from './patient/patient.service';
 import { LoginService } from './login/login.service';
 import { AuthService } from './login/auth.service';
 import { UserService } from 'app/user/user.service';
+import { RoleService } from "app/user/role.service";
 
 import { AuthGuard } from './login/auth.guard';
 import { UserComponent } from './user/user.component';
@@ -71,7 +72,8 @@ import { UserComponent } from './user/user.component';
         PatientService,
         LoginService,
         AuthService,
-        UserService
+        UserService,
+        RoleService
     ],
     bootstrap: [AppComponent]
 })

@@ -5,18 +5,14 @@ import { Observable } from "rxjs/Observable";
 import { AuthService } from "app/login/auth.service";
 
 @Injectable()
-export class UserService {
+export class RoleService {
 
-  url = 'http://localhost:8080/1/user?page=0&size=20&search=';
+  url = 'http://localhost:8080/optionsSelect/roles';
 
   constructor(private authService: AuthService, private http: Http) { }
 
-  getUsers() : Observable<Response> {
+  getRoles() : Observable<Response> {
     return this.http.get(this.url, this.authService.authOptions());
-  }
-
-  saveUser(user) : Observable<Response> {
-    return this.http.post(this.url, user, this.authService.authOptions());
   }
 
 }

@@ -21,11 +21,9 @@ export class LoginComponent implements OnInit {
     
     login(): void {
         this.loginService.login(this.user);
-        console.log('Hello World !')
     }
 
     logout(): void {
         this.loginService.logout();
-        console.log('Goodbye !');
     }
 }

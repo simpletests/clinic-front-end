@@ -29,11 +29,13 @@ export class LoginService {
             .subscribe(response => {
                 if (response.ok) {
                     this.authService.saveCredentials(JSON.stringify(response.json()));
+                    console.log('Hello World !');
                 }
             });
     }
 
     logout(): void {
         this.authService.removeCredentials();
+        console.log('Goodbye !');
     }
 }
