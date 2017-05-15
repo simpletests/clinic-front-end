@@ -30,7 +30,6 @@ export class RestService<T>{
 
   getNew(): Observable<T> {
     let options = this.getOptions();
-    //options.params.append("id", "-1");
     return this.http.get(this.url + "/-1", options)
       .map(response => response.json());
   }

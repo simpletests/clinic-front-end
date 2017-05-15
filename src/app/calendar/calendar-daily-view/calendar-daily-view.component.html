@@ -15,14 +15,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td class="daysMonthlyView" style="height:100px">
-                <p class="calendarDayNumber">
-                    <span>
-                        {{day.date| date:"dd"}}
-                    </span>
-                </p>
-                <p *ngFor="let event of day.events" (click)="this.eventClick.emit(event)" class="eventoCalendario">
+        <tr *ngFor="let hourTier of hoursTier">
+            <td class="daysMonthlyView" style="height:50px">
+                {{hourTier.label}}
+                <p *ngFor="let event of hourTier.events" class="eventoCalendario">
                     {{event.start | date:"HH:mm"}} + "-" + {{event.end | date:"HH:mm"}} + event.patient.name}}</p>
             </td>
         </tr>
