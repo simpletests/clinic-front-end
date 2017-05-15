@@ -25,19 +25,17 @@ import { LoginComponent } from './login/login.component';
 import { CalendarMonthlyViewComponent } from './calendar/calendar-monthly-view/calendar-monthly-view.component';
 import { CalendarWeeklyViewComponent } from './calendar/calendar-weekly-view/calendar-weekly-view.component';
 import { CalendarDailyViewComponent } from './calendar/calendar-daily-view/calendar-daily-view.component';
+import { EventDialogComponent } from './calendar/event/event-dialog/event-dialog.component';
+import { UserComponent } from './user/user.component';
 
 import { PatientService } from './patient/patient.service';
 import { LoginService } from './login/login.service';
-import { AuthService } from "./login/auth.service";
 import { EventService } from "./calendar/event/event.service";
 import { AuthService } from './login/auth.service';
 import { UserService } from 'app/user/user.service';
 import { RoleService } from "app/user/role.service";
 
 import { AuthGuard } from "./login/auth.guard";
-import { EventDialogComponent } from './calendar/event/event-dialog/event-dialog.component';
-import { AuthGuard } from './login/auth.guard';
-import { UserComponent } from './user/user.component';
 
 @NgModule({
     declarations: [
@@ -52,7 +50,7 @@ import { UserComponent } from './user/user.component';
         CalendarMonthlyViewComponent,
         CalendarWeeklyViewComponent,
         CalendarDailyViewComponent,
-        EventDialogComponent
+        EventDialogComponent,
         UserComponent
     ],
     imports: [
@@ -79,7 +77,6 @@ import { UserComponent } from './user/user.component';
         PatientService,
         LoginService,
         EventService,
-        AuthService
         AuthService,
         UserService,
         RoleService
