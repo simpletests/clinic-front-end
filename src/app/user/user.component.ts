@@ -9,7 +9,9 @@ import { RoleService } from "app/user/role.service";
 })
 export class UserComponent implements OnInit {
 
-  user;
+  user = {
+    name: "Midiã", username: "midia", password: "123", enabled: true 
+  };
   users: any[];
   roles: any[];
 

@@ -7,16 +7,21 @@ import { AuthService } from "app/login/auth.service";
 @Injectable()
 export class UserService {
 
-  url = 'http://localhost:8080/1/user?page=0&size=20&search=';
+  url = 'http://localhost:8080/1/user';
 
   constructor(private authService: AuthService, private http: Http) { }
 
-  getUsers() : Observable<Response> {
-    return this.http.get(this.url, this.authService.authOptions());
+  getUsers(page?, size?, search?): Observable<Response> {
+    let options = this.authService.authOptions();
+    // this.restService.getUrl
+    options.params.append("page", (page || 0).toString());
+    options.params.append("size", (size || 20).toString());
+    options.params.append("search", search || "");
+    return this.http.get(this.url, options);
   }
 
-  saveUser(user) : Observable<Response> {
-    return this.http.post(this.url, user, this.authService.authOptions());
+  saveUser(user): Observable<Response> {
+    return this.http.post(this.url, {user}, this.authService.authOptions());
   }
 
 }
