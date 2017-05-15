@@ -7,8 +7,8 @@ import { AuthService } from "app/login/auth.service";
 export class RestService<T>{
 
   url: string;
-  authService;
-  http;
+  authService: AuthService;
+  http: Http;
 
   constructor(authService: AuthService, http: Http, path: string) {
     this.authService = authService;
@@ -18,19 +18,25 @@ export class RestService<T>{
     this.url = serverUrl.replace("{idUser}", user) + path;
   }
 
-  private getOptions(): RequestOptions {
-    return this.authService.authOptions();
+  private getOptions(params?): RequestOptions {
+    let options: RequestOptions = this.authService.authOptions();
+    if (params) {
+      for (let param of params) {
+        options.params.append(param.param, param.val);
+      }
+    }
+    return options;
   }
 
-  getNew(): T {
+  getNew(): Observable<T> {
     let options = this.getOptions();
     //options.params.append("id", "-1");
     return this.http.get(this.url + "/-1", options)
       .map(response => response.json());
   }
 
-  findAll(): Observable<any> {
-    return this.http.get(this.url, this.getOptions())
+  findAll(params?: { param: string, val: any }[]): Observable<any> {
+    return this.http.get(this.url, this.getOptions(params))
       .map(response => response.json());
   }
 

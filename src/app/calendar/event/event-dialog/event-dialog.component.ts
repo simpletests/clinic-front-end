@@ -7,6 +7,8 @@ import { MdDialogRef } from "@angular/material";
 import { PatientService } from "app/patient/patient.service";
 import { EventService } from "app/calendar/event/event.service";
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-event-dialog',
   templateUrl: './event-dialog.component.html',
@@ -62,6 +64,10 @@ export class EventDialogComponent implements OnInit {
 
   cancel() {
 
+  }
+
+  setEvent(event) {
+    this.event = _.cloneDeep(event);
   }
 
   // filter(val: string): string[] {

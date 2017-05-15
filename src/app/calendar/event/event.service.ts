@@ -12,6 +12,9 @@ export class EventService extends RestService<any> {
   }
 
   getEvents(start: Date, end: Date): Observable<any[]> {
-    return super.findAll();
+    return super.findAll([
+      { param: "start", val: start.toJSON() },
+      { param: "end", val: end.toJSON() },
+    ]);
   }
 }
