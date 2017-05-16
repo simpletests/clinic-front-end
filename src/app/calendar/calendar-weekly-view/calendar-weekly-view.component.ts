@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'app-calendar-weekly-view',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 })
 export class CalendarWeeklyViewComponent implements OnInit, OnChanges {
 
+    @Output() eventClick = new EventEmitter<any>();
     hoursDaysTier;
     @Input() week = [];
     constructor() { }

@@ -18,7 +18,7 @@
         <tr *ngFor="let hourTier of hoursTier">
             <td>
                 {{hourTier.label}}
-                <p *ngFor="let event of hourTier.events" style="background-color:blanchedalmond">
+                <p *ngFor="let event of hourTier.events" style="background-color:blanchedalmond" (click)="this.eventClick.emit(event)">
                     {{event.start | date:"HH:mm"}} - {{event.end | date:"HH:mm"}} {{event.patient.name}}
                 </p>
             </td>

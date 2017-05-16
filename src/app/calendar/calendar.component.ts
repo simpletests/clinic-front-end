@@ -51,7 +51,7 @@ export class CalendarComponent implements OnInit {
         d.componentInstance.setEvent(event);
         d.afterClosed().subscribe(hasChanged => {
             if (hasChanged) {
-                this.calendar = new Calendar(this.eventService);
+                this.calendar.refreshEvents();
             }
         });
     }

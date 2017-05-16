@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, OnChanges, EventEmitter } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 
 @Component({
@@ -8,32 +8,38 @@ import { Observable } from "rxjs/Observable";
 })
 export class CalendarDailyViewComponent implements OnInit, OnChanges {
 
+    @Output() eventClick = new EventEmitter<any>();
     hoursTier: any[];
+
+    dayObservable: Observable<any>;
 
     @Input() day;
     constructor() {
+        this.dayObservable = new Observable(this.day, day => {
+            console.log("day changed!");
+            if (day && day.events) {
+                let minHours = 8;
+                let maxHours = 18;
+                this.hoursTier = [];
+                for (let i = minHours; i < maxHours; i++) {
+                    this.hoursTier.push({
+                        label: i <= 12 ? i + ':00 am' : i - 12 + ':00 pm',
+                        events: this.findEventsByHour(day.events, i)
+                    });
+                }
+            }
+        });
     }
 
     ngOnInit() {
-        this.fillHoursTier();
     }
 
     ngOnChanges() {
-        this.fillHoursTier();
     }
 
     private fillHoursTier() {
-        if (this.day && this.day.events) {
-            let minHours = 8;
-            let maxHours = 18;
-            this.hoursTier = [];
-            for (let i = minHours; i < maxHours; i++) {
-                this.hoursTier.push({
-                    label: i <= 12 ? i + ':00 am' : i - 12 + ':00 pm',
-                    events: this.findEventsByHour(this.day.events, i)
-                });
-            }
-        }
+
+
     }
 
     private findEventsByHour(events: any[], hour: number): any[] {
