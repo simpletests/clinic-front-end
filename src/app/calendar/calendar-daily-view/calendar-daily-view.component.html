@@ -16,10 +16,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let hourTier of hoursTier">
-            <td class="daysMonthlyView" style="height:50px">
+            <td>
                 {{hourTier.label}}
-                <p *ngFor="let event of hourTier.events" class="eventoCalendario">
-                    {{event.start | date:"HH:mm"}} + "-" + {{event.end | date:"HH:mm"}} + event.patient.name}}</p>
+                <p *ngFor="let event of hourTier.events" style="background-color:blanchedalmond">
+                    {{event.start | date:"HH:mm"}} - {{event.end | date:"HH:mm"}} {{event.patient.name}}
+                </p>
             </td>
         </tr>
     </tbody>

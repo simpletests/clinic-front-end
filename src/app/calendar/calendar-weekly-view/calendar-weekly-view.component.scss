@@ -1,0 +1,11 @@
+//@import "app/styles.scss";
+$soft-grey:#FAFAFA;
+tbody tr td{
+    height:50px;
+    border-bottom:solid 5px $soft-grey;
+}
+
+table{
+     table-layout: fixed;
+     border: 0px;
+}
