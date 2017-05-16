@@ -14,6 +14,11 @@ export class UserComponent implements OnInit {
   };
   users: any[];
   roles: any[];
+  foods = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
 
   constructor(private userService: UserService, private roleService: RoleService) { }
 
@@ -34,8 +39,8 @@ export class UserComponent implements OnInit {
       .subscribe(data => this.roles = data.content);
   }
 
-  saveUser(user) {
-    this.userService.saveUser(user)
+  saveUser() {
+    this.userService.saveUser(this.user)
       .map(response => response.json())
       .subscribe(data => this.getUsers());
   }

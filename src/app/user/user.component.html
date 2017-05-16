@@ -3,19 +3,27 @@
 </p>
 
 <md-input-container>
-    <input mdInput placeholder="Name" ([ngModel])="user.name" />
+    <input mdInput placeholder="Name" [(ngModel)]="user.name" />
 </md-input-container>
 <md-input-container>
-    <input mdInput placeholder="Username" ([ngModel])="user.username" />
+    <input mdInput placeholder="Username" [(ngModel)]="user.username" />
 </md-input-container>
 <md-input-container>
-    <input mdInput placeholder="Password" type="password" ([ngModel])="user.password" />
+    <input mdInput placeholder="Password" type="password" [(ngModel)]="user.password" />
 </md-input-container>
-<md-checkbox ([ngModel])="user.enabled">
+<md-checkbox [(ngModel)]="user.enabled">
     Enabled
 </md-checkbox>
 
-<button md-raised-button (click)="saveUser(user)" >
+
+<md-select placeholder="Roles">
+  <md-option *ngFor="let role of roles" [value]="role">
+    {{role}}
+  </md-option>
+</md-select>
+
+
+<button md-raised-button (click)="saveUser()" >
     Save
 </button>
 

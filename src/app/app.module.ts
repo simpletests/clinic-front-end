@@ -5,10 +5,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialComponentsModule } from './material-components/material-components.module'
-import {
-    MdButtonModule, MdCheckboxModule, MdToolbarModule, MdSidenavModule, MdMenuModule, MdListModule,
-    MdIconModule, MdDialogModule, MdInputModule
-} from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
@@ -60,15 +56,6 @@ import { AuthGuard } from "./login/auth.guard";
         AppRoutingModule,
         MaterialComponentsModule,
         ReactiveFormsModule,
-        MdButtonModule,
-        MdCheckboxModule,
-        MdToolbarModule,
-        MdSidenavModule,
-        MdMenuModule,
-        MdListModule,
-        MdIconModule,
-        MdDialogModule,
-        MdInputModule,
         FlexLayoutModule,
         BrowserAnimationsModule
     ],

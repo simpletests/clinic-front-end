@@ -21,7 +21,7 @@ export class UserService {
   }
 
   saveUser(user): Observable<Response> {
-    return this.http.post(this.url, {user}, this.authService.authOptions());
+    return this.http.post(this.url, user, this.authService.authOptions());
   }
 
 }
