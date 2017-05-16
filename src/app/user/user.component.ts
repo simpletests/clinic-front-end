@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "app/user/user.service";
 import { RoleService } from "app/user/role.service";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-user',
@@ -9,16 +10,9 @@ import { RoleService } from "app/user/role.service";
 })
 export class UserComponent implements OnInit {
 
-  user = {
-    name: "Midiã", username: "midia", password: "123", enabled: true 
-  };
+  user: any = {};
   users: any[];
   roles: any[];
-  foods = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
 
   constructor(private userService: UserService, private roleService: RoleService) { }
 
@@ -36,12 +30,21 @@ export class UserComponent implements OnInit {
   getRoles() {
     this.roleService.getRoles()
       .map(response => response.json())
-      .subscribe(data => this.roles = data.content);
+      .subscribe(data => this.roles = data);
   }
 
   saveUser() {
     this.userService.saveUser(this.user)
       .map(response => response.json())
       .subscribe(data => this.getUsers());
+  }
+
+  editUser(user) {
+    this.user = _.cloneDeep(user);
+  }
+
+  deleteUser(id) {
+    this.userService.deleteUser(id);
+    this.getUsers();
   }
 }

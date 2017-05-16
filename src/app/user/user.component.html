@@ -1,5 +1,5 @@
 <p>
-  user works!
+    user works!
 </p>
 
 <md-input-container>
@@ -14,16 +14,14 @@
 <md-checkbox [(ngModel)]="user.enabled">
     Enabled
 </md-checkbox>
-
-
-<md-select placeholder="Roles">
-  <md-option *ngFor="let role of roles" [value]="role">
-    {{role}}
-  </md-option>
+<md-select placeholder="Roles" [(ngModel)]="user.role">
+    <md-option *ngFor="let role of roles" [value]="role">
+        {{role}}
+    </md-option>
 </md-select>
 
 
-<button md-raised-button (click)="saveUser()" >
+<button md-raised-button (click)="saveUser()">
     Save
 </button>
 
@@ -36,6 +34,8 @@
         <th>Password</th>
         <th>Enabled</th>
         <th>Roles</th>
+        <th></th>
+        <th></th>
     </tr>
     <tr *ngFor="let user of users">
         <td>{{user.name}}</td>
@@ -43,5 +43,11 @@
         <td>{{user.password}}</td>
         <td>{{user.enabled}}</td>
         <td>{{user.roles}}</td>
+        <td>
+            <button md-button (click)="editUser(user)"><md-icon>create</md-icon></button>
+        </td>
+        <td>
+            <button md-button (click)="deleteUser(user.id)"><md-icon>clear</md-icon></button>
+        </td>
     </tr>
 </table>

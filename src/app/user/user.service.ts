@@ -24,4 +24,7 @@ export class UserService {
     return this.http.post(this.url, user, this.authService.authOptions());
   }
 
+  deleteUser(id): Observable<Response> {
+    return this.http.delete(this.url + "/" + id, this.authService.authOptions());
+  }
 }
