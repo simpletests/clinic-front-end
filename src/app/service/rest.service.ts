@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from "app/login/auth.service";
+import { Page } from "app/service/page";
+import { PageRequest } from "app/service/page-request";
 
 @Injectable()
 export class RestService<T>{
@@ -18,12 +20,17 @@ export class RestService<T>{
     this.url = serverUrl.replace("{idUser}", user) + path;
   }
 
-  private getOptions(params?): RequestOptions {
+  private getOptions(params?, pageRequest?: PageRequest): RequestOptions {
     let options: RequestOptions = this.authService.authOptions();
     if (params) {
       for (let param of params) {
         options.params.append(param.param, param.val);
       }
+    }
+    if (pageRequest) {
+      options.params.append("page", pageRequest.page.toString());
+      options.params.append("size", pageRequest.size.toString());
+      options.params.append("search", pageRequest.search.toString());
     }
     return options;
   }
@@ -34,8 +41,8 @@ export class RestService<T>{
       .map(response => response.json());
   }
 
-  findAll(params?: { param: string, val: any }[]): Observable<any> {
-    return this.http.get(this.url, this.getOptions(params))
+  findAll(params?: { param: string, val: any }[], pageRequest?: PageRequest): Observable<any> {
+    return this.http.get(this.url, this.getOptions(params, pageRequest))
       .map(response => response.json());
   }
 
