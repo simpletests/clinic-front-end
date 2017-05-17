@@ -3,11 +3,12 @@ import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angul
 import { Subject, Observable } from 'rxjs';
 
 import { AuthService } from "app/login/auth.service";
+import { UserService } from "app/user/user.service";
 
 @Injectable()
 export class LoginService {
 
-    constructor(private http: Http, private authService: AuthService) { }
+    constructor(private http: Http, private authService: AuthService, private userService: UserService) { }
 
     login(usuario): void {
         let url = 'http://localhost:8080/oauth/token';
@@ -30,6 +31,8 @@ export class LoginService {
                 if (response.ok) {
                     this.authService.saveCredentials(JSON.stringify(response.json()));
                     console.log('Hello World !');
+                } else {
+                    // TODO comunicar falha no login
                 }
             });
     }
