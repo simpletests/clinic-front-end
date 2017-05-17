@@ -22,10 +22,9 @@
 <div [ngSwitch]="periodView">
         <app-calendar-monthly-view [weeks]="calendar.weeks" *ngSwitchCase="0" (eventClick)="eventClick($event)">
         </app-calendar-monthly-view>
-        <app-calendar-weekly-view [week]="calendar.weeks[calendar.currentWeekOfMonth]"
-                *ngSwitchCase="1" (eventClick)="eventClick($event)">
+        <app-calendar-weekly-view [week]="calendar.weeks[calendar.currentWeekOfMonth]" *ngSwitchCase="1" (eventClick)="eventClick($event)">
         </app-calendar-weekly-view>
-        <app-calendar-daily-view [day]="calendar.weeks[calendar.currentWeekOfMonth][calendar.currentDayOfWeek]"
-                (eventClick)="eventClick($event)" *ngSwitchCase="2">
+        <app-calendar-daily-view [day]="calendar.weeks[calendar.currentWeekOfMonth][calendar.currentDayOfWeek]" (eventClick)="eventClick($event)"
+                *ngSwitchCase="2">
         </app-calendar-daily-view>
 </div>

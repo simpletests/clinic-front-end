@@ -29,6 +29,7 @@ import { EventService } from "./calendar/event/event.service";
 
 import { AuthGuard } from "./login/auth.guard";
 import { EventDialogComponent } from './calendar/event/event-dialog/event-dialog.component';
+import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { EventDialogComponent } from './calendar/event/event-dialog/event-dialog
         CalendarMonthlyViewComponent,
         CalendarWeeklyViewComponent,
         CalendarDailyViewComponent,
-        EventDialogComponent
+        EventDialogComponent,
+        CalendarHourFilterPipe
     ],
     imports: [
         BrowserModule,

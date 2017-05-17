@@ -229,7 +229,7 @@ export class Calendar {
     }
 
     fillEvents() {
-        this.eventService.getEvents(this.getStartDate(), this.getEndDate())
+        return this.eventService.getEvents(this.getStartDate(), this.getEndDate())
             .subscribe(events => {
                 this.clearEvents();
                 for (var i = 0; i < events.length; i++) {

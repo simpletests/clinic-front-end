@@ -6,6 +6,7 @@
 <table style="width:100%;">
     <thead>
         <tr>
+            <th class="weekDays" style="width:50px"></th>
             <th class="weekDays">{{'Sun'}}</th>
             <th class="weekDays">{{'Mon'}}</th>
             <th class="weekDays">{{'Tue'}}</th>
@@ -16,13 +17,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let hourTier of hoursDaysTier">
-            <td *ngFor="let hourOfDay of hourTier">
-                <p *ngIf="hourTier.indexOf(hourOfDay)==0">
-                    {{hourOfDay.label}}
-                </p>
-                <p *ngFor="let event of hourOfDay.events " style="background-color:blanchedalmond "
-                    (click)="this.eventClick.emit(event)">
+        <tr *ngFor="let hour of hoursTier">
+            <td style="text-align:center;width:50px">
+                {{hour}}:00
+            </td>
+            <td *ngFor="let day of week">
+
+                <p *ngFor="let event of day.events | calendarHourFilter:{hour:hour} " style="background-color:blanchedalmond " (click)="this.eventClick.emit(event)">
                     {{event.start | date:"HH:mm "}} - {{event.end | date:"HH:mm "}} {{event.patient.name}}
                 </p>
             </td>

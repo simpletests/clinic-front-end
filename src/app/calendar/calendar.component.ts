@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { CalendarPeriodView } from './calendar-period-view.enum'
 import { Calendar } from './calendar';
@@ -18,6 +18,8 @@ export class CalendarComponent implements OnInit {
     calendar: Calendar;
     pagination;
     periodView: CalendarPeriodView;
+    week: any[];
+    day: any;
 
     constructor(private eventService: EventService, private patientService: PatientService, public dialog: MdDialog) {
         this.periodView = CalendarPeriodView.MONTHLY;
@@ -28,7 +30,6 @@ export class CalendarComponent implements OnInit {
     }
 
     ngOnInit() {
-
     }
 
     eventClick(event) {
