@@ -21,14 +21,17 @@ import { LoginComponent } from './login/login.component';
 import { CalendarMonthlyViewComponent } from './calendar/calendar-monthly-view/calendar-monthly-view.component';
 import { CalendarWeeklyViewComponent } from './calendar/calendar-weekly-view/calendar-weekly-view.component';
 import { CalendarDailyViewComponent } from './calendar/calendar-daily-view/calendar-daily-view.component';
+import { EventDialogComponent } from './calendar/event/event-dialog/event-dialog.component';
+import { UserComponent } from './user/user.component';
 
 import { PatientService } from './patient/patient.service';
 import { LoginService } from './login/login.service';
-import { AuthService } from "./login/auth.service";
 import { EventService } from "./calendar/event/event.service";
+import { AuthService } from './login/auth.service';
+import { UserService } from 'app/user/user.service';
+import { RoleService } from "app/user/role.service";
 
 import { AuthGuard } from "./login/auth.guard";
-import { EventDialogComponent } from './calendar/event/event-dialog/event-dialog.component';
 import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
 
 @NgModule({
@@ -45,7 +48,8 @@ import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
         CalendarWeeklyViewComponent,
         CalendarDailyViewComponent,
         EventDialogComponent,
-        CalendarHourFilterPipe
+        CalendarHourFilterPipe,
+        UserComponent
     ],
     imports: [
         BrowserModule,
@@ -62,7 +66,9 @@ import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
         PatientService,
         LoginService,
         EventService,
-        AuthService
+        AuthService,
+        UserService,
+        RoleService
     ],
     entryComponents: [
         EventDialogComponent

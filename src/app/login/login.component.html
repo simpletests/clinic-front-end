@@ -1,12 +1,20 @@
-<p>
-  login works!
-</p>
-<div>
-    <br />
-    <label>Username</label>
-    <input type="text" [(ngModel)]="usuario.username">
-    <label>Password</label>
-    <input type="text" [(ngModel)]="usuario.password">
-    <button (click)="login()">Enter !</button>
-    <button (click)="logout()">Go Out !</button>
-</div>
+<md-card>
+  <h1>Login!</h1>
+
+  <md-input-container>
+    <input mdInput placeholder="Username" [(ngModel)]="user.username">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="Password" [(ngModel)]="user.password">
+  </md-input-container>
+
+  <button md-raised-button (click)="login()">
+    Enter
+  </button>
+  <button md-raised-button (click)="logout()">
+    Exit
+  </button>
+
+
+</md-card>

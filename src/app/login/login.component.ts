@@ -9,7 +9,7 @@ import {LoginService} from './login.service';
 })
 export class LoginComponent implements OnInit {
     
-    usuario = {
+    user = {
         username: 'wesley',
         password: '123'
     };
@@ -20,12 +20,10 @@ export class LoginComponent implements OnInit {
     }
     
     login(): void {
-        this.loginService.login(this.usuario);
-        console.log('Hello World !')
+        this.loginService.login(this.user);
     }
 
     logout(): void {
         this.loginService.logout();
-        console.log('Goodbye !');
     }
 }
