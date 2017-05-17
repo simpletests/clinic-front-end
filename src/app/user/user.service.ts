@@ -1,30 +1,30 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 
 import { AuthService } from "app/login/auth.service";
+import { RestService } from "app/service/rest.service";
 
 @Injectable()
-export class UserService {
+export class UserService extends RestService<any> {
 
-  url = 'http://localhost:8080/1/user';
-
-  constructor(private authService: AuthService, private http: Http) { }
-
-  getUsers(page?, size?, search?): Observable<Response> {
-    let options = this.authService.authOptions();
-    // this.restService.getUrl
-    options.params.append("page", (page || 0).toString());
-    options.params.append("size", (size || 20).toString());
-    options.params.append("search", search || "");
-    return this.http.get(this.url, options);
+  constructor(authService: AuthService, http: Http) {
+    super(authService, http, "user");
   }
 
-  saveUser(user): Observable<Response> {
-    return this.http.post(this.url, user, this.authService.authOptions());
+  getUsers(page?, size?, search?): Observable<any> {
+    return super.findAll([
+      {param: "page", val: (page || 0)},
+      {param: "size", val: (size || 20)},
+      {param: "search", val: (search || "")}
+    ]);
   }
 
-  deleteUser(id): Observable<Response> {
-    return this.http.delete(this.url + "/" + id, this.authService.authOptions());
+  saveUser(user): Observable<any> {
+    return super.saveOrUpdate(user);
+  }
+
+  deleteUser(id): Observable<any> {
+    return super.delete(id);
   }
 }

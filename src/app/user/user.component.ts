@@ -23,7 +23,6 @@ export class UserComponent implements OnInit {
 
   getUsers() {
     this.userService.getUsers()
-      .map(response => response.json())
       .subscribe(data => this.users = data.content);
   }
 
@@ -35,16 +34,24 @@ export class UserComponent implements OnInit {
 
   saveUser() {
     this.userService.saveUser(this.user)
-      .map(response => response.json())
       .subscribe(data => this.getUsers());
+    this.cleanUser();
   }
 
   editUser(user) {
     this.user = _.cloneDeep(user);
   }
 
+  cancelUser() {
+    this.cleanUser();
+  }
+
+  cleanUser() {
+    this.user = {};
+  }
+
   deleteUser(id) {
-    this.userService.deleteUser(id);
-    this.getUsers();
+    this.userService.deleteUser(id)
+      .subscribe(data => this.getUsers());
   }
 }
