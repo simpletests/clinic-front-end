@@ -9,9 +9,7 @@ export class CalendarHourFilterPipe implements PipeTransform {
     let vals: any[] = [];
     for (var i = 0; i < value.length; i++) {
       if (value[i].start.getHours() == args.hour) {
-        if (!args.day || value[i].start.getDay() == args.day) {
           vals.push(value[i]);
-        }
       }
     }
     return vals;
