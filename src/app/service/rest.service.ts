@@ -13,7 +13,7 @@ export class RestService<T>{
   constructor(authService: AuthService, http: Http, path: string) {
     this.authService = authService;
     this.http = http;
-    let user: string = "1";
+    let user: string = authService.userId();
     let serverUrl: string = 'http://localhost:8080/{idUser}/';
     this.url = serverUrl.replace("{idUser}", user) + path;
   }

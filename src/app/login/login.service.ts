@@ -8,12 +8,12 @@ import { UserService } from "app/user/user.service";
 @Injectable()
 export class LoginService {
 
+    urlAuth = 'http://localhost:8080/oauth/token';
+    urlUser = 'http://localhost:8080/oauth/user';
+
     constructor(private http: Http, private authService: AuthService, private userService: UserService) { }
 
     login(usuario): void {
-        let urlAuth = 'http://localhost:8080/oauth/token';
-        let urlUser = 'http://localhost:8080/oauth/user';
-
         let headers = new Headers();
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', 'Basic ' + btoa('foo:bar'));
@@ -26,22 +26,33 @@ export class LoginService {
 
         let options = new RequestOptions({ headers: headers, search: params });
 
-        this.http
-            .post(urlAuth, {}, options)
-            .subscribe(response => {
-                if (response.ok) {
-                    this.authService.saveCredentials(JSON.stringify(response.json()));
-
-
-                    console.log('Hello World !');
-                } else {
-                    // TODO comunicar falha no login
-                }
-            });
+        this.http.post(this.urlAuth, {}, options).subscribe(response => {
+            if (response.ok) {
+                this.authService.saveCredentials(JSON.stringify(response.json()));
+                this.saveDetails(usuario.username, usuario.password);
+                console.log('Hello World !');
+            } else {
+                // TODO comunicar falha no login
+            }
+        });
     }
 
     logout(): void {
         this.authService.removeCredentials();
+        this.authService.removeDetails();
         console.log('Goodbye !');
+    }
+
+    private saveDetails(username, password): void {
+        let options = this.authService.authOptions();
+        options.params.append("username", username);
+        options.params.append("password", password);
+        this.http.get(this.urlUser, options).subscribe(response => {
+            if (response.ok) {
+                this.authService.saveDetails(JSON.stringify(response.json()));
+            } else {
+                // TODO comunicar falha no login
+            }
+        });
     }
 }

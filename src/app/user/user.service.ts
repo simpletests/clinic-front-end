@@ -19,12 +19,4 @@ export class UserService extends RestService<any> {
       {param: "search", val: (search || "")}
     ]);
   }
-
-  saveUser(user): Observable<any> {
-    return super.saveOrUpdate(user);
-  }
-
-  deleteUser(id): Observable<any> {
-    return super.delete(id);
-  }
 }

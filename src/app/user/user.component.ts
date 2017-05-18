@@ -33,7 +33,7 @@ export class UserComponent implements OnInit {
   }
 
   saveUser() {
-    this.userService.saveUser(this.user)
+    this.userService.saveOrUpdate(this.user)
       .subscribe(data => this.getUsers());
     this.cleanUser();
   }
@@ -51,7 +51,7 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser(id) {
-    this.userService.deleteUser(id)
+    this.userService.delete(id)
       .subscribe(data => this.getUsers());
   }
 }

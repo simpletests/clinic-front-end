@@ -9,9 +9,9 @@ export class AuthService {
 
   constructor() { }
 
-  saveCredentials(user: string): void {
-    console.log(user);
-    sessionStorage.setItem(this.keyCredential, user);
+  saveCredentials(credentials: string): void {
+    sessionStorage.setItem(this.keyCredential, credentials);
+    console.log(credentials);
   }
 
   getCredentials(): string {
@@ -22,20 +22,42 @@ export class AuthService {
     sessionStorage.removeItem(this.keyCredential);
   }
 
+  saveDetails(details: string): void {
+    sessionStorage.setItem(this.keyDetails, details);
+    console.log(details);
+  }
+
+  getDetails(): string {
+    return sessionStorage.getItem(this.keyDetails);
+  }
+
+  removeDetails(): void {
+    sessionStorage.removeItem(this.keyDetails);
+  }
+
   isLogged(): boolean {
-    return this.getCredentials() ? true : false;
+    return this.getCredentials() && this.getDetails() ? true : false;
   }
 
   authOptions(): RequestOptions {
-    let user = JSON.parse(this.getCredentials());
+    let credentials = JSON.parse(this.getCredentials());
 
     let headers = new Headers();
-    if (user) {
-      headers.append('Authorization', user.token_type + ' ' + user.access_token);
+    if (credentials) {
+      headers.append('Authorization', credentials.token_type + ' ' + credentials.access_token);
     }
 
     let options = new RequestOptions({ headers: headers, params: new URLSearchParams() });
 
     return options;
+  }
+
+  userId(): string {
+    let details = JSON.parse(this.getDetails());
+    if (details) {
+      return details.id;
+    } else {
+      return '-1';
+    }
   }
 }
