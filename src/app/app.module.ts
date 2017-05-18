@@ -50,7 +50,7 @@ import { ConfirmComponent } from './commons/components/dialogs/confirm/confirm.c
         CalendarDailyViewComponent,
         EventDialogComponent,
         CalendarHourFilterPipe,
-        UserComponent
+        UserComponent,
         ConfirmComponent
     ],
     imports: [
