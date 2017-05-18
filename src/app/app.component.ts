@@ -15,6 +15,7 @@ export class AppComponent {
         {route: "calendar", name: "Calendar", icon: "date_range"},
         {route: "patient", name: "Patient", icon: "person"},
         {route: "financial", name: "Financial", icon: "attach_money"},
-        {route: "report", name: "report", icon: "description"}
+        {route: "report", name: "Report", icon: "description"},
+        {route: "user", name: "User", icon: "sentiment_very_dissatisfied"}
     ];
 }

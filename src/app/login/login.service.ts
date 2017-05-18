@@ -2,16 +2,18 @@ import { Injectable } from "@angular/core";
 import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { Subject, Observable } from 'rxjs';
 
-import { AuthService } from "app/login/auth.service";
+import { AuthService } from "app/service/auth.service";
+import { UserService } from "app/user/user.service";
 
 @Injectable()
 export class LoginService {
 
-    constructor(private http: Http, private authService: AuthService) { }
+    urlAuth = 'http://localhost:8080/oauth/token';
+    urlUser = 'http://localhost:8080/oauth/user';
+
+    constructor(private http: Http, private authService: AuthService, private userService: UserService) { }
 
     login(usuario): void {
-        let url = 'http://localhost:8080/oauth/token';
-
         let headers = new Headers();
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', 'Basic ' + btoa('foo:bar'));
@@ -24,16 +26,33 @@ export class LoginService {
 
         let options = new RequestOptions({ headers: headers, search: params });
 
-        this.http
-            .post(url, {}, options)
-            .subscribe(response => {
-                if (response.ok) {
-                    this.authService.saveCredentials(JSON.stringify(response.json()));
-                }
-            });
+        this.http.post(this.urlAuth, {}, options).subscribe(response => {
+            if (response.ok) {
+                this.authService.saveCredentials(JSON.stringify(response.json()));
+                this.saveDetails(usuario.username, usuario.password);
+                console.log('Hello World !');
+            } else {
+                // TODO comunicar falha no login
+            }
+        });
     }
 
     logout(): void {
         this.authService.removeCredentials();
+        this.authService.removeDetails();
+        console.log('Goodbye !');
+    }
+
+    private saveDetails(username, password): void {
+        let options = this.authService.authOptions();
+        options.params.append("username", username);
+        options.params.append("password", password);
+        this.http.get(this.urlUser, options).subscribe(response => {
+            if (response.ok) {
+                this.authService.saveDetails(JSON.stringify(response.json()));
+            } else {
+                // TODO comunicar falha no login
+            }
+        });
     }
 }

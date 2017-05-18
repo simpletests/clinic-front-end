@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from "app/login/auth.service";
+import { AuthService } from "app/service/auth.service";
 import { PageRequest } from "app/service/page-request";
 
 @Injectable()
@@ -14,7 +14,7 @@ export class RestService<T>{
   constructor(authService: AuthService, http: Http, path: string) {
     this.authService = authService;
     this.http = http;
-    let user: string = "1";
+    let user: string = authService.userId();
     let serverUrl: string = 'http://localhost:8080/{idUser}/';
     this.url = serverUrl.replace("{idUser}", user) + path;
   }
@@ -51,6 +51,7 @@ export class RestService<T>{
     return this.http.get(this.url, options)
       .map(response => response.json()).map(content => <T>content);
   }
+  
   saveOrUpdate(event): Observable<Response> {
     return this.http.post(this.url, event, this.getOptions());
   }
