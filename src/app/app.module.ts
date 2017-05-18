@@ -27,11 +27,11 @@ import { UserComponent } from './user/user.component';
 import { PatientService } from './patient/patient.service';
 import { LoginService } from './login/login.service';
 import { EventService } from "./calendar/event/event.service";
-import { AuthService } from './login/auth.service';
+import { AuthService } from './service/auth.service';
 import { UserService } from 'app/user/user.service';
 import { RoleService } from "app/user/role.service";
 
-import { AuthGuard } from "./login/auth.guard";
+import { AuthGuard } from "./guard/auth.guard";
 import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
 
 @NgModule({

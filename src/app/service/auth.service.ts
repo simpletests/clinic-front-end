@@ -4,21 +4,22 @@ import { Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class AuthService {
 
-  key: string = 'USER';
+  keyCredential: string = 'USER_CREDENTIALS';
+  keyDetails: string = 'USER_DETAILS';
 
   constructor() { }
 
   saveCredentials(user: string): void {
     console.log(user);
-    sessionStorage.setItem(this.key, user);
+    sessionStorage.setItem(this.keyCredential, user);
   }
 
   getCredentials(): string {
-    return sessionStorage.getItem(this.key);
+    return sessionStorage.getItem(this.keyCredential);
   }
 
   removeCredentials(): void {
-    sessionStorage.removeItem(this.key);
+    sessionStorage.removeItem(this.keyCredential);
   }
 
   isLogged(): boolean {

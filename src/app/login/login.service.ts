@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { Subject, Observable } from 'rxjs';
 
-import { AuthService } from "app/login/auth.service";
+import { AuthService } from "app/service/auth.service";
 import { UserService } from "app/user/user.service";
 
 @Injectable()
@@ -11,7 +11,8 @@ export class LoginService {
     constructor(private http: Http, private authService: AuthService, private userService: UserService) { }
 
     login(usuario): void {
-        let url = 'http://localhost:8080/oauth/token';
+        let urlAuth = 'http://localhost:8080/oauth/token';
+        let urlUser = 'http://localhost:8080/oauth/user';
 
         let headers = new Headers();
         headers.append('Content-type', 'application/json');
@@ -26,10 +27,12 @@ export class LoginService {
         let options = new RequestOptions({ headers: headers, search: params });
 
         this.http
-            .post(url, {}, options)
+            .post(urlAuth, {}, options)
             .subscribe(response => {
                 if (response.ok) {
                     this.authService.saveCredentials(JSON.stringify(response.json()));
+
+
                     console.log('Hello World !');
                 } else {
                     // TODO comunicar falha no login

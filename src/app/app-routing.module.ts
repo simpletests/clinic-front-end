@@ -9,7 +9,7 @@ import { ReportComponent } from 'app/report/report.component';
 import { LoginComponent } from 'app/login/login.component';
 import { UserComponent } from "app/user/user.component";
 
-import { AuthGuard } from "./login/auth.guard";
+import { AuthGuard } from "app/guard/auth.guard";
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
