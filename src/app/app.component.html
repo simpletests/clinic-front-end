@@ -1,15 +1,14 @@
 <md-sidenav-container fullscreen>
-    <md-sidenav #start  mode="side" opened="true" fxHide.sm="TRUE"  >
+    <md-sidenav #start mode="side" opened="true">
         <md-nav-list>
-            <md-list-item *ngFor="let navItem of navItems"
-                [routerLink]="[navItem.route]" >
-                <md-icon md-list-icon >{{navItem.icon}}</md-icon>
+            <md-list-item *ngFor="let navItem of navItems" [routerLink]="[navItem.route]">
+                <md-icon md-list-icon>{{navItem.icon}}</md-icon>
                 <h4 md-line>{{navItem.name}}</h4>
             </md-list-item>
         </md-nav-list>
     </md-sidenav>
 
-    <div >
+    <div>
         <md-toolbar color="primary">
             <button md-icon-button (click)="start.toggle()">
                     <md-icon class="md-24" >menu</md-icon>

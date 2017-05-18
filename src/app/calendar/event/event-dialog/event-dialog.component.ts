@@ -8,6 +8,7 @@ import { PatientService } from "app/patient/patient.service";
 import { EventService } from "app/calendar/event/event.service";
 
 import * as _ from 'lodash';
+import { PageRequest } from "app/service/page-request";
 
 @Component({
   selector: 'app-event-dialog',
@@ -27,7 +28,9 @@ export class EventDialogComponent implements OnInit {
   }
 
   querySearch(qry: string): Observable<any[]> {
-    return this.patientService.getPatients(0, 0, qry)
+    let pageRequest = new PageRequest();
+    pageRequest.search = qry;
+    return this.patientService.getPatientsPage(pageRequest)
       .map(data => data.content);
   }
 

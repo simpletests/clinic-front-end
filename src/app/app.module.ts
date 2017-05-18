@@ -30,6 +30,7 @@ import { EventService } from "./calendar/event/event.service";
 import { AuthGuard } from "./login/auth.guard";
 import { EventDialogComponent } from './calendar/event/event-dialog/event-dialog.component';
 import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
+import { ConfirmComponent } from './commons/components/dialogs/confirm/confirm.component';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
         CalendarWeeklyViewComponent,
         CalendarDailyViewComponent,
         EventDialogComponent,
-        CalendarHourFilterPipe
+        CalendarHourFilterPipe,
+        ConfirmComponent
     ],
     imports: [
         BrowserModule,
@@ -65,7 +67,7 @@ import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
         AuthService
     ],
     entryComponents: [
-        EventDialogComponent
+        EventDialogComponent, ConfirmComponent
     ],
     bootstrap: [AppComponent]
 })

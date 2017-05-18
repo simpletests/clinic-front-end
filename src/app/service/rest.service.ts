@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from "app/login/auth.service";
-import { Page } from "app/service/page";
 import { PageRequest } from "app/service/page-request";
 
 @Injectable()
@@ -57,9 +56,7 @@ export class RestService<T>{
   }
 
   delete(id: string): Observable<Response> {
-    let options = this.getOptions();
-    // options.params.append("id", id);
-    return this.http.delete(this.url + "/" + id, options)
+    return this.http.delete(this.url + "/" + id, this.getOptions());
   }
 
 
