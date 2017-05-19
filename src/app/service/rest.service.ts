@@ -7,16 +7,14 @@ import { PageRequest } from "app/service/page-request";
 @Injectable()
 export class RestService<T>{
 
-  url: string;
   authService: AuthService;
   http: Http;
+  path: string;
 
   constructor(authService: AuthService, http: Http, path: string) {
     this.authService = authService;
     this.http = http;
-    let user: string = authService.userId();
-    let serverUrl: string = 'http://localhost:8080/{idUser}/';
-    this.url = serverUrl.replace("{idUser}", user) + path;
+    this.path = path;
   }
 
   private getOptions(params?, pageRequest?: PageRequest): RequestOptions {
@@ -34,31 +32,35 @@ export class RestService<T>{
     return options;
   }
 
+  url() :string {
+    let serverUrl: string = 'http://localhost:8080/{idUser}/';
+    let user: string = this.authService.userId();
+    return serverUrl.replace("{idUser}", user) + this.path;
+  }
+
   getNew(): Observable<T> {
     let options = this.getOptions();
-    return this.http.get(this.url + "/-1", options)
+    return this.http.get(this.url() + "/-1", options)
       .map(response => response.json());
   }
 
   findAll(params?: { param: string, val: any }[], pageRequest?: PageRequest): Observable<any> {
-    return this.http.get(this.url, this.getOptions(params, pageRequest))
+    return this.http.get(this.url(), this.getOptions(params, pageRequest))
       .map(response => response.json());
   }
 
   findOne(id: string): Observable<T> {
     let options = this.getOptions();
     options.params.append("id", id);
-    return this.http.get(this.url, options)
+    return this.http.get(this.url(), options)
       .map(response => response.json()).map(content => <T>content);
   }
 
   saveOrUpdate(event): Observable<Response> {
-    return this.http.post(this.url, event, this.getOptions());
+    return this.http.post(this.url(), event, this.getOptions());
   }
 
   delete(id: string): Observable<Response> {
-    return this.http.delete(this.url + "/" + id, this.getOptions());
+    return this.http.delete(this.url() + "/" + id, this.getOptions());
   }
-
-
 }
