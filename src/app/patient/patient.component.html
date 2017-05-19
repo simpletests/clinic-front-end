@@ -1,48 +1,52 @@
+Patient
+<br/>
 <button md-raised-button (click)="newPatient()">
     New
 </button>
-<md-input-container style="float:right">
-    <input mdInput [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()"
-        placeholder="Search" type="text">
-</md-input-container>
-<table style="width:100%" *ngIf="pageContent.content">
-    <tr>
-        <th>Name</th>
-        <th>E-mail</th>
-        <th>Address</th>
-    </tr>
-    <tr *ngFor="let p of pageContent.content">
-        <td>{{p.name}}</td>
-        <td>{{p.email}}</td>
-        <td>{{p.address.label}}</td>
-        <td>
-            <button md-icon-button (click)="edit(p)"><md-icon>edit</md-icon></button>
-        </td>
-        <td>
-            <button md-icon-button (click)="confirmDelete(p)"><md-icon>delete</md-icon></button>
-        </td>
-    </tr>
-</table>
-<br/>
-
-<button md-raised-button (click)="pageRequest.firstPage()" [disabled]="pageRequest.first">
+<div *ngIf="pageContent.content && pageContent.content.length>0">
+    <md-input-container style="float:right">
+        <input mdInput [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()"
+            placeholder="Search" type="text">
+    </md-input-container>
+    <table style="width:100%">
+        <tr>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Address</th>
+        </tr>
+        <tr *ngFor="let p of pageContent.content">
+            <td>{{p.name}}</td>
+            <td>{{p.email}}</td>
+            <td>{{p.address.label}}</td>
+            <td>
+                <button md-icon-button (click)="edit(p)"><md-icon>edit</md-icon></button>
+            </td>
+            <td>
+                <button md-icon-button (click)="confirmDelete(p)"><md-icon>delete</md-icon></button>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <div>
+        <button md-raised-button (click)="pageRequest.firstPage()" [disabled]="pageRequest.first">
             <i class="material-icons">keyboard_arrow_left</i>
     </button>
-<button md-raised-button (click)="pageRequest.previousPage()" [disabled]="pageRequest.first">
+        <button md-raised-button (click)="pageRequest.previousPage()" [disabled]="pageRequest.first">
             <i class="material-icons">keyboard_arrow_left</i>
     </button>
-<button md-raised-button (click)="pageRequest.setNumber(i)" [disabled]="pageRequest.number==i"
-    *ngFor="let i of pageRequest.buttonPages">
+        <button md-raised-button (click)="pageRequest.setNumber(i)" [disabled]="pageRequest.number==i"
+            *ngFor="let i of pageRequest.buttonPages">
     {{i}} 
     </button>
 
-<button md-raised-button (click)="pageRequest.nextPage()" [disabled]="pageRequest.last">
+        <button md-raised-button (click)="pageRequest.nextPage()" [disabled]="pageRequest.last">
             <i class="material-icons">keyboard_arrow_right</i>
     </button>
-<button md-raised-button (click)="pageRequest.lastPage()" [disabled]="pageRequest.last">
+        <button md-raised-button (click)="pageRequest.lastPage()" [disabled]="pageRequest.last">
             <i class="material-icons">keyboard_arrow_right</i>
     </button>
-
+    </div>
+</div>
 <br/>
 <br/>
 <br/>
