@@ -5,7 +5,7 @@
     <input mdInput [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()"
         placeholder="Search" type="text">
 </md-input-container>
-<table style="width:100%">
+<table style="width:100%" *ngIf="pageContent.content">
     <tr>
         <th>Name</th>
         <th>E-mail</th>
@@ -31,7 +31,7 @@
 <button md-raised-button (click)="pageRequest.previousPage()" [disabled]="pageRequest.first">
             <i class="material-icons">keyboard_arrow_left</i>
     </button>
-<button md-raised-button (click)="pageRequest.setPage(i)" [disabled]="pageRequest.page==i"
+<button md-raised-button (click)="pageRequest.setNumber(i)" [disabled]="pageRequest.number==i"
     *ngFor="let i of pageRequest.buttonPages">
     {{i}} 
     </button>
