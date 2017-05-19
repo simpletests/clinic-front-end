@@ -51,7 +51,7 @@ export class RestService<T>{
     return this.http.get(this.url, options)
       .map(response => response.json()).map(content => <T>content);
   }
-  
+
   saveOrUpdate(event): Observable<Response> {
     return this.http.post(this.url, event, this.getOptions());
   }

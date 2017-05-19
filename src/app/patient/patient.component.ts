@@ -29,7 +29,10 @@ export class PatientComponent implements OnInit {
 
     getPatients() {
         this.patientService.getPatientsPage(this.pageRequest)
-            .subscribe(page => this.pageContent = page);
+            .subscribe(page => {
+                this.pageRequest.fillValues(page);
+                this.pageContent = page
+            });
     };
 
     edit(p) {
