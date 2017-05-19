@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attendance.component.scss']
 })
 export class AttendanceComponent implements OnInit {
-
+  event = {};
+  disease = {};
+  lastHandbook = {};
+  handbook = {};
   constructor() { }
 
   ngOnInit() {
