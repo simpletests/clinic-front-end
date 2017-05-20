@@ -30,6 +30,7 @@ import { EventService } from "./calendar/event/event.service";
 import { AuthService } from './service/auth.service';
 import { UserService } from 'app/user/user.service';
 import { RoleService } from "app/user/role.service";
+import { HandbookService } from "app/attendance/handbook.service";
 
 import { AuthGuard } from "./guard/auth.guard";
 import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
@@ -70,7 +71,8 @@ import { ConfirmComponent } from './commons/components/dialogs/confirm/confirm.c
         EventService,
         AuthService,
         UserService,
-        RoleService
+        RoleService,
+        HandbookService
     ],
     entryComponents: [
         EventDialogComponent, ConfirmComponent

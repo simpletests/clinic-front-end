@@ -1,26 +1,20 @@
 <div fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="5%">
     <md-card fxFlex>
         <md-card-header>
-            <div fxFlex fxLayoutWrap>
-                <button fxFlex="50px" md-raised-button [disabled]="">
+            <div fxFlex fxLayoutWrap *ngIf="pastHandbook">
+                <button fxFlex="50px" md-raised-button [disabled]="handbookPageRequest.last" (click)="handbookPageRequest.nextPage()">
                         <i class="material-icons">keyboard_arrow_left</i>
                 </button>
-                <p fxFlex style="text-align:center">Last Handbooks</p>
-                <button fxFlex="50px" md-raised-button [disabled]="">
+                <p fxFlex style="text-align:center">{{pastHandbook.dateTime| date:"dd/MM/yy"}}</p>
+                <button fxFlex="50px" md-raised-button [disabled]="handbookPageRequest.first" (click)="handbookPageRequest.previousPage()">
                         <i class="material-icons">keyboard_arrow_right</i>
                 </button>
             </div>
         </md-card-header>
-        <md-card-content>
+        <md-card-content *ngIf="pastHandbook">
             <div fxFlex>
-                <br/> Event: {{lastHandbook.event}}
-                <br/>
-                <md-input-container>
-                    <input mdInput placeholder="Disease" [disabled]="true" value="lastHandbook.disease">
-                </md-input-container>
-                <md-input-container>
-                    <textarea mdInput placeholder="Observations" [disabled]="true">{{lastHandbook.observations}}</textarea>
-                </md-input-container>
+                <br/> Patient: {{pastHandbook.patient.name}}
+                <br/> Resume: {{pastHandbook.resume}}
             </div>
         </md-card-content>
     </md-card>
@@ -32,13 +26,12 @@
         </md-card-header>
         <md-card-content>
             <div fxFlex>
-                <br/> Event: {{handbook.disease}}
                 <br/>
                 <md-input-container>
-                    <input mdInput placeholder="Disease" ([ngValue])="handbook.disease">
+                    <input mdInput placeholder="Disease" [(ngModel)]="handbook.disease">
                 </md-input-container>
                 <md-input-container>
-                    <textarea mdInput placeholder="Observations" ([ngValue])="handbook.observations"></textarea>
+                    <textarea mdInput placeholder="Observations" [(ngModel)]="handbook.observations"></textarea>
                 </md-input-container>
             </div>
         </md-card-content>
@@ -46,8 +39,7 @@
 
 </div>
 
-<br/>
-
+<br/>Duration {{currentDate|async|date:"mm:ss"}}
 <button md-raised-button style="float:right">
     <i class="material-icons">save</i>
     </button>

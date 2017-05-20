@@ -32,8 +32,11 @@ export class RestService<T>{
     return options;
   }
 
-  url() :string {
+  url(pathParams?: string): string {
     let serverUrl: string = 'http://localhost:8080/{idUser}/';
+    if (pathParams) {
+      serverUrl = serverUrl.concat(pathParams, "/");
+    }
     let user: string = this.authService.userId();
     return serverUrl.replace("{idUser}", user) + this.path;
   }
@@ -44,6 +47,11 @@ export class RestService<T>{
       .map(response => response.json());
   }
 
+  findAllPathParams(pathParams?: string, params?: { param: string, val: any }[], pageRequest?: PageRequest): Observable<any> {
+    return this.http.get(this.url(pathParams), this.getOptions(params, pageRequest))
+      .map(response => response.json());
+  }
+
   findAll(params?: { param: string, val: any }[], pageRequest?: PageRequest): Observable<any> {
     return this.http.get(this.url(), this.getOptions(params, pageRequest))
       .map(response => response.json());
@@ -51,9 +59,9 @@ export class RestService<T>{
 
   findOne(id: string): Observable<T> {
     let options = this.getOptions();
-    options.params.append("id", id);
-    return this.http.get(this.url(), options)
-      .map(response => response.json()).map(content => <T>content);
+    return this.http.get(this.url() + "/" + id, options)
+      .map(response => response.json());
+    //.map(content => <T>content);
   }
 
   saveOrUpdate(event): Observable<Response> {
