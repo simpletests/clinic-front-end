@@ -1,5 +1,10 @@
 <h1 md-dialog-title>Dialog</h1>
 <div md-dialog-content>
+  <br/>
+  <button md-raised-button md-dialog-close [routerLink]="['attendance',event.id]" *ngIf="event.id">
+    Start attendance
+  </button>
+  <br/>
   <md-input-container>
     <input mdInput placeholder="Start Date" [ngModel]="event.start | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="event.start = $event"
       type="datetime-local">
@@ -16,7 +21,7 @@
   </md-autocomplete>
 </div>
 <div md-dialog-actions>
-  <button md-raised-button md-dialog-close>Close</button>
+  <!--<button md-raised-button md-dialog-close>Close</button>-->
   <button md-raised-button (click)="delete(event)" *ngIf="event.id">Delete</button>
   <button md-raised-button (click)="saveOrUpdate()">{{event.id?"Update":"Insert"}}</button>
 </div>

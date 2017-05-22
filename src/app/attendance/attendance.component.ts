@@ -3,6 +3,7 @@ import { EventService } from "app/calendar/event/event.service";
 import { HandbookService } from "app/attendance/handbook.service";
 import { PageRequest } from "app/service/page-request";
 import { Observable } from "rxjs/Rx";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-attendance',
@@ -10,20 +11,21 @@ import { Observable } from "rxjs/Rx";
   styleUrls: ['./attendance.component.scss']
 })
 export class AttendanceComponent implements OnInit {
-  event = { patient: { id: 1 } };
-  disease = {};
+  event;
   pastHandbook;
-  handbook = { observations: "  " };
   currentDate: Observable<Date>;
   startDateTime: Date;
   handbookPageRequest: PageRequest;
-  constructor(private eventService: EventService, public handbookService: HandbookService) {
+  constructor(public eventService: EventService, public handbookService: HandbookService, route: ActivatedRoute) {
     this.startDateTime = new Date();
     this.handbookPageRequest = new PageRequest();
     this.handbookPageRequest.size = 1;
     this.handbookPageRequest.change.addListener("change", this.fillPastHandbook.bind(this));
-    this.fillPastHandbook();
     this.currentDate = Observable.interval(1000).map(() => new Date(Math.abs(this.startDateTime.getTime() - new Date().getTime())));
+    eventService.findOne(route.snapshot.params["eventId"]).subscribe(event => {
+      this.event = event;
+      this.fillPastHandbook();
+    });
   }
 
   private fillPastHandbook() {
@@ -35,6 +37,10 @@ export class AttendanceComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  save() {
+    this.eventService.saveOrUpdate(this.event).subscribe(value => console.log("save ok"));
   }
 
 }
