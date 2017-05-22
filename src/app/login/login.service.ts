@@ -40,6 +40,7 @@ export class LoginService {
     logout(): void {
         this.authService.removeCredentials();
         this.authService.removeDetails();
+        this.authService.emitUserLoggedOut();
         console.log('Goodbye !');
     }
 
@@ -50,6 +51,7 @@ export class LoginService {
         this.http.get(this.urlUser, options).subscribe(response => {
             if (response.ok) {
                 this.authService.saveDetails(JSON.stringify(response.json()));
+                this.authService.emitUserLoggedIn();
             } else {
                 // TODO comunicar falha no login
             }
