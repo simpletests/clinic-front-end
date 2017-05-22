@@ -11,7 +11,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./attendance.component.scss']
 })
 export class AttendanceComponent implements OnInit {
-  event;
+  event: any;
   pastHandbook;
   currentDate: Observable<Date>;
   startDateTime: Date;
@@ -31,8 +31,10 @@ export class AttendanceComponent implements OnInit {
   private fillPastHandbook() {
     this.handbookService.findAllPageable(this.event.patient, this.handbookPageRequest)
       .subscribe(page => {
-        this.handbookPageRequest.fillValues(page);
-        this.pastHandbook = page.content[0];
+        if (page != null) {
+          this.handbookPageRequest.fillValues(page);
+          this.pastHandbook = page.content[0];
+        }
       });
   }
 

@@ -3,11 +3,12 @@ Patient
 <button md-raised-button (click)="newPatient()">
     New
 </button>
+<md-input-container style="float:right">
+    <input mdInput [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()"
+        placeholder="Search" type="text">
+</md-input-container>
 <div *ngIf="pageContent.content && pageContent.content.length>0">
-    <md-input-container style="float:right">
-        <input mdInput [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()"
-            placeholder="Search" type="text">
-    </md-input-container>
+
     <table style="width:100%">
         <tr>
             <th>Name</th>

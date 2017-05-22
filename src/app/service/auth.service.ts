@@ -4,8 +4,8 @@ import { Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class AuthService {
 
-  keyCredential: string = 'USER_CREDENTIALS';
-  keyDetails: string = 'USER_DETAILS';
+  keyCredential = 'USER_CREDENTIALS';
+  keyDetails = 'USER_DETAILS';
 
   constructor() { }
 

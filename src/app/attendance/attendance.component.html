@@ -2,18 +2,19 @@
     <md-card fxFlex>
         <md-card-header>
             <div fxFlex fxLayoutWrap *ngIf="pastHandbook">
-                <button fxFlex="50px" md-raised-button [disabled]="handbookPageRequest.last" (click)="handbookPageRequest.nextPage()">
+                <button fxFlex="50px" md-raised-button [disabled]="handbookPageRequest.last"
+                    (click)="handbookPageRequest.nextPage()">
                         <i class="material-icons">keyboard_arrow_left</i>
                 </button>
                 <p fxFlex style="text-align:center">{{pastHandbook.dateTime| date:"dd/MM/yy"}}</p>
-                <button fxFlex="50px" md-raised-button [disabled]="handbookPageRequest.first" (click)="handbookPageRequest.previousPage()">
+                <button fxFlex="50px" md-raised-button [disabled]="handbookPageRequest.first"
+                    (click)="handbookPageRequest.previousPage()">
                         <i class="material-icons">keyboard_arrow_right</i>
                 </button>
             </div>
         </md-card-header>
         <md-card-content *ngIf="pastHandbook">
             <div fxFlex>
-                <br/> Patient: {{pastHandbook.patient.name}}
                 <br/> Resume: {{pastHandbook.resume}}
             </div>
         </md-card-content>
@@ -42,7 +43,8 @@
 <br/>Duration {{currentDate|async|date:"mm:ss"}}
 <br/>
 <div *ngIf="event">
-    Event: {{event.start | date:"dd/MM/yy hh:mm"}} - {{event.end | date:"dd/MM/yy hh:mm"}}
+    Event: {{event.start | date:"dd/MM/yy hh:mm"}} - {{event.end | date:"dd/MM/yy
+    hh:mm"}}
     <br/> Patient: {{event.patient.name}}
 </div>
 <button md-raised-button (click)="save()">

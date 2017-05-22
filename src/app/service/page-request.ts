@@ -1,18 +1,23 @@
-import { EventEmitter } from "events";
-import { OnChanges, Input } from "@angular/core";
-import { Observable } from "rxjs/Observable";
+import { EventEmitter } from 'events';
+import { OnChanges, Input } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 export class PageRequest {
     change = new EventEmitter();
-    number: number = 0;
-    size: number = 5;               //"max"size of the page
+    number: number;
+    size: number;               // "max"size of the page
     search: string = "";
     first: boolean;
     last: boolean;
     totalPages: number;
     totalElements: number;
-    numberOfElements: number;   //components on the page
+    numberOfElements: number;   // components on the page
     buttonPages = [];
+
+    constructor() {
+        this.number = 0;
+        this.size = 5;
+    }
 
     fillValues(response) {
         this.totalPages = response.totalPages;
