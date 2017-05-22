@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
@@ -6,6 +6,8 @@ export class AuthService {
 
   keyCredential = 'USER_CREDENTIALS';
   keyDetails = 'USER_DETAILS';
+
+  emitterUserLogged = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -37,6 +39,14 @@ export class AuthService {
 
   isLogged(): boolean {
     return this.getCredentials() && this.getDetails() ? true : false;
+  }
+
+  emitUserLoggedIn() {
+    this.emitterUserLogged.emit(true);
+  }
+
+  emitUserLoggedOut() {
+    this.emitterUserLogged.emit(false);
   }
 
   authOptions(): RequestOptions {
