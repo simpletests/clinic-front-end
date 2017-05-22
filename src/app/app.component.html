@@ -1,7 +1,7 @@
 <md-sidenav-container fullscreen>
     <md-sidenav #start mode="side" opened="true">
         <md-nav-list>
-            <md-list-item *ngFor="let navItem of navItems" [routerLink]="[navItem.route]">
+            <md-list-item [routerLink]="[navItem.route]" *ngFor="let navItem of navItems">
                 <md-icon md-list-icon>{{navItem.icon}}</md-icon>
                 <h4 md-line>{{navItem.name}}</h4>
             </md-list-item>
