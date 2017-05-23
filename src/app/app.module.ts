@@ -36,6 +36,8 @@ import { AuthGuard } from "./guard/auth.guard";
 import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
 import { ConfirmComponent } from './commons/components/dialogs/confirm/confirm.component';
 
+import { AuthorizedRoleDirective } from "app/directive/authorized-role.directive";
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -52,7 +54,8 @@ import { ConfirmComponent } from './commons/components/dialogs/confirm/confirm.c
         EventDialogComponent,
         CalendarHourFilterPipe,
         UserComponent,
-        ConfirmComponent
+        ConfirmComponent,
+        AuthorizedRoleDirective
     ],
     imports: [
         BrowserModule,

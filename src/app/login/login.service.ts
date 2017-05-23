@@ -30,7 +30,7 @@ export class LoginService {
             if (response.ok) {
                 this.authService.saveCredentials(JSON.stringify(response.json()));
                 this.saveDetails(usuario.username, usuario.password);
-                console.log('Hello World !');
+                // console.log('Hello World !');
             } else {
                 // TODO comunicar falha no login
             }
@@ -41,7 +41,7 @@ export class LoginService {
         this.authService.removeCredentials();
         this.authService.removeDetails();
         this.authService.emitUserLoggedOut();
-        console.log('Goodbye !');
+        // console.log('Goodbye !');
     }
 
     private saveDetails(username, password): void {

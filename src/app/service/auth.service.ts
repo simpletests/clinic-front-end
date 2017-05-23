@@ -13,7 +13,7 @@ export class AuthService {
 
   saveCredentials(credentials: string): void {
     sessionStorage.setItem(this.keyCredential, credentials);
-    console.log(credentials);
+    // console.log(credentials);
   }
 
   getCredentials(): string {
@@ -26,7 +26,7 @@ export class AuthService {
 
   saveDetails(details: string): void {
     sessionStorage.setItem(this.keyDetails, details);
-    console.log(details);
+    // console.log(details);
   }
 
   getDetails(): string {
