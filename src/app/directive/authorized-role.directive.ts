@@ -2,11 +2,11 @@ import { Directive, ElementRef, Input, HostListener, OnInit } from '@angular/cor
 import { AuthService } from "app/service/auth.service";
 
 @Directive({
-  selector: '[authorizedRole]'
+  selector: '[authorizedRoles]'
 })
 export class AuthorizedRoleDirective implements OnInit {
 
-  @Input('authorizedRole') authorizedRoles: string[];
+  @Input('authorizedRoles') authorizedRoles: string[];
 
   constructor(private authService: AuthService, private el: ElementRef) { }
 

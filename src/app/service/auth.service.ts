@@ -13,7 +13,6 @@ export class AuthService {
 
   saveCredentials(credentials: string): void {
     sessionStorage.setItem(this.keyCredential, credentials);
-    // console.log(credentials);
   }
 
   getCredentials(): string {
@@ -26,7 +25,6 @@ export class AuthService {
 
   saveDetails(details: string): void {
     sessionStorage.setItem(this.keyDetails, details);
-    // console.log(details);
   }
 
   getDetails(): string {
@@ -38,9 +36,11 @@ export class AuthService {
   }
 
   isLogged(): boolean {
+    console.log('Getting IsLogged: ' + this.getCredentials() && this.getDetails());
     return this.getCredentials() && this.getDetails() ? true : false;
   }
 
+  //FIXME Problemas com usuário ao recarregar a tela podem ter haver com esse emitter, verificar
   emitUserLoggedIn() {
     this.emitterUserLogged.emit(true);
   }
@@ -50,6 +50,8 @@ export class AuthService {
   }
 
   authOptions(): RequestOptions {
+    console.log('Getting UserCredentials: ' + this.getCredentials());
+
     let credentials = JSON.parse(this.getCredentials());
 
     let headers = new Headers();
@@ -63,6 +65,8 @@ export class AuthService {
   }
 
   userId(): string {
+    console.log('Getting UserDetails: ' + this.getDetails());
+
     let details = JSON.parse(this.getDetails());
     if (details) {
       return details.id;

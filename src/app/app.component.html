@@ -1,7 +1,8 @@
 <md-sidenav-container fullscreen>
-    <md-sidenav *ngIf="userLogged" #start mode="side" opened="true">
+    <!--<md-sidenav *ngIf="userLogged" #start mode="side" opened="true">-->
+    <md-sidenav #start mode="side" opened="true">
         <md-nav-list>
-            <md-list-item [authorizedRole]="navItem.authorizedRoles" [routerLink]="[navItem.route]" *ngFor="let navItem of navItems">
+            <md-list-item [authorizedRoles]="navItem.authorizedRoles" [routerLink]="[navItem.route]" *ngFor="let navItem of navItems">
                 <md-icon md-list-icon>{{navItem.icon}}</md-icon>
                 <h4 md-line>{{navItem.name}}</h4>
             </md-list-item>
@@ -10,7 +11,8 @@
 
     <div>
         <md-toolbar color="primary">
-            <button *ngIf="userLogged" md-icon-button (click)="start.toggle()">
+            <!--<button *ngIf="userLogged" md-icon-button (click)="start.toggle()">-->
+            <button md-icon-button (click)="start.toggle()">
                     <md-icon class="md-24" >menu</md-icon>
             </button>
             <div class="demo-toolbar">
@@ -21,8 +23,9 @@
             </div>
 
             <span style="flex: 1 1 auto;"></span>
-            <button *ngIf="userLogged" md-raised-button (click)="logout()">
-                Exit
+            <!--<button *ngIf="userLogged" md-icon-button (click)="logout()">-->
+            <button md-icon-button (click)="logout()">
+                    <md-icon class="md-24" >exit_to_app</md-icon>
             </button>
         </md-toolbar>
 
