@@ -20,6 +20,8 @@ export class PatientComponent implements OnInit {
 
     patient: any;
 
+    postalCode = {};
+
     constructor(private patientService: PatientService, public dialog: MdDialog) { }
 
     ngOnInit() {
@@ -47,7 +49,7 @@ export class PatientComponent implements OnInit {
     }
 
     newPatient() {
-        this.patient = { address: {} };
+        this.patientService.getNew().subscribe(p => this.patient = p);
     }
 
     confirmDelete(deletedPatient) {

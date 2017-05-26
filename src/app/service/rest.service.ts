@@ -43,7 +43,7 @@ export class RestService<T>{
 
   getNew(): Observable<T> {
     let options = this.getOptions();
-    return this.http.get(this.url() + "/-1", options)
+    return this.http.get(this.url() + "/new", options)
       .map(response => response.json());
   }
 

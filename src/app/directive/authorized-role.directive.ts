@@ -14,10 +14,12 @@ export class AuthorizedRoleDirective implements OnInit {
     const userObject = JSON.parse(this.authService.getDetails());
 
     let igual = false;
-    for (let userRole of userObject.roles) {
-      for (let elRole of this.authorizedRoles) {
-        if (userRole == elRole) {
-          igual = true;
+    if (userObject) {
+      for (let userRole of userObject.roles) {
+        for (let elRole of this.authorizedRoles) {
+          if (userRole == elRole) {
+            igual = true;
+          }
         }
       }
     }

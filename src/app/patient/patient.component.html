@@ -58,10 +58,27 @@ Patient
     <md-input-container>
         <input mdInput [(ngModel)]="patient.email" placeholder="E-mail" type="email">
     </md-input-container>
+
     <md-input-container>
-        <input mdInput [(ngModel)]="patient.address.street" placeholder="Street"
+        <input mdInput [(ngModel)]="postalCode" placeholder="Cep" type="number">
+    </md-input-container>
+
+    <!--<md-input-container>
+        <input mdInput [ngModel]="patient.address.city" placeholder="City" type="text">
+    </md-input-container>
+
+    <md-input-container>
+        <input mdInput [ngModel]="patient.address.country" placeholder="Country"
             type="text">
     </md-input-container>
+
+    <md-input-container>
+        <input mdInput [ngModel]="patient.address.state" placeholder="State" type="text">
+    </md-input-container>
+    <md-input-container>
+        <input mdInput [ngModel]="patient.address.street" placeholder="Street"
+            type="text">
+    </md-input-container>-->
 
     <md-input-container>
         <input mdInput [(ngModel)]="patient.address.number" placeholder="Number"
@@ -70,20 +87,6 @@ Patient
 
     <md-input-container>
         <input mdInput [(ngModel)]="patient.address.complement" placeholder="Complement"
-            type="text">
-    </md-input-container>
-
-    <md-input-container>
-        <input mdInput [(ngModel)]="patient.address.city" placeholder="City" type="text">
-    </md-input-container>
-
-    <md-input-container>
-        <input mdInput [(ngModel)]="patient.address.country" placeholder="Country"
-            type="text">
-    </md-input-container>
-
-    <md-input-container>
-        <input mdInput [(ngModel)]="patient.address.state" placeholder="State"
             type="text">
     </md-input-container>
 

@@ -2,7 +2,8 @@
     <!--<md-sidenav *ngIf="userLogged" #start mode="side" opened="true">-->
     <md-sidenav #start mode="side" opened="true">
         <md-nav-list>
-            <md-list-item [authorizedRoles]="navItem.authorizedRoles" [routerLink]="[navItem.route]" *ngFor="let navItem of navItems">
+            <md-list-item [authorizedRoles]="navItem.authorizedRoles" [routerLink]="[navItem.route]"
+                *ngFor="let navItem of navItems">
                 <md-icon md-list-icon>{{navItem.icon}}</md-icon>
                 <h4 md-line>{{navItem.name}}</h4>
             </md-list-item>
