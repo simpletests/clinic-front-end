@@ -38,6 +38,8 @@ import { ConfirmComponent } from './commons/components/dialogs/confirm/confirm.c
 
 import { AuthorizedRoleDirective } from "app/directive/authorized-role.directive";
 
+import { ColumnComponent } from './commons/components/grid/column/column.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -55,7 +57,8 @@ import { AuthorizedRoleDirective } from "app/directive/authorized-role.directive
         CalendarHourFilterPipe,
         UserComponent,
         ConfirmComponent,
-        AuthorizedRoleDirective
+        AuthorizedRoleDirective,
+        ColumnComponent
     ],
     imports: [
         BrowserModule,
