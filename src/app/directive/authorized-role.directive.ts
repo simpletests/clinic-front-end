@@ -15,11 +15,9 @@ export class AuthorizedRoleDirective implements OnInit {
 
     let igual = false;
     if (userObject) {
-      for (let userRole of userObject.roles) {
-        for (let elRole of this.authorizedRoles) {
-          if (userRole == elRole) {
-            igual = true;
-          }
+      for (let elRole of this.authorizedRoles) {
+        if (userObject.role == elRole) {
+          igual = true;
         }
       }
     }
