@@ -3,6 +3,9 @@ Patient
 <button md-raised-button (click)="newPatient()">
     New
 </button>
+<button md-raised-button (click)="testSnackBar()">
+    Test snackbar
+</button>
 <md-input-container style="float:right">
     <input mdInput [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()"
         placeholder="Search" type="text">

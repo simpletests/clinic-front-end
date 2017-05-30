@@ -1,9 +1,9 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import {
     MdButtonModule, MdCheckboxModule, MdToolbarModule, MdSidenavModule, MdMenuModule, MdListModule,
-    MdIconModule, MdDialogModule, MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule, 
-    MdSelectModule
+    MdIconModule, MdDialogModule, MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule,
+    MdSelectModule, MdSnackBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -20,7 +20,8 @@ import {
         MdSelectionModule,
         MdCardModule,
         MdInputModule,
-        MdSelectModule],
+        MdSelectModule,
+        MdSnackBarModule],
     exports: [MdButtonModule,
         MdCheckboxModule,
         MdToolbarModule,
@@ -33,8 +34,9 @@ import {
         MdSelectionModule,
         MdCardModule,
         MdInputModule,
-        MdSelectModule]
+        MdSelectModule,
+        MdSnackBarModule]
 })
-export class MaterialComponentsModule {}
+export class MaterialComponentsModule { }
 
 

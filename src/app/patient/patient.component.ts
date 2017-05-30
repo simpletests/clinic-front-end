@@ -6,7 +6,7 @@ import { PageContent } from "app/service/page-content";
 import { PageRequest } from "app/service/page-request";
 import * as _ from "lodash";
 import { ConfirmComponent } from "app/commons/components/dialogs/confirm/confirm.component";
-import { MdDialog } from "@angular/material";
+import { MdDialog, MdSnackBar } from "@angular/material";
 
 @Component({
     selector: 'app-patient',
@@ -22,7 +22,8 @@ export class PatientComponent implements OnInit {
 
     postalCode = {};
 
-    constructor(private patientService: PatientService, public dialog: MdDialog) { }
+    constructor(private patientService: PatientService, public dialog: MdDialog,
+        public snackBar: MdSnackBar) { }
 
     ngOnInit() {
         this.pageRequest.change.addListener("change", this.getPatients.bind(this));
@@ -41,13 +42,6 @@ export class PatientComponent implements OnInit {
         this.patient = _.cloneDeep(p);
     }
 
-    save() {
-        this.patientService.saveOrUpdate(this.patient).subscribe(() => {
-            this.getPatients();
-            this.patient = undefined;
-        });
-    }
-
     newPatient() {
         this.patientService.getNew().subscribe(p => this.patient = p);
     }
@@ -60,5 +54,9 @@ export class PatientComponent implements OnInit {
                 this.patientService.delete(deletedPatient.id).subscribe(response => this.getPatients());
             }
         });
+    }
+
+    testSnackBar() {
+        this.snackBar.open("eeeei", "Close", { duration: 1000, extraClasses: ["warning"] });
     }
 }

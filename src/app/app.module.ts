@@ -37,6 +37,7 @@ import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
 import { ConfirmComponent } from './commons/components/dialogs/confirm/confirm.component';
 
 import { AuthorizedRoleDirective } from "app/directive/authorized-role.directive";
+import { MdSnackBar } from "@angular/material";
 
 @NgModule({
     declarations: [
@@ -75,7 +76,7 @@ import { AuthorizedRoleDirective } from "app/directive/authorized-role.directive
         AuthService,
         UserService,
         RoleService,
-        HandbookService
+        HandbookService, MdSnackBar
     ],
     entryComponents: [
         EventDialogComponent, ConfirmComponent
