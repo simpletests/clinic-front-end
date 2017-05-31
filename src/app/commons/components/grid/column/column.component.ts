@@ -18,27 +18,39 @@ export class ColumnComponent implements OnInit {
 })
 export class ColMd implements OnInit {
 
-  @Input('coluns') col: number | number[];
-  @Input('offsets') offsets: number | number[];
+  @Input('columns') coluns: number | number[] = 12;
+  @Input('offsets') offsets: number | number[] = 0;
 
   constructor(private el: ElementRef, private renderer: Renderer) { }
 
   ngOnInit(): void {
-    if (this.col) {
-      if (this.col instanceof Array) {
-        this.setClasses(this.col[0], this.col[1], this.col[2], this.col[3]);
+    if (this.coluns) {
+      if (this.coluns instanceof Array) {
+        this.setColuns(this.coluns[0], this.coluns[1], this.coluns[2], this.coluns[3]);
       } else {
-        this.setClasses(this.col, this.col, this.col, this.col);
+        this.setColuns(this.coluns, this.coluns, this.coluns, this.coluns);
       }
-    } else {
-      this.setClasses(12, 12, 12, 12);
+    }
+    if (this.offsets) {
+      if(this.offsets instanceof Array){
+        this.setOffsets(this.offsets[0], this.offsets[1], this.offsets[2], this.offsets[3])
+      } else {
+        this.setOffsets(this.offsets, this.offsets, this.offsets, this.offsets);
+      }
     }
   }
 
-  setClasses(xs, sm, md, lg) {
+  setColuns(xs, sm, md, lg) {
     this.renderer.setElementClass(this.el.nativeElement, 'col-xs-' + xs, true);
     this.renderer.setElementClass(this.el.nativeElement, 'col-sm-' + sm, true);
     this.renderer.setElementClass(this.el.nativeElement, 'col-md-' + md, true);
     this.renderer.setElementClass(this.el.nativeElement, 'col-lg-' + lg, true);
+  }
+
+  setOffsets(xs, sm, md, lg) {
+    this.renderer.setElementClass(this.el.nativeElement, 'col-xs-offset-' + xs, true);
+    this.renderer.setElementClass(this.el.nativeElement, 'col-sm-offset-' + sm, true);
+    this.renderer.setElementClass(this.el.nativeElement, 'col-md-offset-' + md, true);
+    this.renderer.setElementClass(this.el.nativeElement, 'col-lg-offset-' + lg, true);
   }
 }

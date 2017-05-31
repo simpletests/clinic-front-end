@@ -3,7 +3,7 @@
     <ss-row>
       <h1 col>Login</h1>
 
-      <md-input-container col>
+      <md-input-container col [columns]="[10,8,6,4]" [offsets]="[2,3,4,6]">
         <input mdInput placeholder="Username" [(ngModel)]="user.username" required>
         <md-error>Username is required</md-error>
       </md-input-container>
