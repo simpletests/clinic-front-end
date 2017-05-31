@@ -24,11 +24,11 @@ export class PatientComponent implements OnInit {
         public snackbarService: SnackbarService) { }
 
     ngOnInit() {
-        this.pageRequest.change.addListener("change", this.getPatients.bind(this));
-        this.getPatients();
+        this.pageRequest.change.addListener("change", this.getList.bind(this));
+        this.getList();
     }
 
-    getPatients() {
+    getList() {
         this.patientService.getPatientsPage(this.pageRequest)
             .subscribe(page => {
                 this.pageRequest.fillValues(page);
@@ -37,11 +37,11 @@ export class PatientComponent implements OnInit {
     };
 
     edit(p) {
-        this.openPatientDialog(p);
+        this.openFormDialog(p);
     }
 
     newPatient() {
-        this.patientService.getNew().subscribe(p => this.openPatientDialog(p));
+        this.patientService.getNew().subscribe(p => this.openFormDialog(p));
     }
 
     confirmDelete(deletedPatient) {
@@ -49,19 +49,19 @@ export class PatientComponent implements OnInit {
         dialogRef.componentInstance.message = "Are you sure?";
         dialogRef.afterClosed().subscribe(confirm => {
             if (confirm) {
-                this.patientService.delete(deletedPatient.id).subscribe(response => this.getPatients());
+                this.patientService.delete(deletedPatient.id).subscribe(response => this.getList());
             }
         });
     }
 
-    openPatientDialog(patient) {
+    openFormDialog(patient) {
         let d = this.dialog.open(PatientDialogComponent, {
             // width: '300px'
         });
         d.componentInstance.patient = _.cloneDeep(patient);
         d.afterClosed().subscribe(hasChanged => {
             if (hasChanged) {
-                this.getPatients();
+                this.getList();
             }
         });
     }

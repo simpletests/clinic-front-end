@@ -13,7 +13,7 @@ export class UserService extends RestService<any> {
     super(authService, http, snackbarService, "user");
   }
 
-  getUsers(page?, size?, search?): Observable<any> {
+  getList(page?, size?, search?): Observable<any> {
     return super.findAll([
       { param: "page", val: (page || 0) },
       { param: "size", val: (size || 20) },
