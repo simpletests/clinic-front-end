@@ -18,25 +18,20 @@ export class ColumnComponent implements OnInit {
 })
 export class ColMd implements OnInit {
 
-  @Input('col') col: number | number[];
-  @Input('xs') xs: number;
-  @Input('sm') sm: number;
-  @Input('md') md: number;
-  @Input('lg') lg: number;
-  @Input('cols') cols: number | number[];
+  @Input('coluns') col: number | number[];
+  @Input('offsets') offsets: number | number[];
 
   constructor(private el: ElementRef, private renderer: Renderer) { }
 
   ngOnInit(): void {
     if (this.col) {
-      console.log('col');
-      this.setClasses(this.col, this.col, this.col, this.col);
-    } else if (this.cols) {
-      console.log('cols');
-      this.setClasses(this.cols[0], this.cols[1], this.cols[2], this.cols[3]);
+      if (this.col instanceof Array) {
+        this.setClasses(this.col[0], this.col[1], this.col[2], this.col[3]);
+      } else {
+        this.setClasses(this.col, this.col, this.col, this.col);
+      }
     } else {
-      console.log('others');
-      this.setClasses(this.xs, this.sm, this.md, this.lg);
+      this.setClasses(12, 12, 12, 12);
     }
   }
 

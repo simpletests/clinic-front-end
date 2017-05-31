@@ -1,63 +1,19 @@
 <md-card>
-  <div class="container-fluid">
-    <div class="row" style="padding: 10px; border: 2px solid black;">
+  <ss-container-fluid>
+    <ss-row>
+      <h1 col>Login</h1>
 
-      <h1>Login!</h1>
-
-      <md-input-container [col]="12">
+      <md-input-container col>
         <input mdInput placeholder="Username" [(ngModel)]="user.username" required>
         <md-error>Username is required</md-error>
       </md-input-container>
 
-      <md-input-container [col]="12">
+      <md-input-container col>
         <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password" required>
         <md-error>Password is required</md-error>
       </md-input-container>
 
-      <button [col]="12" md-raised-button (click)="login() ">Enter</button>
-    </div>
-  </div>
-</md-card>
-
-<br />
-<md-card>
-  <div class="container-fluid">
-    <div class="row" style="padding: 10px; border: 2px solid black;">
-      <ss-column [col]="12"></ss-column>
-      <ss-column col [xs]="12" [sm]="10" [md]="6" [lg]="3"></ss-column>
-      <ss-column col [cols]="[12,10,6,3]"></ss-column>
-    </div>
-  </div>
-</md-card>
-
-<br />
-<md-card>
-  <div class="container-fluid">
-    <div class="row" style="padding: 10px; border: 2px solid black;">
-      <button col [cols]="[12,12,6,3]" md-raised-button>Botão</button>
-      <button col [cols]="[12,12,6,3]" md-raised-button>Botão</button>
-      <button col [cols]="[12,12,6,3]" md-raised-button>Botão</button>
-      <button col [cols]="[12,12,6,3]" md-raised-button>Botão</button>
-    </div>
-  </div>
-</md-card>
-
-<br />
-<md-card>
-  <div class="container-fluid">
-    <div class="row" style="padding: 10px; border: 2px solid black;">
-      <md-input-container col [cols]="[12,12,6,3]">
-        <input mdInput placeholder="Password">
-      </md-input-container>
-      <md-input-container col [cols]="[12,12,6,3]">
-        <input mdInput placeholder="Password">
-      </md-input-container>
-      <md-input-container col [cols]="[12,12,6,3]">
-        <input mdInput placeholder="Password">
-      </md-input-container>
-      <md-input-container col [cols]="[12,12,6,3]">
-        <input mdInput placeholder="Password">
-      </md-input-container>
-    </div>
-  </div>
+      <button col md-raised-button (click)="login() ">Enter</button>
+    </ss-row>
+  </ss-container-fluid>
 </md-card>

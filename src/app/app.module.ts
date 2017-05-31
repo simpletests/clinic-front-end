@@ -40,9 +40,11 @@ import { AuthorizedRoleDirective } from "app/directive/authorized-role.directive
 import { MdSnackBar } from "@angular/material";
 
 import { ColumnComponent, ColMd } from './commons/components/grid/column/column.component';
+import { RowComponent } from './commons/components/grid/row/row.component';
 import { SnackbarService } from "app/commons/snackbar.service";
 import { PatientDialogComponent } from './patient/patient-dialog/patient-dialog.component';
 import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
+import { ContainerFluidComponent } from './commons/components/grid/container-fluid/container-fluid.component';
 
 @NgModule({
     declarations: [
@@ -65,7 +67,9 @@ import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
         ColumnComponent,
         ColMd,
         PatientDialogComponent,
-        UserDialogComponent
+        UserDialogComponent,
+        RowComponent,
+        ContainerFluidComponent
     ],
     imports: [
         BrowserModule,
