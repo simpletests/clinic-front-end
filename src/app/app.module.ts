@@ -39,7 +39,7 @@ import { ConfirmComponent } from './commons/components/dialogs/confirm/confirm.c
 import { AuthorizedRoleDirective } from "app/directive/authorized-role.directive";
 import { MdSnackBar } from "@angular/material";
 
-import { ColumnComponent } from './commons/components/grid/column/column.component';
+import { ColumnComponent, ColMd } from './commons/components/grid/column/column.component';
 
 @NgModule({
     declarations: [
@@ -59,7 +59,8 @@ import { ColumnComponent } from './commons/components/grid/column/column.compone
         UserComponent,
         ConfirmComponent,
         AuthorizedRoleDirective,
-        ColumnComponent
+        ColumnComponent,
+        ColMd
     ],
     imports: [
         BrowserModule,

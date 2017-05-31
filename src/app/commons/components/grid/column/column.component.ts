@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Directive, ElementRef, Renderer } from '@angular/core';
 
 @Component({
   selector: 'ss-column',
@@ -7,20 +7,43 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ColumnComponent implements OnInit {
 
-  @Input('col-xs') col_xs: number;
-  @Input('col-sm') col_sm: number;
-  @Input('col-md') col_md: number;
-  @Input('col-lg') col_lg: number;
-  @Input('col-xs-offset') col_xs_offset: number;
-  @Input('col-sm-offset') col_sm_offset: number;
-  @Input('col-md-offset') col_md_offset: number;
-  @Input('col-lg-offset') col_lg_offset: number;
-
   constructor() { }
 
-  ngOnInit() {
-    console.log('col-xs = ' + this.col_xs);
-    console.log('col-md = ' + this.col_md);
+  ngOnInit(): void { }
+
+}
+
+@Directive({
+  selector: '[col]'
+})
+export class ColMd implements OnInit {
+
+  @Input('col') col: number | number[];
+  @Input('xs') xs: number;
+  @Input('sm') sm: number;
+  @Input('md') md: number;
+  @Input('lg') lg: number;
+  @Input('cols') cols: number | number[];
+
+  constructor(private el: ElementRef, private renderer: Renderer) { }
+
+  ngOnInit(): void {
+    if (this.col) {
+      console.log('col');
+      this.setClasses(this.col, this.col, this.col, this.col);
+    } else if (this.cols) {
+      console.log('cols');
+      this.setClasses(this.cols[0], this.cols[1], this.cols[2], this.cols[3]);
+    } else {
+      console.log('others');
+      this.setClasses(this.xs, this.sm, this.md, this.lg);
+    }
   }
 
+  setClasses(xs, sm, md, lg) {
+    this.renderer.setElementClass(this.el.nativeElement, 'col-xs-' + xs, true);
+    this.renderer.setElementClass(this.el.nativeElement, 'col-sm-' + sm, true);
+    this.renderer.setElementClass(this.el.nativeElement, 'col-md-' + md, true);
+    this.renderer.setElementClass(this.el.nativeElement, 'col-lg-' + lg, true);
+  }
 }
