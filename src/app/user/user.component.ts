@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "app/user/user.service";
 import { RoleService } from "app/user/role.service";
+import { MdDialog, MdDialogRef } from "@angular/material";
 import * as _ from 'lodash';
+import { UserDialogComponent } from "app/user/user-dialog/user-dialog.component";
+import { ConfirmComponent } from "app/commons/components/dialogs/confirm/confirm.component";
 
 @Component({
   selector: 'app-user',
@@ -10,11 +13,10 @@ import * as _ from 'lodash';
 })
 export class UserComponent implements OnInit {
 
-  user: any = {};
   users: any[];
   roles: any[];
 
-  constructor(private userService: UserService, private roleService: RoleService) { }
+  constructor(private userService: UserService, private roleService: RoleService, public dialog: MdDialog) { }
 
   ngOnInit() {
     this.getUsers();
@@ -22,7 +24,7 @@ export class UserComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getUsers()
+    this.userService.getList()
       .subscribe(data => this.users = data.content);
   }
 
@@ -32,26 +34,34 @@ export class UserComponent implements OnInit {
       .subscribe(data => this.roles = data);
   }
 
-  saveUser() {
-    this.userService.saveOrUpdate(this.user)
-      .subscribe(data => this.getUsers());
-    this.cleanUser();
+  createNew() {
+    this.userService.getNew().subscribe(u => this.openFormDialog(u));
   }
 
   editUser(user) {
-    this.user = _.cloneDeep(user);
+    this.openFormDialog(user);
+
   }
 
-  cancelUser() {
-    this.cleanUser();
+  private openFormDialog(user) {
+    let dialogRef = this.dialog.open(UserDialogComponent, {
+
+    });
+    dialogRef.componentInstance.user = _.cloneDeep(user);
+    dialogRef.afterClosed().subscribe(hasChanged => {
+      if (hasChanged) {
+        this.getUsers();
+      }
+    });
   }
 
-  cleanUser() {
-    this.user = {};
-  }
-
-  deleteUser(id) {
-    this.userService.delete(id)
-      .subscribe(data => this.getUsers());
+  confirmDelete(deletedUser) {
+    let dialogRef = this.dialog.open(ConfirmComponent)
+    dialogRef.componentInstance.message = "Are you sure?";
+    dialogRef.afterClosed().subscribe(confirm => {
+      if (confirm) {
+        this.userService.delete(deletedUser.id).subscribe(response => this.getUsers());
+      }
+    });
   }
 }

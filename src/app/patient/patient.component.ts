@@ -6,7 +6,9 @@ import { PageContent } from "app/service/page-content";
 import { PageRequest } from "app/service/page-request";
 import * as _ from "lodash";
 import { ConfirmComponent } from "app/commons/components/dialogs/confirm/confirm.component";
-import { MdDialog, MdSnackBar } from "@angular/material";
+import { MdDialog, MdDialogRef } from "@angular/material";
+import { SnackbarService } from "app/commons/snackbar.service";
+import { PatientDialogComponent } from "app/patient/patient-dialog/patient-dialog.component";
 
 @Component({
     selector: 'app-patient',
@@ -18,19 +20,15 @@ export class PatientComponent implements OnInit {
     pageContent: PageContent = new PageContent();
     pageRequest: PageRequest = new PageRequest();
 
-    patient: any;
-
-    postalCode = {};
-
     constructor(private patientService: PatientService, public dialog: MdDialog,
-        public snackBar: MdSnackBar) { }
+        public snackbarService: SnackbarService) { }
 
     ngOnInit() {
-        this.pageRequest.change.addListener("change", this.getPatients.bind(this));
-        this.getPatients();
+        this.pageRequest.change.addListener("change", this.getList.bind(this));
+        this.getList();
     }
 
-    getPatients() {
+    getList() {
         this.patientService.getPatientsPage(this.pageRequest)
             .subscribe(page => {
                 this.pageRequest.fillValues(page);
@@ -39,11 +37,11 @@ export class PatientComponent implements OnInit {
     };
 
     edit(p) {
-        this.patient = _.cloneDeep(p);
+        this.openFormDialog(p);
     }
 
     newPatient() {
-        this.patientService.getNew().subscribe(p => this.patient = p);
+        this.patientService.getNew().subscribe(p => this.openFormDialog(p));
     }
 
     confirmDelete(deletedPatient) {
@@ -51,12 +49,21 @@ export class PatientComponent implements OnInit {
         dialogRef.componentInstance.message = "Are you sure?";
         dialogRef.afterClosed().subscribe(confirm => {
             if (confirm) {
-                this.patientService.delete(deletedPatient.id).subscribe(response => this.getPatients());
+                this.patientService.delete(deletedPatient.id).subscribe(response => this.getList());
             }
         });
     }
 
-    testSnackBar() {
-        this.snackBar.open("eeeei", "Close", { duration: 1000, extraClasses: ["warning"] });
+    openFormDialog(patient) {
+        let d = this.dialog.open(PatientDialogComponent, {
+            // width: '300px'
+        });
+        d.componentInstance.patient = _.cloneDeep(patient);
+        d.afterClosed().subscribe(hasChanged => {
+            if (hasChanged) {
+                this.getList();
+            }
+        });
     }
+
 }

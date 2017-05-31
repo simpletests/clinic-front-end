@@ -3,12 +3,8 @@ Patient
 <button md-raised-button (click)="newPatient()">
     New
 </button>
-<button md-raised-button (click)="testSnackBar()">
-    Test snackbar
-</button>
 <md-input-container style="float:right">
-    <input mdInput [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()"
-        placeholder="Search" type="text">
+    <input mdInput [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()" placeholder="Search" type="text">
 </md-input-container>
 <div *ngIf="pageContent.content && pageContent.content.length>0">
 
@@ -38,8 +34,7 @@ Patient
         <button md-raised-button (click)="pageRequest.previousPage()" [disabled]="pageRequest.first">
             <i class="material-icons">keyboard_arrow_left</i>
     </button>
-        <button md-raised-button (click)="pageRequest.setNumber(i)" [disabled]="pageRequest.number==i"
-            *ngFor="let i of pageRequest.buttonPages">
+        <button md-raised-button (click)="pageRequest.setNumber(i)" [disabled]="pageRequest.number==i" *ngFor="let i of pageRequest.buttonPages">
     {{i}} 
     </button>
 
@@ -50,63 +45,4 @@ Patient
             <i class="material-icons">keyboard_arrow_right</i>
     </button>
     </div>
-</div>
-<br/>
-<br/>
-<br/>
-<div *ngIf="patient">
-    <md-input-container>
-        <input mdInput [(ngModel)]="patient.name" placeholder="Name" type="text">
-    </md-input-container>
-    <md-input-container>
-        <input mdInput [(ngModel)]="patient.email" placeholder="E-mail" type="email">
-    </md-input-container>
-
-    <md-input-container>
-        <input mdInput [(ngModel)]="postalCode" placeholder="Cep" type="number">
-    </md-input-container>
-
-    <!--<md-input-container>
-        <input mdInput [ngModel]="patient.address.city" placeholder="City" type="text">
-    </md-input-container>
-
-    <md-input-container>
-        <input mdInput [ngModel]="patient.address.country" placeholder="Country"
-            type="text">
-    </md-input-container>
-
-    <md-input-container>
-        <input mdInput [ngModel]="patient.address.state" placeholder="State" type="text">
-    </md-input-container>
-    <md-input-container>
-        <input mdInput [ngModel]="patient.address.street" placeholder="Street"
-            type="text">
-    </md-input-container>-->
-
-    <md-input-container>
-        <input mdInput [(ngModel)]="patient.address.number" placeholder="Number"
-            type="number">
-    </md-input-container>
-
-    <md-input-container>
-        <input mdInput [(ngModel)]="patient.address.complement" placeholder="Complement"
-            type="text">
-    </md-input-container>
-
-    <md-input-container>
-        <input mdInput [(ngModel)]="patient.gender" placeholder="Gender" type="text">
-    </md-input-container>
-    <md-input-container>
-        <input mdInput [(ngModel)]="patient.phone" placeholder="Phone" type="tel">
-    </md-input-container>
-    <md-input-container>
-        <input mdInput [(ngModel)]="patient.cellphone" placeholder="Cellphone"
-            type="tel">
-    </md-input-container>
-
-    <br/>
-
-    <button md-raised-button (click)="save()">
-            <i class="material-icons">save</i>
-    </button>
 </div>

@@ -3,18 +3,21 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from "app/service/auth.service";
 import { PageRequest } from "app/service/page-request";
+import { SnackbarService } from "app/commons/snackbar.service";
 
 @Injectable()
 export class RestService<T>{
 
+  snackbarService: SnackbarService;
   authService: AuthService;
   http: Http;
   path: string;
 
-  constructor(authService: AuthService, http: Http, path: string) {
+  constructor(authService: AuthService, http: Http, snackbarService: SnackbarService, path: string) {
     this.authService = authService;
     this.http = http;
     this.path = path;
+    this.snackbarService = snackbarService;
   }
 
   private getOptions(params?, pageRequest?: PageRequest): RequestOptions {
@@ -65,10 +68,14 @@ export class RestService<T>{
   }
 
   saveOrUpdate(event): Observable<Response> {
-    return this.http.post(this.url(), event, this.getOptions());
+    let response = this.http.post(this.url(), event, this.getOptions());
+    response.subscribe(event => this.snackbarService.info("Save status: " + event.status));
+    return response;
   }
 
   delete(id: string): Observable<Response> {
-    return this.http.delete(this.url() + "/" + id, this.getOptions());
+    let response = this.http.delete(this.url() + "/" + id, this.getOptions());
+    response.subscribe(event => this.snackbarService.info("Delete status: " + event.status));
+    return response;
   }
 }

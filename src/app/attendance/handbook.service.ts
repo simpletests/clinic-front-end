@@ -5,12 +5,13 @@ import { Http } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { PageRequest } from "app/service/page-request";
 import { PageContent } from "app/service/page-content";
+import { SnackbarService } from "app/commons/snackbar.service";
 
 @Injectable()
 export class HandbookService extends RestService<any> {
 
-  constructor(authService: AuthService, http: Http) {
-    super(authService, http, 'handbook');
+  constructor(authService: AuthService, http: Http, snackbarService: SnackbarService) {
+    super(authService, http, snackbarService, 'handbook');
   }
 
   findAllPageable(patient, pageRequest: PageRequest): Observable<PageContent> {

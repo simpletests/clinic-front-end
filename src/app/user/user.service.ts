@@ -4,19 +4,20 @@ import { Observable } from "rxjs/Observable";
 
 import { AuthService } from "app/service/auth.service";
 import { RestService } from "app/service/rest.service";
+import { SnackbarService } from "app/commons/snackbar.service";
 
 @Injectable()
 export class UserService extends RestService<any> {
 
-  constructor(authService: AuthService, http: Http) {
-    super(authService, http, "user");
+  constructor(authService: AuthService, http: Http, snackbarService: SnackbarService) {
+    super(authService, http, snackbarService, "user");
   }
 
-  getUsers(page?, size?, search?): Observable<any> {
+  getList(page?, size?, search?): Observable<any> {
     return super.findAll([
-      {param: "page", val: (page || 0)},
-      {param: "size", val: (size || 20)},
-      {param: "search", val: (search || "")}
+      { param: "page", val: (page || 0) },
+      { param: "size", val: (size || 20) },
+      { param: "search", val: (search || "") }
     ]);
   }
 }

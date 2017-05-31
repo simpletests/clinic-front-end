@@ -1,31 +1,8 @@
-<p>
-    user works!
-</p>
-<p>{{user.name}} - {{user.username}} - {{user.password}} - {{user.enabled}} - {{user.roles}}</p>
+<!--<p>{{user.name}} - {{user.username}} - {{user.password}} - {{user.enabled}} - {{user.roles}}</p>-->
 
-<md-input-container>
-    <input mdInput placeholder="Name" [(ngModel)]="user.name" />
-</md-input-container>
-<md-input-container>
-    <input mdInput placeholder="Username" [(ngModel)]="user.username" />
-</md-input-container>
-<md-input-container>
-    <input mdInput placeholder="Password" type="password" [(ngModel)]="user.password" />
-</md-input-container>
-<md-checkbox [(ngModel)]="user.enabled">
-    Enabled
-</md-checkbox>
-<md-select placeholder="Roles" [(ngModel)]="user.roles">
-    <md-option *ngFor="let role of roles" [value]="role">
-        {{role}}
-    </md-option>
-</md-select>
-
-<button md-raised-button (click)="saveUser()">Save</button>
-<button md-raised-button (click)="cleanUser()">Cancel</button>
-
-<br />
-
+<button md-raised-button (click)="createNew()">
+    New
+</button>
 <table>
     <tr>
         <th>Name</th>
@@ -46,7 +23,7 @@
             <button md-button (click)="editUser(user)"><md-icon>create</md-icon></button>
         </td>
         <td>
-            <button md-button (click)="deleteUser(user.id)"><md-icon>clear</md-icon></button>
+            <button md-button (click)="confirmDelete(user)"><md-icon>delete</md-icon></button>
         </td>
     </tr>
 </table>
