@@ -6,8 +6,9 @@ import { PageContent } from "app/service/page-content";
 import { PageRequest } from "app/service/page-request";
 import * as _ from "lodash";
 import { ConfirmComponent } from "app/commons/components/dialogs/confirm/confirm.component";
-import { MdDialog } from "@angular/material";
+import { MdDialog, MdDialogRef } from "@angular/material";
 import { SnackbarService } from "app/commons/snackbar.service";
+import { PatientDialogComponent } from "app/patient/patient-dialog/patient-dialog.component";
 
 @Component({
     selector: 'app-patient',
@@ -18,10 +19,6 @@ export class PatientComponent implements OnInit {
 
     pageContent: PageContent = new PageContent();
     pageRequest: PageRequest = new PageRequest();
-
-    patient: any;
-
-    postalCode = {};
 
     constructor(private patientService: PatientService, public dialog: MdDialog,
         public snackbarService: SnackbarService) { }
@@ -40,11 +37,11 @@ export class PatientComponent implements OnInit {
     };
 
     edit(p) {
-        this.patient = _.cloneDeep(p);
+        this.openPatientDialog(p);
     }
 
     newPatient() {
-        this.patientService.getNew().subscribe(p => this.patient = p);
+        this.patientService.getNew().subscribe(p => this.openPatientDialog(p));
     }
 
     confirmDelete(deletedPatient) {
@@ -57,10 +54,16 @@ export class PatientComponent implements OnInit {
         });
     }
 
-    save() {
-        this.patientService.saveOrUpdate(this.patient);
+    openPatientDialog(patient) {
+        let d = this.dialog.open(PatientDialogComponent, {
+            // width: '300px'
+        });
+        d.componentInstance.patient = _.cloneDeep(patient);
+        d.afterClosed().subscribe(hasChanged => {
+            if (hasChanged) {
+                this.getPatients();
+            }
+        });
     }
 
-    testSnackBar() {
-    }
 }

@@ -41,6 +41,7 @@ import { MdSnackBar } from "@angular/material";
 
 import { ColumnComponent } from './commons/components/grid/column/column.component';
 import { SnackbarService } from "app/commons/snackbar.service";
+import { PatientDialogComponent } from './patient/patient-dialog/patient-dialog.component';
 
 @NgModule({
     declarations: [
@@ -60,7 +61,8 @@ import { SnackbarService } from "app/commons/snackbar.service";
         UserComponent,
         ConfirmComponent,
         AuthorizedRoleDirective,
-        ColumnComponent
+        ColumnComponent,
+        PatientDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -82,10 +84,11 @@ import { SnackbarService } from "app/commons/snackbar.service";
         RoleService,
         HandbookService,
         MdSnackBar,
-        SnackbarService
+        SnackbarService,
+        PatientDialogComponent
     ],
     entryComponents: [
-        EventDialogComponent, ConfirmComponent
+        EventDialogComponent, ConfirmComponent, PatientDialogComponent
     ],
     bootstrap: [AppComponent]
 })
