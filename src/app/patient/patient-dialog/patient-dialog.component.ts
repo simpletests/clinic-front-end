@@ -11,7 +11,8 @@ export class PatientDialogComponent {
 
   patient: any;
 
-  constructor(public dialogRef: MdDialogRef<PatientDialogComponent>, public patientService: PatientService) {
+  constructor(public dialogRef: MdDialogRef<PatientDialogComponent>,
+    public patientService: PatientService) {
 
   }
 
