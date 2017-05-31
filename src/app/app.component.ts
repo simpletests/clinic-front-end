@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from "app/service/auth.service";
 import { LoginService } from "app/login/login.service";
+import { MdSidenav } from "@angular/material";
 
 @Component({
     selector: 'app-root',
@@ -21,6 +22,8 @@ export class AppComponent implements OnInit {
         // { route: "report", name: "Report", icon: "description", authorizedRoles: ['MEDICO'] },
         { route: "user", name: "User", icon: "sentiment_very_dissatisfied", authorizedRoles: ['ADMINISTRADOR'] }
     ];
+
+    @ViewChild('sidenav') sidenav: MdSidenav;
 
     userLogged = false;
 
