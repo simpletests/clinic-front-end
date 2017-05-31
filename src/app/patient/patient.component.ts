@@ -6,7 +6,8 @@ import { PageContent } from "app/service/page-content";
 import { PageRequest } from "app/service/page-request";
 import * as _ from "lodash";
 import { ConfirmComponent } from "app/commons/components/dialogs/confirm/confirm.component";
-import { MdDialog, MdSnackBar } from "@angular/material";
+import { MdDialog } from "@angular/material";
+import { SnackbarService } from "app/commons/snackbar.service";
 
 @Component({
     selector: 'app-patient',
@@ -23,7 +24,7 @@ export class PatientComponent implements OnInit {
     postalCode = {};
 
     constructor(private patientService: PatientService, public dialog: MdDialog,
-        public snackBar: MdSnackBar) { }
+        public snackbarService: SnackbarService) { }
 
     ngOnInit() {
         this.pageRequest.change.addListener("change", this.getPatients.bind(this));
@@ -56,7 +57,10 @@ export class PatientComponent implements OnInit {
         });
     }
 
+    save() {
+        this.patientService.saveOrUpdate(this.patient);
+    }
+
     testSnackBar() {
-        this.snackBar.open("eeeei", "Close", { duration: 1000, extraClasses: ["warning"] });
     }
 }

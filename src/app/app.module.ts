@@ -40,6 +40,7 @@ import { AuthorizedRoleDirective } from "app/directive/authorized-role.directive
 import { MdSnackBar } from "@angular/material";
 
 import { ColumnComponent } from './commons/components/grid/column/column.component';
+import { SnackbarService } from "app/commons/snackbar.service";
 
 @NgModule({
     declarations: [
@@ -79,7 +80,9 @@ import { ColumnComponent } from './commons/components/grid/column/column.compone
         AuthService,
         UserService,
         RoleService,
-        HandbookService, MdSnackBar
+        HandbookService,
+        MdSnackBar,
+        SnackbarService
     ],
     entryComponents: [
         EventDialogComponent, ConfirmComponent
