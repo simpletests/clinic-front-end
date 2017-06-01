@@ -44,7 +44,7 @@ import { RowComponent } from './commons/components/grid/row/row.component';
 import { SnackbarService } from "app/commons/snackbar.service";
 import { PatientDialogComponent } from './patient/patient-dialog/patient-dialog.component';
 import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
-import { ContainerFluidComponent } from './commons/components/grid/container-fluid/container-fluid.component';
+import { ContainerComponent } from './commons/components/grid/container/container.component';
 
 @NgModule({
     declarations: [
@@ -69,7 +69,7 @@ import { ContainerFluidComponent } from './commons/components/grid/container-flu
         PatientDialogComponent,
         UserDialogComponent,
         RowComponent,
-        ContainerFluidComponent
+        ContainerComponent
     ],
     imports: [
         BrowserModule,

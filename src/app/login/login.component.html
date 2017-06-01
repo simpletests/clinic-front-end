@@ -1,19 +1,74 @@
 <md-card>
-  <ss-container-fluid>
-    <ss-row>
-      <h1 col>Login</h1>
+  <form #formLogin="ngForm" (ngSubmit)="login()">
+    <ss-container>
+      <ss-row>
+        <h1 col>Login</h1>
 
-      <md-input-container col [columns]="[10,8,6,4]" [offsets]="[2,3,4,6]">
-        <input mdInput placeholder="Username" [(ngModel)]="user.username" required>
-        <md-error>Username is required</md-error>
+        <md-input-container col>
+          <input mdInput placeholder="Username" [(ngModel)]="user.username" required name="username">
+          <md-error>Username is required</md-error>
+        </md-input-container>
+
+        <md-input-container col>
+          <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password" required name="password">
+          <md-error>Password is required</md-error>
+        </md-input-container>
+
+        <button col md-raised-button [disabled]="!formLogin.form.valid">Enter</button>
+      </ss-row>
+    </ss-container>
+  </form>
+</md-card>
+
+<md-card>
+  <ss-container>
+    <ss-row>
+      <md-input-container col>
+        <input mdInput placeholder="Input" [(ngModel)]="user.a">
       </md-input-container>
 
       <md-input-container col>
-        <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password" required>
-        <md-error>Password is required</md-error>
+        <textarea mdInput placeholder="Textarea" [(ngModel)]="user.b"></textarea>
       </md-input-container>
 
-      <button col md-raised-button (click)="login() ">Enter</button>
+      <md-input-container col>
+        <input mdInput placeholder="Hints" [(ngModel)]="user.c">
+        <md-hint align="end">Dica</md-hint>
+      </md-input-container>
+
+      <md-input-container col>
+        <input mdInput placeholder="Error" required [(ngModel)]="user.d">
+        <md-error>Field Required</md-error>
+      </md-input-container>
+
+      <md-input-container col>
+        <input mdInput placeholder="Error" required [(ngModel)]="user.e">
+        <md-error>Field Required</md-error>
+        <md-hint>Type something</md-hint>
+      </md-input-container>
+
+      <md-input-container col>
+        <input mdInput placeholder="Prefix + Suffix" [(ngModel)]="user.f">
+        <md-icon mdPrefix>attach_money</md-icon>
+        <md-icon mdSuffix>mode_edit</md-icon>
+      </md-input-container>
+
+      <md-input-container col>
+        <textarea mdInput #textarea placeholder="Counter" maxlength="144" [(ngModel)]="user.g"></textarea>
+        <md-hint align="end">{{textarea.value.length}} / 144</md-hint>
+      </md-input-container>
+
+      <md-input-container col>
+        <input mdInput [(ngModel)]="user.h">
+        <md-placeholder>
+          I
+          <md-icon>favorite</md-icon> <b>bold</b> placeholder
+        </md-placeholder>
+        <md-hint>
+          I also
+          <md-icon>home</md-icon> <i>italic</i> hint labels
+        </md-hint>
+      </md-input-container>
     </ss-row>
-  </ss-container-fluid>
+  </ss-container>
 </md-card>
