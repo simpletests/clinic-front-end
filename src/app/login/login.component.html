@@ -1,24 +1,24 @@
-<md-card>
-  <form #formLogin="ngForm" (ngSubmit)="login()">
-    <ss-container>
-      <h1 col>Login</h1>
+<form #formLogin="ngForm" (ngSubmit)="login()">
+  <ss-container>
+    <md-toolbar color="primary">
+      <span>Login</span>
+    </md-toolbar>
 
-      <md-input-container col>
-        <input mdInput placeholder="Username" [(ngModel)]="user.username" required name="username">
-        <md-error>Username is required</md-error>
-      </md-input-container>
+    <md-input-container col>
+      <input mdInput placeholder="Username" [(ngModel)]="user.username" required name="username">
+      <md-error>Username is required</md-error>
+    </md-input-container>
 
-      <md-input-container col>
-        <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password" required name="password">
-        <md-error>Password is required</md-error>
-      </md-input-container>
+    <md-input-container col>
+      <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password" required name="password">
+      <md-error>Password is required</md-error>
+    </md-input-container>
 
-      <button col md-raised-button [disabled]="!formLogin.form.valid">Enter</button>
-    </ss-container>
-  </form>
-</md-card>
+    <button col md-raised-button [disabled]="!formLogin.form.valid">Enter</button>
+  </ss-container>
+</form>
 
-<md-card >
+<md-card style="display: none;">
   <ss-container>
     <ss-row>
       <md-input-container col>
