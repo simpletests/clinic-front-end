@@ -1,26 +1,68 @@
 <md-card>
   <form #formLogin="ngForm" (ngSubmit)="login()">
-    <ss-container>
-      <ss-row>
         <h1 col>Login</h1>
 
-        <md-input-container col>
+        <md-input-container>
           <input mdInput placeholder="Username" [(ngModel)]="user.username" required name="username">
           <md-error>Username is required</md-error>
         </md-input-container>
 
-        <md-input-container col>
+        <md-input-container>
           <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password" required name="password">
           <md-error>Password is required</md-error>
         </md-input-container>
 
-        <button col md-raised-button [disabled]="!formLogin.form.valid">Enter</button>
-      </ss-row>
-    </ss-container>
+        <button md-raised-button [disabled]="!formLogin.form.valid">Enter</button>
   </form>
 </md-card>
 
 <md-card>
+  <div class="container" style="border: 5px solid black;">
+    <div class="row" style="border: 5px solid yellow;">
+      <div class="col-sm-12, col-md-6, col-lg-6">
+        <div style="height: 50px; width: 100%; background-color: red; border: 5px solid blue;"></div>
+      </div>
+      <div class="col-sm-12, col-md-6, col-lg-6">
+        <div style="height: 50px; width: 100%; background-color: red; border: 5px solid blue;"></div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="container-fluid" style="border: 5px solid black;">
+    <div class="row" style="border: 5px solid yellow;">
+      <div class="col-sm-12, col-md-6, col-lg-6">
+        <div style="height: 50px; width: 100%; background-color: red; border: 5px solid blue;"></div>
+      </div>
+      <div class="col-sm-12, col-md-6, col-lg-6">
+        <div style="height: 50px; width: 100%; background-color: red; border: 5px solid blue;"></div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <ss-container [fluid]="false">
+    <ss-row>
+      <ss-column col [columns]="[12,12,6,6]">
+        <div style="height: 50px; width: 100%; background-color: red; border: 5px solid blue;"></div>
+      </ss-column>
+      <ss-column col [columns]="[12,12,6,6]">
+        <div style="height: 50px; width: 100%; background-color: red; border: 5px solid blue;"></div>
+      </ss-column>
+    </ss-row>
+  </ss-container>
+  <br />
+  <ss-container>
+    <ss-row>
+      <ss-column col [columns]="[12,12,6,6]">
+        <div style="height: 50px; width: 100%; background-color: red; border: 5px solid blue;"></div>
+      </ss-column>
+      <ss-column col [columns]="[12,12,6,6]">
+        <div style="height: 50px; width: 100%; background-color: red; border: 5px solid blue;"></div>
+      </ss-column>
+    </ss-row>
+  </ss-container>
+</md-card>
+
+<md-card style="display: none;">
   <ss-container>
     <ss-row>
       <md-input-container col>
