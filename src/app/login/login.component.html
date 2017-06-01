@@ -1,18 +1,18 @@
 <md-card>
   <form #formLogin="ngForm" (ngSubmit)="login()">
-        <h1 col>Login</h1>
+    <h1 col>Login</h1>
 
-        <md-input-container>
-          <input mdInput placeholder="Username" [(ngModel)]="user.username" required name="username">
-          <md-error>Username is required</md-error>
-        </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="Username" [(ngModel)]="user.username" required name="username">
+      <md-error>Username is required</md-error>
+    </md-input-container>
 
-        <md-input-container>
-          <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password" required name="password">
-          <md-error>Password is required</md-error>
-        </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password" required name="password">
+      <md-error>Password is required</md-error>
+    </md-input-container>
 
-        <button md-raised-button [disabled]="!formLogin.form.valid">Enter</button>
+    <button md-raised-button [disabled]="!formLogin.form.valid">Enter</button>
   </form>
 </md-card>
 
