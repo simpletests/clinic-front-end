@@ -2,9 +2,7 @@
     <button md-icon-button (click)="sidenav.toggle()">
                     <md-icon class="md-24" >menu</md-icon>
             </button>
-    <button md-icon-button (click)="sidenav.toggle()">
-        change sidenav mode
-            </button>
+
     <h1 style="margin:0 5px">Clinic</h1>
     <span class="spacer"></span>
 
@@ -13,10 +11,9 @@
             </button>
 </md-toolbar>
 <md-sidenav-container>
-    <md-sidenav #sidenav>
+    <md-sidenav #sidenav [mode]="isLargeScreen()?'side': 'over'" [opened]="isLargeScreen()">
         <md-nav-list>
-            <md-list-item [authorizedRoles]="navItem.authorizedRoles" [routerLink]="[navItem.route]"
-                *ngFor="let navItem of navItems">
+            <md-list-item [authorizedRoles]="navItem.authorizedRoles" [routerLink]="[navItem.route]" *ngFor="let navItem of navItems">
                 <md-icon md-list-icon>{{navItem.icon}}</md-icon>
                 <h4 md-line>{{navItem.name}}</h4>
             </md-list-item>

@@ -39,4 +39,13 @@ export class AppComponent implements OnInit {
         this.loginService.logout();
         this.router.navigate(['/']);
     }
+
+    isLargeScreen() {
+        const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if (width > 720) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
