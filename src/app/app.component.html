@@ -1,4 +1,6 @@
-<md-toolbar color="primary">
+<md-toolbar class="mat-elevation-z6" color="primary" class="fixed-header"
+    layout="row">
+
     <button md-icon-button (click)="sidenav.toggle()">
                     <md-icon class="md-24" >menu</md-icon>
             </button>
@@ -11,18 +13,18 @@
             </button>
 </md-toolbar>
 <md-sidenav-container>
-    <md-sidenav #sidenav [mode]="isLargeScreen()?'side': 'over'" [opened]="isLargeScreen()">
-        <md-nav-list>
-            <md-list-item [authorizedRoles]="navItem.authorizedRoles" [routerLink]="[navItem.route]" *ngFor="let navItem of navItems">
+    <md-sidenav #sidenav [mode]="isLargeScreen()?'side': 'over'" [opened]="isLargeScreen()"
+        style="width:200px" class="mat-elevation-z6">
+        <md-nav-list style="width:100%">
+            <md-list-item [authorizedRoles]="navItem.authorizedRoles" [routerLink]="[navItem.route]"
+                *ngFor="let navItem of navItems">
                 <md-icon md-list-icon>{{navItem.icon}}</md-icon>
                 <h4 md-line>{{navItem.name}}</h4>
             </md-list-item>
         </md-nav-list>
     </md-sidenav>
 
-    <div>
-        <md-card style="margin:10px auto;">
-            <router-outlet></router-outlet>
-        </md-card>
-    </div>
+    <md-card style="margin:5px auto;max-width:900px">
+        <router-outlet></router-outlet>
+    </md-card>
 </md-sidenav-container>

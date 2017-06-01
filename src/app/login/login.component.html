@@ -1,16 +1,18 @@
 <md-card>
   <form #formLogin="ngForm" (ngSubmit)="login()">
-    <ss-container>
+    <ss-container fluid="false">
       <ss-row>
         <h1 col>Login</h1>
 
         <md-input-container col>
-          <input mdInput placeholder="Username" [(ngModel)]="user.username" required name="username">
+          <input mdInput placeholder="Username" [(ngModel)]="user.username" required
+            name="username">
           <md-error>Username is required</md-error>
         </md-input-container>
 
         <md-input-container col>
-          <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password" required name="password">
+          <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password"
+            required name="password">
           <md-error>Password is required</md-error>
         </md-input-container>
 
