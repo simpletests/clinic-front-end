@@ -16,6 +16,6 @@ export class ContainerComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.div);
+    this.renderer.setElementClass(this.div.nativeElement, (this.fluid ? 'container-fluid' : 'container'), true);
   }
 }
