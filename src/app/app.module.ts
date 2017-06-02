@@ -45,7 +45,11 @@ import { SnackbarService } from "app/commons/snackbar.service";
 import { PatientDialogComponent } from './patient/patient-dialog/patient-dialog.component';
 import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
 import { ContainerComponent } from './commons/components/grid/container/container.component';
+<<<<<<< HEAD
 import { InputComponent } from './commons/components/input/input.component';
+=======
+import { ButtonComponent } from './commons/components/button/button.component';
+>>>>>>> ba57a0edaae7a7de3f1f132150dd29951a6583e5
 
 @NgModule({
     declarations: [
@@ -71,7 +75,11 @@ import { InputComponent } from './commons/components/input/input.component';
         UserDialogComponent,
         RowComponent,
         ContainerComponent,
+<<<<<<< HEAD
         InputComponent
+=======
+        ButtonComponent
+>>>>>>> ba57a0edaae7a7de3f1f132150dd29951a6583e5
     ],
     imports: [
         BrowserModule,
