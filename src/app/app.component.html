@@ -12,15 +12,10 @@
             </button>
 </md-toolbar>
 <md-sidenav-container id="sidenav-container" fullscreen>
-    <md-sidenav #sidenav [mode]="isLargeScreen()?'side': 'over'" [opened]="isLargeScreen()"
-        style="width:200px" class="mat-elevation-z16">
+    <md-sidenav #sidenav [mode]="isLargeScreen()?'side': 'over'" [opened]="isLargeScreen()" style="width:200px"
+        class="mat-elevation-z16">
         <md-nav-list style="width:100%">
-<<<<<<< HEAD
             <md-list-item [routerLink]="[navItem.route]" *ngFor="let navItem of navItems">
-=======
-            <md-list-item [authorizedRoles]="navItem.authorizedRoles" [routerLink]="[navItem.route]"
-                *ngFor="let navItem of navItems">
->>>>>>> ba57a0edaae7a7de3f1f132150dd29951a6583e5
                 <md-icon md-list-icon>{{navItem.icon}}</md-icon>
                 <h4 md-line>{{navItem.name}}</h4>
             </md-list-item>
