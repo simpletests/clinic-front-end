@@ -14,9 +14,15 @@
       <md-error>Password is required</md-error>
     </md-input-container>
 
+    <ss-input col columns="10" name="user" placeholder="Username"></ss-input>
+    <ss-input col columns="10" name="pass" placeholder="Password"></ss-input>
+    <ss-input col columns="10" offsets="2" name="user" placeholder="Textarea" isTextarea="true"></ss-input>
+
     <button col md-raised-button [disabled]="!formLogin.form.valid">Enter</button>
   </ss-container>
 </form>
+
+
 
 <md-card style="display: none;">
   <ss-container>

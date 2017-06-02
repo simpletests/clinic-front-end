@@ -14,7 +14,7 @@
 <md-sidenav-container fullscreen>
     <md-sidenav #sidenav [mode]="isLargeScreen()?'side': 'over'" [opened]="isLargeScreen()" style="width:200px;top:60px" class="mat-elevation-z16">
         <md-nav-list style="width:100%">
-            <md-list-item [authorizedRoles]="navItem.authorizedRoles" [routerLink]="[navItem.route]" *ngFor="let navItem of navItems">
+            <md-list-item [routerLink]="[navItem.route]" *ngFor="let navItem of navItems">
                 <md-icon md-list-icon>{{navItem.icon}}</md-icon>
                 <h4 md-line>{{navItem.name}}</h4>
             </md-list-item>

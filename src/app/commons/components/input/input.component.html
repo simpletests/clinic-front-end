@@ -1,0 +1,7 @@
+<md-input-container style="width: 100%;">
+  <input *ngIf="!isTextarea" mdInput name="{{name}}">
+  <textarea *ngIf="isTextarea" mdInput name="{{name}}"></textarea>
+  <md-placeholder>
+    {{placeholder}}
+  </md-placeholder>
+</md-input-container>
