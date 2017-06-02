@@ -11,17 +11,19 @@
                     <md-icon class="md-24" >exit_to_app</md-icon>
             </button>
 </md-toolbar>
-<md-sidenav-container fullscreen>
-    <md-sidenav #sidenav [mode]="isLargeScreen()?'side': 'over'" [opened]="isLargeScreen()" style="width:200px;top:60px" class="mat-elevation-z16">
+<md-sidenav-container id="sidenav-container" fullscreen>
+    <md-sidenav #sidenav [mode]="isLargeScreen()?'side': 'over'" [opened]="isLargeScreen()"
+        style="width:200px" class="mat-elevation-z16">
         <md-nav-list style="width:100%">
-            <md-list-item [authorizedRoles]="navItem.authorizedRoles" [routerLink]="[navItem.route]" *ngFor="let navItem of navItems">
+            <md-list-item [authorizedRoles]="navItem.authorizedRoles" [routerLink]="[navItem.route]"
+                *ngFor="let navItem of navItems">
                 <md-icon md-list-icon>{{navItem.icon}}</md-icon>
                 <h4 md-line>{{navItem.name}}</h4>
             </md-list-item>
         </md-nav-list>
     </md-sidenav>
 
-    <md-card style="margin:90px auto;max-width:1200px">
+    <md-card style="margin:20px auto;max-width:1200px">
         <router-outlet></router-outlet>
     </md-card>
 </md-sidenav-container>

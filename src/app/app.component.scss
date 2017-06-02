@@ -1,5 +1,5 @@
-.spacer{
-     flex: 1 1 auto;
+.spacer {
+  flex: 1 1 auto;
 }
 
 .fixed-header {
@@ -7,5 +7,12 @@
   top: 0;
   left: 0;
   z-index: 2;
-  width: 100%  !important;
+  width: 100% !important;
+}
+
+#sidenav-container {
+  top: 56px;
+  @media (min-width: 600px) {
+    top: 64px !important;
+  }
 }
