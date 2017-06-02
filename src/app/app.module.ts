@@ -45,6 +45,7 @@ import { SnackbarService } from "app/commons/snackbar.service";
 import { PatientDialogComponent } from './patient/patient-dialog/patient-dialog.component';
 import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
 import { ContainerComponent } from './commons/components/grid/container/container.component';
+import { ButtonComponent } from './commons/components/button/button.component';
 
 @NgModule({
     declarations: [
@@ -69,7 +70,8 @@ import { ContainerComponent } from './commons/components/grid/container/containe
         PatientDialogComponent,
         UserDialogComponent,
         RowComponent,
-        ContainerComponent
+        ContainerComponent,
+        ButtonComponent
     ],
     imports: [
         BrowserModule,
