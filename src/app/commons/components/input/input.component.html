@@ -1,6 +1,6 @@
 <md-input-container style="width: 100%;">
-  <input *ngIf="!isTextarea" mdInput name="{{name}}">
-  <textarea *ngIf="isTextarea" mdInput name="{{name}}"></textarea>
+  <input *ngIf="!isTextarea" mdInput name="name" [type]="type" [(ngModel)]="value">
+  <textarea *ngIf="isTextarea" mdInput name="name"></textarea>
   <md-placeholder>
     {{placeholder}}
   </md-placeholder>

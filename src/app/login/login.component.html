@@ -1,29 +1,21 @@
 <form #formLogin="ngForm" (ngSubmit)="login()">
   <ss-container>
-    <md-toolbar color="primary">
-      <span>Login</span>
-    </md-toolbar>
+    <ss-row>
+      <md-toolbar color="primary">
+        <span>Login</span>
+      </md-toolbar>
 
-    <md-input-container col>
-      <input mdInput placeholder="Username" [(ngModel)]="user.username" required name="username">
-      <md-error>Username is required</md-error>
-    </md-input-container>
+      <!-- Faltando apenas o tratamento de erros -->
+      <ss-input col name="username" placeholder="Username" [(ngModel)]="user.username"></ss-input>
 
-    <md-input-container col>
-      <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password" required name="password">
-      <md-error>Password is required</md-error>
-    </md-input-container>
+      <!-- Faltando apenas o tratamento de erros -->
+      <ss-input col name="password" placeholder="Password" [(ngModel)]="user.password" type="password"></ss-input>
 
-    <ss-input col columns="10" name="user" placeholder="Username"></ss-input>
-    <ss-input col columns="10" name="pass" placeholder="Password"></ss-input>
-    <ss-input col columns="10" offsets="2" name="user" placeholder="Textarea" isTextarea="true"></ss-input>
-
-    <!--<ss-button col height="raised" [disabled]="!formLogin.form.valid" [label]="Enter"></ss-button>-->
-    <button col md-raised-button [disabled]="!formLogin.form.valid">Enter</button>
+      <!--<ss-button col height="raised" [disabled]="!formLogin.form.valid" [label]="Enter"></ss-button>-->
+      <button col md-raised-button [disabled]="!formLogin.form.valid">Enter</button>
+    </ss-row>
   </ss-container>
 </form>
-
-
 
 <md-card style="display: none;">
   <ss-container>
