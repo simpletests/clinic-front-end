@@ -1,13 +1,16 @@
 <h1 md-dialog-title>User</h1>
 <div md-dialog-content>
   <md-input-container>
-    <input mdInput placeholder="Name" [(ngModel)]="user.name" />
+    <input mdInput placeholder="Name" [(ngModel)]="user.name"
+    />
   </md-input-container>
   <md-input-container>
-    <input mdInput placeholder="Username" [(ngModel)]="user.username" />
+    <input mdInput placeholder="Username" [(ngModel)]="user.username"
+    />
   </md-input-container>
   <md-input-container>
-    <input mdInput placeholder="Password" type="password" [(ngModel)]="user.password" />
+    <input mdInput placeholder="Password" type="password"
+      [(ngModel)]="user.password" />
   </md-input-container>
   <md-checkbox [(ngModel)]="user.enabled">
     Enabled
@@ -20,6 +23,6 @@
 </div>
 <div md-dialog-actions>
   <!--<button md-raised-button md-dialog-close>Close</button>-->
-  <button md-raised-button (click)="delete()" *ngIf="user.id">Delete</button>
-  <button md-raised-button (click)="saveOrUpdate()">{{user.id?"Update":"Insert"}}</button>
+  <ss-button (click)="delete()" *ngIf="user.id">Delete</ss-button>
+  <ss-button (click)="saveOrUpdate()">{{user.id?"Update":"Insert"}}</ss-button>
 </div>

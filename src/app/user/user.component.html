@@ -1,8 +1,8 @@
 <!--<p>{{user.name}} - {{user.username}} - {{user.password}} - {{user.enabled}} - {{user.roles}}</p>-->
 
-<button md-raised-button (click)="createNew()">
+<ss-button (click)="createNew()">
     New
-</button>
+</ss-button>
 <table>
     <tr>
         <th>Name</th>
@@ -20,10 +20,14 @@
         <td>{{user.enabled}}</td>
         <td>{{user.roles}}</td>
         <td>
-            <button md-button (click)="editUser(user)"><md-icon>create</md-icon></button>
+            <ss-button (click)="editUser(user)">
+                <md-icon>create</md-icon>
+            </ss-button>
         </td>
         <td>
-            <button md-button (click)="confirmDelete(user)"><md-icon>delete</md-icon></button>
+            <ss-button (click)="confirmDelete(user)">
+                <md-icon>delete</md-icon>
+            </ss-button>
         </td>
     </tr>
 </table>

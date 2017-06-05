@@ -6,9 +6,9 @@ import { Component, OnInit, Renderer, ElementRef, Input, ViewChild, AfterViewIni
   styleUrls: ['./container.component.scss']
 })
 export class ContainerComponent implements OnInit, AfterViewInit {
-  
+
   @ViewChild('container') div: ElementRef;
-  @Input() fluid: boolean = true;
+  @Input() fluid = true;
 
   constructor(private el: ElementRef, private renderer: Renderer) { }
 

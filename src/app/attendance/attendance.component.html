@@ -1,32 +1,27 @@
-<div fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="5%">
+<div fxLayout="row" fxLayout.sm="column" fxLayoutWrap
+    fxLayoutGap="5%">
     <md-card fxFlex>
         <md-card-header>
-            <div fxFlex fxLayoutWrap *ngIf="pastHandbook">
-                <button fxFlex="50px" md-raised-button [disabled]="handbookPageRequest.last"
-                    (click)="handbookPageRequest.nextPage()">
-                        <i class="material-icons">keyboard_arrow_left</i>
-                </button>
+            <ss-row *ngIf="pastHandbook">
+                <ss-button [disabled]="handbookPageRequest.last" (click)="handbookPageRequest.nextPage()">
+                    <i class="material-icons">keyboard_arrow_left</i>
+                </ss-button>
                 <p fxFlex style="text-align:center">{{pastHandbook.dateTime| date:"dd/MM/yy"}}</p>
-                <button fxFlex="50px" md-raised-button [disabled]="handbookPageRequest.first"
-                    (click)="handbookPageRequest.previousPage()">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                </button>
-            </div>
+                <ss-button [disabled]="handbookPageRequest.first" (click)="handbookPageRequest.previousPage()">
+                    <i class="material-icons">keyboard_arrow_right</i>
+                </ss-button>
+            </ss-row>
         </md-card-header>
         <md-card-content *ngIf="pastHandbook">
-            <div fxFlex>
-                <br/> Resume: {{pastHandbook.resume}}
-            </div>
+            <br/> Resume: {{pastHandbook.resume}}
         </md-card-content>
     </md-card>
-    <md-card fxFlex>
+    <md-card>
         <md-card-header>
-            <div fxFlex fxLayoutWrap>
-                <p fxFlex style="text-align:center">Handbook</p>
-            </div>
+            <p style="text-align:center">Handbook</p>
         </md-card-header>
         <md-card-content>
-            <div fxFlex *ngIf="event">
+            <ss-row *ngIf="event">
                 <br/>
                 <md-input-container>
                     <input mdInput placeholder="Disease" [(ngModel)]="event.handbook.disease">
@@ -34,7 +29,7 @@
                 <md-input-container>
                     <textarea mdInput placeholder="Observations" [(ngModel)]="event.handbook.observations"></textarea>
                 </md-input-container>
-            </div>
+            </ss-row>
         </md-card-content>
     </md-card>
 
@@ -43,11 +38,10 @@
 <br/>Duration {{currentDate|async|date:"mm:ss"}}
 <br/>
 <div *ngIf="event">
-    Event: {{event.start | date:"dd/MM/yy hh:mm"}} - {{event.end | date:"dd/MM/yy
-    hh:mm"}}
+    Event: {{event.start | date:"dd/MM/yy hh:mm"}} - {{event.end
+    | date:"dd/MM/yy hh:mm"}}
     <br/> Patient: {{event.patient.name}}
 </div>
-<button md-raised-button (click)="save()">
-    <i class="material-icons"  >save</i>
-    Save
-    </button>
+<ss-button (click)="save()">
+    <i class="material-icons">save</i> Save
+</ss-button>

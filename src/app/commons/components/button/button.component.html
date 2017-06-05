@@ -1,2 +1,4 @@
 <button md-raised-button [disabled]="disabled" (click)="this.eventClick.emit(event)"
-    style="width:100%">{{label}}</button>
+    style="width:100%">{{label}}
+    
+    <ng-content></ng-content></button>

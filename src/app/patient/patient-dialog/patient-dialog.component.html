@@ -1,14 +1,17 @@
 <h1 md-dialog-title>Patient</h1>
 <div md-dialog-content>
   <md-input-container>
-    <input mdInput [(ngModel)]="patient.name" placeholder="Name" type="text">
+    <input mdInput [(ngModel)]="patient.name" placeholder="Name"
+      type="text">
   </md-input-container>
   <md-input-container>
-    <input mdInput [(ngModel)]="patient.email" placeholder="E-mail" type="email">
+    <input mdInput [(ngModel)]="patient.email" placeholder="E-mail"
+      type="email">
   </md-input-container>
 
   <md-input-container>
-    <input mdInput [(ngModel)]="postalCode" placeholder="Cep" type="number">
+    <input mdInput [(ngModel)]="postalCode" placeholder="Cep"
+      type="number">
   </md-input-container>
 
   <!--<md-input-container>
@@ -29,25 +32,30 @@
     </md-input-container>-->
 
   <md-input-container>
-    <input mdInput [(ngModel)]="patient.address.number" placeholder="Number" type="number">
+    <input mdInput [(ngModel)]="patient.address.number"
+      placeholder="Number" type="number">
   </md-input-container>
 
   <md-input-container>
-    <input mdInput [(ngModel)]="patient.address.complement" placeholder="Complement" type="text">
+    <input mdInput [(ngModel)]="patient.address.complement"
+      placeholder="Complement" type="text">
   </md-input-container>
 
   <md-input-container>
-    <input mdInput [(ngModel)]="patient.gender" placeholder="Gender" type="text">
+    <input mdInput [(ngModel)]="patient.gender" placeholder="Gender"
+      type="text">
   </md-input-container>
   <md-input-container>
-    <input mdInput [(ngModel)]="patient.phone" placeholder="Phone" type="tel">
+    <input mdInput [(ngModel)]="patient.phone" placeholder="Phone"
+      type="tel">
   </md-input-container>
   <md-input-container>
-    <input mdInput [(ngModel)]="patient.cellphone" placeholder="Cellphone" type="tel">
+    <input mdInput [(ngModel)]="patient.cellphone" placeholder="Cellphone"
+      type="tel">
   </md-input-container>
 </div>
 <div md-dialog-actions>
   <!--<button md-raised-button md-dialog-close>Close</button>-->
-  <button md-raised-button (click)="delete()" *ngIf="patient.id">Delete</button>
-  <button md-raised-button (click)="saveOrUpdate()">{{patient.id?"Update":"Insert"}}</button>
+  <ss-button (click)="delete()" *ngIf="patient.id">Delete</ss-button>
+  <ss-button (click)="saveOrUpdate()">{{patient.id?"Update":"Insert"}}</ss-button>
 </div>

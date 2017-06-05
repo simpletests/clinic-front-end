@@ -2,6 +2,9 @@
 <div md-dialog-content>
 </div>
 <div md-dialog-actions>
-  <button md-raised-button md-dialog-close (click)="dialog.close(false)">No</button>
-  <button md-raised-button (click)="dialog.close(true)">Yes</button>
+  <ss-row>
+    <ss-button col columns="2" offsets="2" md-dialog-close
+      (click)="dialog.close(false)">No</ss-button>
+    <ss-button col columns="2" offsets="4" (click)="dialog.close(true)">Yes</ss-button>
+  </ss-row>
 </div>

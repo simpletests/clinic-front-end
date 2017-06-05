@@ -1,27 +1,30 @@
-<div fxLayout="row" fxLayoutWrap>
-        <button md-raised-button fxFlex="auto" (click)="periodView=0">Month</button>
-        <button md-raised-button fxFlex="auto" (click)="periodView=1">Week</button>
-        <button md-raised-button fxFlex="auto" (click)="periodView=2">Day</button>
-</div>
+<ss-row>
+        <ss-button col columns="4" label="Month" (click)="periodView=0"></ss-button>
+        <ss-button col columns="4" label="Week" (click)="periodView=1"></ss-button>
+        <ss-button col columns="4" label="Day" (click)="periodView=2"></ss-button>
+</ss-row>
 <!--layout-->
 <br/>
 <br/>
-<div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between">
-        <button fxFlex="50px" md-raised-button (click)="changeDate(-1)" [disabled]="pagination.first">
-            <i class="material-icons">keyboard_arrow_left</i>
-    </button>
-        <button fxFlex="50px" md-raised-button (click)="changeDate(1)" [disabled]="pagination.last">
-            <i class="material-icons">keyboard_arrow_right</i>
-    </button>
-        <button fxFlex="50px" md-raised-button (click)="calendar.centerOnNow()">
-            <i class="material-icons">gps_fixed</i>
-    </button>
-        <button fxFlex="50px" md-raised-button (click)="openDialog()">
-            <i class="material-icons">add</i>
-    </button>
-</div>
-<div [ngSwitch]="periodView">
-        <app-calendar-monthly-view [weeks]="calendar.weeks" *ngSwitchCase="0" (eventClick)="eventClick($event)">
+<ss-row>
+        <ss-button col columns="3" (click)="changeDate(-1)"
+                [disabled]="pagination.first">
+                <i class="material-icons">keyboard_arrow_left</i>
+        </ss-button>
+        <ss-button col columns="3" (click)="changeDate(1)"
+                [disabled]="pagination.last">
+                <i class="material-icons">keyboard_arrow_right</i>
+        </ss-button>
+        <ss-button col columns="3" (click)="calendar.centerOnNow()">
+                <i class="material-icons">gps_fixed</i>
+        </ss-button>
+        <ss-button col columns="3" (click)="openDialog()">
+                <i class="material-icons">add</i>
+        </ss-button>
+</ss-row>
+<ss-row [ngSwitch]="periodView">
+        <app-calendar-monthly-view [weeks]="calendar.weeks"
+                *ngSwitchCase="0" (eventClick)="eventClick($event)">
         </app-calendar-monthly-view>
         <app-calendar-weekly-view [week]="calendar.weeks[calendar.currentWeekOfMonth]"
                 *ngSwitchCase="1" (eventClick)="eventClick($event)">
@@ -29,4 +32,4 @@
         <app-calendar-daily-view [day]="calendar.weeks[calendar.currentWeekOfMonth][calendar.currentDayOfWeek]"
                 (eventClick)="eventClick($event)" *ngSwitchCase="2">
         </app-calendar-daily-view>
-</div>
+</ss-row>
