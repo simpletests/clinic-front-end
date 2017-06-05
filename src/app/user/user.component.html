@@ -1,33 +1,35 @@
 <!--<p>{{user.name}} - {{user.username}} - {{user.password}} - {{user.enabled}} - {{user.roles}}</p>-->
 
-<ss-button (click)="createNew()">
-    New
-</ss-button>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Username</th>
-        <th>Password</th>
-        <th>Enabled</th>
-        <th>Roles</th>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let user of users">
-        <td>{{user.name}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.password}}</td>
-        <td>{{user.enabled}}</td>
-        <td>{{user.roles}}</td>
-        <td>
-            <ss-button (click)="editUser(user)">
-                <md-icon>create</md-icon>
-            </ss-button>
-        </td>
-        <td>
-            <ss-button (click)="confirmDelete(user)">
-                <md-icon>delete</md-icon>
-            </ss-button>
-        </td>
-    </tr>
-</table>
+<ss-row>
+    <ss-button (click)="createNew()" col columns="3">
+        New
+    </ss-button>
+</ss-row>
+<ss-row>
+    <table col columns="12">
+        <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Enabled</th>
+            <th>Roles</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>{{user.name}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.password}}</td>
+            <td>{{user.enabled}}</td>
+            <td>{{user.roles}}</td>
+            <td>
+                <ss-button icon="create" shape="icon" (click)="editUser(user)">
+                </ss-button>
+            </td>
+            <td>
+                <ss-button icon="delete" shape="icon" (click)="confirmDelete(user)">
+                </ss-button>
+            </td>
+        </tr>
+    </table>
+</ss-row>

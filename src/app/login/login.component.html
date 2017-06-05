@@ -11,8 +11,7 @@
       <!-- Faltando apenas o tratamento de erros -->
       <ss-input col name="password" placeholder="Password" [(ngModel)]="user.password" type="password"></ss-input>
 
-      <!--<ss-button col [disabled]="!formLogin.form.valid" label="Entrar" (click)="formLogin.ngSubmit.emit()"></ss-button>-->
-      <ss-button col [disabled]="!formLogin.form.valid" label="Entrar" (click)="log()"></ss-button>
+      <ss-button col [disabled]="!formLogin.form.valid" label="Entrar" (click)="formLogin.ngSubmit.emit()"></ss-button>
 
       <ss-checkbox col name="enabled" label="Enabled" [(ngModel)]="user.enabled"></ss-checkbox>
 
@@ -26,10 +25,12 @@
           {{role}}
         </md-option>
       </md-select>
+
+      <ss-button col [disabled]="!formLogin.form.valid" label="Testar componentes" (click)="log()"></ss-button>
     </ss-row>
   </ss-container>
 </form>
-
+<!--
 <md-card style="display: none;">
   <ss-container>
     <ss-row>
@@ -81,4 +82,4 @@
       </md-input-container>
     </ss-row>
   </ss-container>
-</md-card>
+</md-card>-->
