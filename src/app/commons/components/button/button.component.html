@@ -1,4 +1,12 @@
-<button md-raised-button [disabled]="disabled" (click)="this.eventClick.emit(event)"
-    style="width:100%">{{label}}
-    
-    <ng-content></ng-content></button>
+<button *ngIf="!icon;else iconButton" md-raised-button [disabled]="disabled"
+    (click)="this.eventClick.emit($event)" style="width:100%">{{label}}
+    <ng-content select="!icon"></ng-content>
+    </button>
+<ng-template #iconButton>
+    <button *ngIf="icon" md-icon-button [disabled]="disabled" (click)="this.eventClick.emit($event)">
+    <md-icon class="md-24">{{icon}}</md-icon>
+    <ng-content select="icon"></ng-content>
+    </button>
+</ng-template>
+
+<!--*ngSwitchCase="match_expression_1" -->

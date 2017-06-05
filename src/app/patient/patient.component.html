@@ -22,13 +22,11 @@ Patient
                 <td>{{p.email}}</td>
                 <td>{{p.address.label}}</td>
                 <td>
-                    <ss-button md-icon-button (click)="edit(p)">
-                        <md-icon>edit</md-icon>
+                    <ss-button icon="edit" (click)="edit(p)">
                     </ss-button>
                 </td>
                 <td>
-                    <ss-button md-icon-button (click)="confirmDelete(p)">
-                        <md-icon>delete</md-icon>
+                    <ss-button icon="delete" (click)="confirmDelete(p)">
                     </ss-button>
                 </td>
             </tr>
@@ -39,21 +37,18 @@ Patient
             [disabled]="pageRequest.first">
             <i class="material-icons">keyboard_arrow_left</i>
         </ss-button>
-        <ss-button col columns="1" (click)="pageRequest.previousPage()"
-            [disabled]="pageRequest.first">
+        <ss-button col columns="1" (click)="pageRequest.previousPage()" [disabled]="pageRequest.first">
             <i class="material-icons">keyboard_arrow_left</i>
         </ss-button>
-        <ss-button col columns="1" (click)="pageRequest.setNumber(i)"
-            [disabled]="pageRequest.number==i" *ngFor="let i of pageRequest.buttonPages">
+        <ss-button col columns="1" (click)="pageRequest.setNumber(i)" [disabled]="pageRequest.number==i"
+            *ngFor="let i of pageRequest.buttonPages">
             {{i}}
         </ss-button>
 
-        <ss-button col columns="1" (click)="pageRequest.nextPage()"
-            [disabled]="pageRequest.last">
+        <ss-button col columns="1" (click)="pageRequest.nextPage()" [disabled]="pageRequest.last">
             <i class="material-icons">keyboard_arrow_right</i>
         </ss-button>
-        <ss-button col columns="1" (click)="pageRequest.lastPage()"
-            [disabled]="pageRequest.last">
+        <ss-button col columns="1" (click)="pageRequest.lastPage()" [disabled]="pageRequest.last">
             <i class="material-icons">keyboard_arrow_right</i>
         </ss-button>
     </ss-row>
