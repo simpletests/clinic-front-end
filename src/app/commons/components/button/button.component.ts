@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { EventEmitter } from "events";
+import { Observable } from "rxjs/Rx";
 
 @Component({
   selector: 'ss-button',
@@ -8,7 +10,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ButtonComponent implements OnInit {
 
   @Input() label: string;
-  @Input() disabled: boolean;
+  @Input() disabled: Observable<boolean>;
+  @Output() eventClick = new EventEmitter();
 
   constructor() { }
 

@@ -4,15 +4,16 @@
       <md-toolbar color="primary">
         <span>Login</span>
       </md-toolbar>
+      <!-- Faltando apenas o tratamento de erros -->
+      <ss-input col name="username" placeholder="Username"
+        [(ngModel)]="user.username"></ss-input>
 
       <!-- Faltando apenas o tratamento de erros -->
-      <ss-input col name="username" placeholder="Username" [(ngModel)]="user.username"></ss-input>
-
-      <!-- Faltando apenas o tratamento de erros -->
-      <ss-input col name="password" placeholder="Password" [(ngModel)]="user.password" type="password"></ss-input>
-
-      <!--<ss-button col height="raised" [disabled]="!formLogin.form.valid" [label]="Enter"></ss-button>-->
-      <button col md-raised-button [disabled]="!formLogin.form.valid">Enter</button>
+      <ss-input col name="password" placeholder="Password"
+        [(ngModel)]="user.password" type="password"></ss-input>
+      <ss-button col [disabled]="!formLogin.form.valid" label="Entrar"
+        (click)="formLogin.ngSubmit.emit()"></ss-button>
+      <!--<button col md-raised-button [disabled]="!formLogin.form.valid">Enter</button>-->
     </ss-row>
   </ss-container>
 </form>
@@ -51,7 +52,8 @@
       </md-input-container>
 
       <md-input-container col>
-        <textarea mdInput #textarea placeholder="Counter" maxlength="144" [(ngModel)]="user.g"></textarea>
+        <textarea mdInput #textarea placeholder="Counter" maxlength="144"
+          [(ngModel)]="user.g"></textarea>
         <md-hint align="end">{{textarea.value.length}} / 144</md-hint>
       </md-input-container>
 
