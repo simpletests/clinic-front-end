@@ -47,6 +47,8 @@ import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
 import { ContainerComponent } from './commons/components/grid/container/container.component';
 import { InputComponent } from './commons/components/input/input.component';
 import { ButtonComponent } from './commons/components/button/button.component';
+import { CheckboxComponent } from './commons/components/checkbox/checkbox.component';
+import { SelectOneComponent } from './commons/components/select-one/select-one.component';
 
 @NgModule({
     declarations: [
@@ -73,7 +75,9 @@ import { ButtonComponent } from './commons/components/button/button.component';
         RowComponent,
         ContainerComponent,
         InputComponent,
-        ButtonComponent
+        ButtonComponent,
+        CheckboxComponent,
+        SelectOneComponent
     ],
     imports: [
         BrowserModule,
