@@ -22,11 +22,11 @@ Patient
                 <td>{{p.email}}</td>
                 <td>{{p.address.label}}</td>
                 <td>
-                    <ss-button icon="edit" (click)="edit(p)">
+                    <ss-button icon="edit" (click)="edit(p)" shape="icon">
                     </ss-button>
                 </td>
                 <td>
-                    <ss-button icon="delete" (click)="confirmDelete(p)">
+                    <ss-button icon="delete" (click)="confirmDelete(p)" shape="icon">
                     </ss-button>
                 </td>
             </tr>
@@ -34,8 +34,7 @@ Patient
     </ss-row>
     <ss-row>
         <ss-button col columns="1" offsets="2" (click)="pageRequest.firstPage()"
-            [disabled]="pageRequest.first">
-            <i class="material-icons">keyboard_arrow_left</i>
+            [disabled]="pageRequest.first" icon="keyboard_arrow_left">
         </ss-button>
         <ss-button col columns="1" (click)="pageRequest.previousPage()" [disabled]="pageRequest.first">
             <i class="material-icons">keyboard_arrow_left</i>

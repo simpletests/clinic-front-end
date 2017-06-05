@@ -10,8 +10,7 @@
       <!-- Faltando apenas o tratamento de erros -->
       <ss-input col name="password" placeholder="Password" [(ngModel)]="user.password"
         type="password"></ss-input>
-      <ss-button col [disabled]="!formLogin.form.valid" label="Entrar" color="warn"
-        (click)="formLogin.ngSubmit.emit()"></ss-button>
+      <ss-button col [disabled]="!formLogin.form.valid" label="Entrar" (click)="formLogin.ngSubmit.emit()"></ss-button>
       <!--<button col md-raised-button [disabled]="!formLogin.form.valid">Enter</button>-->
     </ss-row>
   </ss-container>

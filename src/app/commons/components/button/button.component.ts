@@ -12,6 +12,7 @@ export class ButtonComponent implements OnInit {
   @Input() label: string;
   @Input() disabled: Observable<boolean>;
   @Input() icon: string;
+  @Input() shape = "button";
   @Output() eventClick = new EventEmitter();
   @Input() color = "primary";
 
