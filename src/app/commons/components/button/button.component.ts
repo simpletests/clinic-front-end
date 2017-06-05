@@ -14,7 +14,7 @@ export class ButtonComponent implements OnInit {
   @Input() icon: string;
   @Input() shape = "button";
   @Output() eventClick = new EventEmitter();
-  @Input() color = "primary";
+  @Input() color = "";
 
   constructor() { }
 
