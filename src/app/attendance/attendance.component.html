@@ -1,5 +1,4 @@
-<div fxLayout="row" fxLayout.sm="column" fxLayoutWrap
-    fxLayoutGap="5%">
+<div fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="5%">
     <md-card fxFlex>
         <md-card-header>
             <ss-row *ngIf="pastHandbook">
@@ -38,8 +37,8 @@
 <br/>Duration {{currentDate|async|date:"mm:ss"}}
 <br/>
 <div *ngIf="event">
-    Event: {{event.start | date:"dd/MM/yy hh:mm"}} - {{event.end
-    | date:"dd/MM/yy hh:mm"}}
+    Event: {{event.start | date:"dd/MM/yy hh:mm"}} - {{event.end | date:"dd/MM/yy
+    hh:mm"}}
     <br/> Patient: {{event.patient.name}}
 </div>
 <ss-button (click)="save()">

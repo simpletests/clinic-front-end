@@ -47,6 +47,7 @@ import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
 import { ContainerComponent } from './commons/components/grid/container/container.component';
 import { InputComponent } from './commons/components/input/input.component';
 import { ButtonComponent } from './commons/components/button/button.component';
+import { CardComponent } from './commons/components/card/card.component';
 
 @NgModule({
     declarations: [
@@ -73,7 +74,8 @@ import { ButtonComponent } from './commons/components/button/button.component';
         RowComponent,
         ContainerComponent,
         InputComponent,
-        ButtonComponent
+        ButtonComponent,
+        CardComponent
     ],
     imports: [
         BrowserModule,
