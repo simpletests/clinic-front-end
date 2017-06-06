@@ -1,3 +1,5 @@
-<md-select col name="name" [placeholder]="placeholder" [(ngModel)]="value">
-  <ng-content></ng-content>
+<md-select style="width: 100%;" name="name" [placeholder]="placeholder" [(ngModel)]="value">
+  <md-option *ngFor="let role of options" [value]="role">
+    {{role}}
+  </md-option>
 </md-select>

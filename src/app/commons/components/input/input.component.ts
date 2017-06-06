@@ -17,7 +17,6 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACESSOR: any = {
 export class InputComponent extends ValueAccessor<string> {
 
   @Input('name') name: string;
-  @Input('type') type: string = 'text';
-  @Input('isTextarea') isTextarea: boolean = false;
   @Input('placeholder') placeholder: string;
+  @Input('type') type: string = 'text';
 }

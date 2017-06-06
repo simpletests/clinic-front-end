@@ -12,8 +12,6 @@ export class LoginComponent {
 
     user = {};
 
-    roles = ['ADMIN', 'DOC', 'SEC'];
-
     constructor(private loginService: LoginService, private router: Router) { }
 
     login(): void {
@@ -23,9 +21,5 @@ export class LoginComponent {
 
     enterClick() {
         console.log("Enter click");
-    }
-
-    log() {
-        console.log(this.user);
     }
 }

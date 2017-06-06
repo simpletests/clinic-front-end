@@ -50,6 +50,7 @@ import { ButtonComponent } from './commons/components/button/button.component';
 import { CheckboxComponent } from './commons/components/checkbox/checkbox.component';
 import { SelectOneComponent } from './commons/components/select-one/select-one.component';
 import { CardComponent } from './commons/components/card/card.component';
+import { TextareaComponent } from './commons/components/textarea/textarea.component';
 
 @NgModule({
     declarations: [
@@ -79,7 +80,8 @@ import { CardComponent } from './commons/components/card/card.component';
         ButtonComponent,
         CheckboxComponent,
         SelectOneComponent,
-        CardComponent
+        CardComponent,
+        TextareaComponent
     ],
     imports: [
         BrowserModule,
