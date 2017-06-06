@@ -1,58 +1,23 @@
 <h1 md-dialog-title>Patient</h1>
 <div md-dialog-content>
-  <md-input-container>
-    <input mdInput [(ngModel)]="patient.name" placeholder="Name"
-      type="text">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput [(ngModel)]="patient.email" placeholder="E-mail"
-      type="email">
-  </md-input-container>
+  <ss-container>
+    <ss-row>
+      <ss-input col placeholder="Name" [(ngModel)]="patient.name"></ss-input>
+      <ss-input col placeholder="E-mail" [(ngModel)]="patient.email" type="email"></ss-input>
+      <ss-input col placeholder="Cep" [(ngModel)]="postalCode" type="number"></ss-input>
 
-  <md-input-container>
-    <input mdInput [(ngModel)]="postalCode" placeholder="Cep"
-      type="number">
-  </md-input-container>
+      <!--<ss-input col placeholder="City" [(ngModel)]="patient.address.city"></ss-input>
+  <ss-input col placeholder="Country" [(ngModel)]="patient.address.country"></ss-input>
+  <ss-input col placeholder="State" [(ngModel)]="patient.address.state"></ss-input>
+  <ss-input col placeholder="Street" [(ngModel)]="patient.address.street"></ss-input>-->
 
-  <!--<md-input-container>
-        <input mdInput [ngModel]="patient.address.city" placeholder="City" type="text">
-    </md-input-container>
-
-    <md-input-container>
-        <input mdInput [ngModel]="patient.address.country" placeholder="Country"
-            type="text">
-    </md-input-container>
-
-    <md-input-container>
-        <input mdInput [ngModel]="patient.address.state" placeholder="State" type="text">
-    </md-input-container>
-    <md-input-container>
-        <input mdInput [ngModel]="patient.address.street" placeholder="Street"
-            type="text">
-    </md-input-container>-->
-
-  <md-input-container>
-    <input mdInput [(ngModel)]="patient.address.number"
-      placeholder="Number" type="number">
-  </md-input-container>
-
-  <md-input-container>
-    <input mdInput [(ngModel)]="patient.address.complement"
-      placeholder="Complement" type="text">
-  </md-input-container>
-
-  <md-input-container>
-    <input mdInput [(ngModel)]="patient.gender" placeholder="Gender"
-      type="text">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput [(ngModel)]="patient.phone" placeholder="Phone"
-      type="tel">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput [(ngModel)]="patient.cellphone" placeholder="Cellphone"
-      type="tel">
-  </md-input-container>
+      <ss-input col placeholder="Number" [(ngModel)]="patient.address.number" type="number"></ss-input>
+      <ss-input col placeholder="Complement" [(ngModel)]="patient.address.complement"></ss-input>
+      <ss-input col placeholder="Gender" [(ngModel)]="patient.gender"></ss-input>
+      <ss-input col placeholder="Phone" [(ngModel)]="patient.phone" type="tel"></ss-input>
+      <ss-input col placeholder="Cellphone" [(ngModel)]="patient.cellphone" type="tel"></ss-input>
+    </ss-row>
+  </ss-container>
 </div>
 <div md-dialog-actions>
   <!--<button md-raised-button md-dialog-close>Close</button>-->

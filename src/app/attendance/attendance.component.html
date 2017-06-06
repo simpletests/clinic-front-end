@@ -1,5 +1,4 @@
-<div fxLayout="row" fxLayout.sm="column" fxLayoutWrap
-    fxLayoutGap="5%">
+<div fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="5%">
     <ss-card>
         <ss-row *ngIf="pastHandbook">
             <ss-button [disabled]="handbookPageRequest.last" (click)="handbookPageRequest.nextPage()">
@@ -20,22 +19,16 @@
         </ss-row>
         <ss-row *ngIf="event">
             <br/>
-            <md-input-container>
-                <input mdInput placeholder="Disease" [(ngModel)]="event.handbook.disease">
-            </md-input-container>
-            <md-input-container>
-                <textarea mdInput placeholder="Observations" [(ngModel)]="event.handbook.observations"></textarea>
-            </md-input-container>
+            <ss-input col placeholder="Disease" [(ngModel)]="event.handbook.disease"></ss-input>
+            <ss-input col placeholder="Observations" [(ngModel)]="event.handbook.observations"></ss-input>
         </ss-row>
     </ss-card>
-
 </div>
 
 <br/>Duration {{currentDate|async|date:"mm:ss"}}
 <br/>
 <div *ngIf="event">
-    Event: {{event.start | date:"dd/MM/yy hh:mm"}} - {{event.end
-    | date:"dd/MM/yy hh:mm"}}
+    Event: {{event.start | date:"dd/MM/yy hh:mm"}} - {{event.end | date:"dd/MM/yy hh:mm"}}
     <br/> Patient: {{event.patient.name}}
 </div>
 <ss-button (click)="save()">
