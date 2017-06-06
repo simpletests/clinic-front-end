@@ -30,7 +30,7 @@ export class RestService<T>{
     if (pageRequest) {
       options.params.append("page", pageRequest.number.toString());
       options.params.append("size", pageRequest.size.toString());
-      options.params.append("search", pageRequest.search.toString());
+      options.params.append("search", pageRequest.search || "".toString());
     }
     return options;
   }

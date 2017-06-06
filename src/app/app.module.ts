@@ -50,6 +50,8 @@ import { ButtonComponent } from './commons/components/button/button.component';
 import { CheckboxComponent } from './commons/components/checkbox/checkbox.component';
 import { SelectOneComponent } from './commons/components/select-one/select-one.component';
 import { CardComponent } from './commons/components/card/card.component';
+import { AutocompleteComponent } from './commons/components/autocomplete/autocomplete.component';
+import { TestsComponent } from './tests/tests.component';
 
 @NgModule({
     declarations: [
@@ -79,7 +81,9 @@ import { CardComponent } from './commons/components/card/card.component';
         ButtonComponent,
         CheckboxComponent,
         SelectOneComponent,
-        CardComponent
+        CardComponent,
+        AutocompleteComponent,
+        TestsComponent
     ],
     imports: [
         BrowserModule,

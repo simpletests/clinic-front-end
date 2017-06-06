@@ -1,0 +1,7 @@
+<md-input-container>
+  <input mdInput [(ngModel)]="value" [formControl]="myControl" [placeholder]="placeholder"
+    type="text" [mdAutocomplete]="autoComplete">
+</md-input-container>
+<md-autocomplete #autoComplete="mdAutocomplete" [displayWith]="displayFn">
+  <md-option *ngFor="let val of filteredOptions | async" [value]="val">{{displayFn(val)}}</md-option>
+</md-autocomplete>

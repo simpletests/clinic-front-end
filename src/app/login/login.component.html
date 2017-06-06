@@ -9,7 +9,8 @@
       <ss-input col name="username" placeholder="Username" [(ngModel)]="user.username"></ss-input>
 
       <!-- Faltando apenas o tratamento de erros -->
-      <ss-input col name="password" placeholder="Password" [(ngModel)]="user.password" type="password"></ss-input>
+      <ss-input col name="password" placeholder="Password" [(ngModel)]="user.password"
+        type="password"></ss-input>
 
       <ss-button col [disabled]="!formLogin.form.valid" label="Entrar" (click)="formLogin.ngSubmit.emit()"></ss-button>
 
@@ -26,7 +27,8 @@
         </md-option>
       </md-select>
 
-      <ss-button col [disabled]="!formLogin.form.valid" label="Testar componentes" (click)="log()"></ss-button>
+      <ss-button col [disabled]="!formLogin.form.valid" label="Testar componentes"
+        (click)="log()"></ss-button>
     </ss-row>
   </ss-container>
 </form>
