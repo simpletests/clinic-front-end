@@ -3,8 +3,7 @@ import { Observable } from "rxjs/Rx";
 
 @Component({
   selector: 'app-tests',
-  templateUrl: './tests.component.html',
-  styleUrls: ['./tests.component.scss']
+  templateUrl: './tests.component.html'
 })
 export class TestsComponent implements OnInit {
 
