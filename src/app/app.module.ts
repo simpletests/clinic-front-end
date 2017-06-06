@@ -51,6 +51,8 @@ import { CheckboxComponent } from './commons/components/checkbox/checkbox.compon
 import { SelectOneComponent } from './commons/components/select-one/select-one.component';
 import { CardComponent } from './commons/components/card/card.component';
 import { TextareaComponent } from './commons/components/textarea/textarea.component';
+import { AutocompleteComponent } from './commons/components/autocomplete/autocomplete.component';
+import { TestsComponent } from './tests/tests.component';
 
 @NgModule({
     declarations: [
@@ -81,7 +83,9 @@ import { TextareaComponent } from './commons/components/textarea/textarea.compon
         CheckboxComponent,
         SelectOneComponent,
         CardComponent,
-        TextareaComponent
+        TextareaComponent,
+        AutocompleteComponent,
+        TestsComponent
     ],
     imports: [
         BrowserModule,

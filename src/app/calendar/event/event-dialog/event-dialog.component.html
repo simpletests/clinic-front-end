@@ -2,8 +2,7 @@
 <div md-dialog-content>
   <br/>
 
-  <ss-button md-dialog-close [routerLink]="['attendance',event.id]"
-    *ngIf="event.id">
+  <ss-button md-dialog-close [routerLink]="['attendance',event.id]" *ngIf="event.id">
     Start attendance
   </ss-button>
   <br/>
@@ -15,14 +14,9 @@
     <input mdInput placeholder="End Date" [ngModel]="event.end | date:'yyyy-MM-ddTHH:mm'"
       (ngModelChange)="event.end = $event" type="datetime-local">
   </md-input-container>
-  <md-input-container>
-    <input mdInput [(ngModel)]="event.patient" [formControl]="myControl"
-      placeholder="Patient" type="text" [mdAutocomplete]="autoPatient">
-  </md-input-container>
-  <md-autocomplete #autoPatient="mdAutocomplete" [displayWith]="displayFn">
-    <md-option *ngFor="let val of filteredOptions | async"
-      [value]="val">{{val.name}}</md-option>
-  </md-autocomplete>
+  <ss-autocomplete [(ngModel)]="event.patient" placeholder="Patient" [displayFn]="displayFn"
+    [querySearch]="querySearch.bind(this)">
+  </ss-autocomplete>
 </div>
 <div md-dialog-actions>
   <!--<button md-raised-button md-dialog-close>Close</button>-->

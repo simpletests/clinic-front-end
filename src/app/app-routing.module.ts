@@ -10,6 +10,7 @@ import { LoginComponent } from 'app/login/login.component';
 import { UserComponent } from "app/user/user.component";
 
 import { AuthGuard } from "app/guard/auth.guard";
+import { TestsComponent } from "app/tests/tests.component";
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -20,7 +21,8 @@ const routes: Routes = [
     { path: 'patient', component: PatientComponent, canActivate: [AuthGuard] },
     { path: 'financial', component: FinancialComponent, canActivate: [AuthGuard] },
     { path: 'report', component: ReportComponent, canActivate: [AuthGuard] },
-    { path: 'user', component: UserComponent, canActivate: [AuthGuard] }
+    { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+    { path: 'test', component: TestsComponent }
 
 ];
 
