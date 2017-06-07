@@ -1,5 +1,6 @@
-<md-select style="width: 100%;" name="name" [placeholder]="placeholder" [(ngModel)]="value">
+<md-select style="width: 100%;" name="name" [placeholder]="placeholder"
+  [(ngModel)]="value">
   <md-option *ngFor="let option of options" [value]="option">
-    {{option}}
+    {{displayFn(option)}}
   </md-option>
 </md-select>

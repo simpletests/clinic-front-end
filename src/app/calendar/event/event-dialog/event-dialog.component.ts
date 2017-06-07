@@ -20,11 +20,34 @@ export class EventDialogComponent implements OnInit {
   event;
   myControl = new FormControl();
   filteredOptions: Observable<any[]>;
+  time: Date;
+  times: Date[];
+  duration: number;
 
   constructor(public dialogRef: MdDialogRef<EventDialogComponent>, public patientService: PatientService
     , public eventService: EventService) {
     this.filteredOptions = this.myControl.valueChanges
       .flatMap(qry => this.querySearch(qry));
+    this.createTimes();
+
+  }
+
+  createTimes() {
+    this.times = [];
+    let auxDate = new Date(0);
+    for (var hour = 8; hour < 18; hour++) {
+      auxDate.setHours(hour);
+      for (var minute = 0; minute < 60; minute += 15) {
+        auxDate.setMinutes(minute);
+        this.times.push(_.cloneDeep(auxDate));
+      }
+    }
+  }
+
+  displayHoras(date: Date): string {
+    var str = date.toLocaleTimeString();
+    return str.substring(0, str.length - 3);
+    // return date.getHours() + ":" + date.getMinutes();
   }
 
   querySearch(qry: string): Observable<any[]> {
@@ -71,6 +94,10 @@ export class EventDialogComponent implements OnInit {
 
   setEvent(event) {
     this.event = _.cloneDeep(event);
+    this.time = new Date(0);
+    this.time.setHours(this.event.start.getHours());
+    this.time.setMinutes(this.event.start.getMinutes());
+    this.duration = Math.floor((Math.abs(this.event.start - this.event.end) / 1000) / 60);
   }
 
   // filter(val: string): string[] {
