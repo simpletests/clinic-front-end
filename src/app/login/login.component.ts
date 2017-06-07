@@ -17,8 +17,4 @@ export class LoginComponent {
         this.loginService.login(this.user);
         this.router.navigate(['/dashboard']);
     }
-
-    enterClick() {
-        console.log("Enter click");
-    }
 }

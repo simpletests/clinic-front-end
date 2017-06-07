@@ -53,6 +53,7 @@ import { CardComponent } from './commons/components/card/card.component';
 import { TextareaComponent } from './commons/components/textarea/textarea.component';
 import { AutocompleteComponent } from './commons/components/autocomplete/autocomplete.component';
 import { TestsComponent } from './tests/tests.component';
+import { IconComponent } from './commons/components/icon/icon.component';
 
 @NgModule({
     declarations: [
@@ -85,7 +86,8 @@ import { TestsComponent } from './tests/tests.component';
         CardComponent,
         TextareaComponent,
         AutocompleteComponent,
-        TestsComponent
+        TestsComponent,
+        IconComponent
     ],
     imports: [
         BrowserModule,

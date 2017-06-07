@@ -2,14 +2,8 @@ Patient
 <br/>
 <ss-container>
     <ss-row>
-        <ss-button col columns="3" (click)="newPatient()">
-            New
-        </ss-button>
-
-        <md-input-container style="float:right">
-            <input mdInput [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()" placeholder="Search"
-                type="text">
-        </md-input-container>
+        <ss-button col columns="3" label="New" (click)="newPatient()"></ss-button>
+        <ss-input col placeholder="Search" [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()"></ss-input>
     </ss-row>
     <ss-row *ngIf="pageContent.content && pageContent.content.length>0">
         <!--<ss-datatable value="[nome:'aa']">
