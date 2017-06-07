@@ -1,22 +1,14 @@
 <h1 md-dialog-title>User</h1>
 <div md-dialog-content>
-  <md-input-container>
-    <input mdInput placeholder="Name" [(ngModel)]="user.name" />
-  </md-input-container>
-  <md-input-container>
-    <input mdInput placeholder="Username" [(ngModel)]="user.username" />
-  </md-input-container>
-  <md-input-container>
-    <input mdInput placeholder="Password" type="password" [(ngModel)]="user.password" />
-  </md-input-container>
-  <md-checkbox [(ngModel)]="user.enabled">
-    Enabled
-  </md-checkbox>
-  <md-select placeholder="Roles" [(ngModel)]="user.roles">
-    <md-option *ngFor="let role of roles" [value]="role">
-      {{role}}
-    </md-option>
-  </md-select>
+  <ss-container>
+    <ss-row>
+      <ss-input col placeholder="Name" [(ngModel)]="user.name"></ss-input>
+      <ss-input col placeholder="Username" [(ngModel)]="user.username"></ss-input>
+      <ss-input col placeholder="Password" [(ngModel)]="user.password" type="password"></ss-input>
+      <ss-checkbox col label="Enable" [(ngModel)]="user.enabled"></ss-checkbox>
+      <ss-select col placeholder="Roles" [(ngModel)]="user.roles" [options]="roles"></ss-select>
+    </ss-row>
+  </ss-container>
 </div>
 <div md-dialog-actions>
   <!--<button md-raised-button md-dialog-close>Close</button>-->
