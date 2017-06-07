@@ -54,6 +54,7 @@ import { TextareaComponent } from './commons/components/textarea/textarea.compon
 import { AutocompleteComponent } from './commons/components/autocomplete/autocomplete.component';
 import { TestsComponent } from './tests/tests.component';
 import { IconComponent } from './commons/components/icon/icon.component';
+import { DatepickerComponent } from './commons/components/datepicker/datepicker.component';
 
 @NgModule({
     declarations: [
@@ -87,7 +88,8 @@ import { IconComponent } from './commons/components/icon/icon.component';
         TextareaComponent,
         AutocompleteComponent,
         TestsComponent,
-        IconComponent
+        IconComponent,
+        DatepickerComponent
     ],
     imports: [
         BrowserModule,
