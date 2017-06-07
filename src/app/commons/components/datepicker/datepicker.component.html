@@ -1,5 +1,5 @@
 <md-input-container style="width: 100%;">
-  <input [(ngModel)]="value" mdInput [mdDatepicker]="picker"
-    [placeholder]="placeholder" (focus)="picker.open()">
+  <input [(ngModel)]="value" mdInput [mdDatepicker]="picker" [placeholder]="placeholder"
+    (focus)="picker.open()">
 </md-input-container>
 <md-datepicker #picker [startAt]="getStartAt()" [startView]="startView"></md-datepicker>
