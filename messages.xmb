@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE messagebundle [
+<!ELEMENT messagebundle (msg)*>
+<!ATTLIST messagebundle class CDATA #IMPLIED>
+
+<!ELEMENT msg (#PCDATA|ph|source)*>
+<!ATTLIST msg id CDATA #IMPLIED>
+<!ATTLIST msg seq CDATA #IMPLIED>
+<!ATTLIST msg name CDATA #IMPLIED>
+<!ATTLIST msg desc CDATA #IMPLIED>
+<!ATTLIST msg meaning CDATA #IMPLIED>
+<!ATTLIST msg obsolete (obsolete) #IMPLIED>
+<!ATTLIST msg xml:space (default|preserve) "default">
+<!ATTLIST msg is_hidden CDATA #IMPLIED>
+
+<!ELEMENT source (#PCDATA)>
+
+<!ELEMENT ph (#PCDATA|ex)*>
+<!ATTLIST ph name CDATA #REQUIRED>
+
+<!ELEMENT ex (#PCDATA)>
+]>
+<messagebundle>
+  <msg id="7858030233050389022" desc=" Um nome sujestivo pra tela de login" meaning="Título login "><source>C:/Users/Desenvolvimento02/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts:5</source>Login</msg>
+  <msg id="8147127605139711718" desc=" uma dica que indique pro usuário inserir seu usernmae" meaning="Placeholder usuário "><source>C:/Users/Desenvolvimento02/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts:10</source>Usuário</msg>
+  <msg id="150555469217751648"><source>C:/Users/Desenvolvimento02/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts:13</source>Senha</msg>
+  <msg id="600376029726528115"><source>C:/Users/Desenvolvimento02/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts:15</source>Entrar</msg>
+</messagebundle>
