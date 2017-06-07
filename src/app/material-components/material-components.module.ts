@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {
     MdButtonModule, MdCheckboxModule, MdToolbarModule, MdSidenavModule, MdMenuModule, MdListModule,
     MdIconModule, MdDialogModule, MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule,
-    MdSelectModule, MdSnackBarModule, MdNativeDateModule, MdDatepickerModule
+    MdSelectModule, MdSnackBarModule, MdNativeDateModule, MdDatepickerModule, MdSliderModule
 } from '@angular/material';
 
 @NgModule({
@@ -23,7 +23,8 @@ import {
         MdSelectModule,
         MdSnackBarModule,
         MdNativeDateModule,
-        MdDatepickerModule],
+        MdDatepickerModule,
+        MdSliderModule],
     exports: [MdButtonModule,
         MdCheckboxModule,
         MdToolbarModule,
@@ -39,7 +40,8 @@ import {
         MdSelectModule,
         MdSnackBarModule,
         MdDatepickerModule,
-        MdNativeDateModule]
+        MdNativeDateModule,
+        MdSliderModule]
 })
 export class MaterialComponentsModule { }
 

@@ -8,6 +8,7 @@ import { MaterialComponentsModule } from './material-components/material-compone
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
+import 'moment';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -54,6 +55,7 @@ import { AutocompleteComponent } from './commons/components/autocomplete/autocom
 import { TestsComponent } from './tests/tests.component';
 import { IconComponent } from './commons/components/icon/icon.component';
 import { DatepickerComponent } from './commons/components/datepicker/datepicker.component';
+import { SliderComponent } from './commons/components/slider/slider.component';
 
 @NgModule({
     declarations: [
@@ -88,7 +90,8 @@ import { DatepickerComponent } from './commons/components/datepicker/datepicker.
         AutocompleteComponent,
         TestsComponent,
         IconComponent,
-        DatepickerComponent
+        DatepickerComponent,
+        SliderComponent
     ],
     imports: [
         BrowserModule,

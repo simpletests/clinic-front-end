@@ -2,19 +2,18 @@
 <div md-dialog-content>
   <br/>
 
-  <ss-button md-dialog-close [routerLink]="['attendance',event.id]"
-    *ngIf="event.id">
+  <ss-button md-dialog-close [routerLink]="['attendance',event.id]" *ngIf="event.id">
     Start attendance
   </ss-button>
   <br/>
   <ss-datepicker placeholder="Início" [(ngModel)]="event.start">
   </ss-datepicker>
-  <ss-select col placeholder="Horário" [(ngModel)]="time"
-    [options]="times" [displayFn]="displayHoras"></ss-select>
-  <!--<ss-slider placeholder="Duração">
-  </ss-slider>-->
-  <ss-autocomplete [(ngModel)]="event.patient" placeholder="Patient"
-    [displayFn]="displayFn" [querySearch]="querySearch.bind(this)">
+  <ss-select col placeholder="Horário" [(ngModel)]="time" [options]="times"
+    [displayFn]="displayHoras"></ss-select>
+  <ss-slider [(ngModel)]="duration" placeholder="Duração" min="5" max="55">
+  </ss-slider>
+  <ss-autocomplete [(ngModel)]="event.patient" placeholder="Patient" [displayFn]="displayFn"
+    [querySearch]="querySearch.bind(this)">
   </ss-autocomplete>
 </div>
 <div md-dialog-actions>

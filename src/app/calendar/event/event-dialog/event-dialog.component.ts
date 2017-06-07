@@ -8,6 +8,7 @@ import { PatientService } from "app/patient/patient.service";
 import { EventService } from "app/calendar/event/event.service";
 
 import * as _ from 'lodash';
+import * as moment from 'moment';
 import { PageRequest } from "app/service/page-request";
 
 @Component({
@@ -61,6 +62,9 @@ export class EventDialogComponent implements OnInit {
   }
 
   saveOrUpdate() {
+    this.event.start.setMinutes(this.time.getMinutes());
+    this.event.start.setHours(this.time.getHours());
+    this.event.end = moment(this.event.start).add(this.duration, 'minutes').toDate();
     this.eventService.saveOrUpdate(this.event).subscribe(response => {
       if (response.ok) {
         console.log("save event ok");
@@ -94,10 +98,11 @@ export class EventDialogComponent implements OnInit {
 
   setEvent(event) {
     this.event = _.cloneDeep(event);
-    this.time = new Date(0);
-    this.time.setHours(this.event.start.getHours());
-    this.time.setMinutes(this.event.start.getMinutes());
-    this.duration = Math.floor((Math.abs(this.event.start - this.event.end) / 1000) / 60);
+    console.log(event);
+    this.time = this.times.filter(t =>
+      t.getHours() == this.event.start.getHours()
+      && t.getMinutes() == this.event.start.getMinutes())[0];
+    this.duration = moment.duration(moment(this.event.end).diff(this.event.start)).asMinutes();
   }
 
   // filter(val: string): string[] {
