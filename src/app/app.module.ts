@@ -9,7 +9,6 @@ import { MaterialComponentsModule } from './material-components/material-compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AttendanceComponent } from './attendance/attendance.component';
@@ -98,7 +97,6 @@ import { DatepickerComponent } from './commons/components/datepicker/datepicker.
         AppRoutingModule,
         MaterialComponentsModule,
         ReactiveFormsModule,
-        FlexLayoutModule,
         BrowserAnimationsModule
     ],
     providers: [
