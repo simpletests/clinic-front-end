@@ -2,20 +2,19 @@
 <div md-dialog-content>
   <br/>
 
-  <ss-button md-dialog-close [routerLink]="['attendance',event.id]" *ngIf="event.id">
+  <ss-button md-dialog-close [routerLink]="['attendance',event.id]"
+    *ngIf="event.id">
     Start attendance
   </ss-button>
   <br/>
-  <md-input-container>
-    <input mdInput placeholder="Start Date" [ngModel]="event.start | date:'yyyy-MM-ddTHH:mm'"
-      (ngModelChange)="event.start = $event" type="datetime-local">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput placeholder="End Date" [ngModel]="event.end | date:'yyyy-MM-ddTHH:mm'"
-      (ngModelChange)="event.end = $event" type="datetime-local">
-  </md-input-container>
-  <ss-autocomplete [(ngModel)]="event.patient" placeholder="Patient" [displayFn]="displayFn"
-    [querySearch]="querySearch.bind(this)">
+  <ss-datepicker placeholder="Início" [(ngModel)]="event.start">
+  </ss-datepicker>
+  <ss-select col placeholder="Horário" [(ngModel)]="time"
+    [options]="times" [displayFn]="displayHoras"></ss-select>
+  <!--<ss-slider placeholder="Duração">
+  </ss-slider>-->
+  <ss-autocomplete [(ngModel)]="event.patient" placeholder="Patient"
+    [displayFn]="displayFn" [querySearch]="querySearch.bind(this)">
   </ss-autocomplete>
 </div>
 <div md-dialog-actions>

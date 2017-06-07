@@ -19,4 +19,5 @@ export class SelectOneComponent extends ValueAccessor<string> {
   @Input('name') name: string;
   @Input('placeholder') placeholder: string;
   @Input('options') options: any[];
+  @Input('displayFn') displayFn = (v) => v;
 }

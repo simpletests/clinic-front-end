@@ -12,7 +12,8 @@
   <ss-input col placeholder="Country" [(ngModel)]="patient.address.country"></ss-input>
   <ss-input col placeholder="State" [(ngModel)]="patient.address.state"></ss-input>
   <ss-input col placeholder="Street" [(ngModel)]="patient.address.street"></ss-input>-->
-
+      <ss-datepicker col placeholder="Data de nascimento"
+        [(ngModel)]="patient.birthdate"></ss-datepicker>
       <ss-input col placeholder="Number" [(ngModel)]="patient.address.number"
         type="number"></ss-input>
       <ss-input col placeholder="Complement" [(ngModel)]="patient.address.complement"></ss-input>
