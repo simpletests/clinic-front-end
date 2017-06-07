@@ -13,8 +13,14 @@
       <ss-input col i18n-placeholder name="password" placeholder="Senha" [(ngModel)]="user.password"
         type="password"></ss-input>
 
+<<<<<<< HEAD
       <ss-button col i18n-label [disabled]="!formLogin.form.valid" label="Entrar"
         (click)="formLogin.ngSubmit.emit()"></ss-button>
+=======
+      <ss-button col i18n-label [disabled]="!formLogin.form.valid" label="Entrar" (click)="formLogin.ngSubmit.emit()"></ss-button>
+
+      <ss-select col placeholder="selecionar" [options]="['one','two','three','four']"></ss-select>
+>>>>>>> 83adc38827cfc4344cc1545565cb695eb567d136
     </ss-row>
   </ss-container>
 </form>
