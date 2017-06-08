@@ -41,8 +41,12 @@ export class CalendarComponent implements OnInit {
     }
 
     openDialog(event) {
-        Observable.of(event).map(e => e ? e : this.eventService.getNew())
-            .subscribe(e => this.createDialog(e));
+        if (event) {
+            this.createDialog(event);
+        } else {
+            this.eventService.getNew()
+                .subscribe(obj => this.createDialog(obj));
+        }
     };
 
     private createDialog(event) {
