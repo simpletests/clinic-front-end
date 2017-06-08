@@ -5,6 +5,9 @@ import { AuthService } from "app/service/auth.service";
 import { PageRequest } from "app/service/page-request";
 import { SnackbarService } from "app/commons/snackbar.service";
 
+import * as _ from 'lodash';
+import * as moment from 'moment';
+
 @Injectable()
 export class RestService<T>{
 
@@ -68,7 +71,9 @@ export class RestService<T>{
   }
 
   saveOrUpdate(event): Observable<Response> {
-    let response = this.http.post(this.url(), event, this.getOptions());
+    let copyEvent = _.cloneDeep(event);
+    this.transformDates(copyEvent);
+    let response = this.http.post(this.url(), copyEvent, this.getOptions());
     response.subscribe(event => this.snackbarService.info("Save status: " + event.status));
     return response;
   }
@@ -77,5 +82,18 @@ export class RestService<T>{
     let response = this.http.delete(this.url() + "/" + id, this.getOptions());
     response.subscribe(event => this.snackbarService.info("Delete status: " + event.status));
     return response;
+  }
+
+  transformDates(event) {
+    for (var property in event) {
+      if (event.hasOwnProperty(property)) {
+        if (event[property] instanceof Date) {
+          let date: Date = event[property];
+          event[property] = moment(date).format("YYYY-MM-DD[T]hh:mm:ss.SSS");;
+        } else if (typeof event[property] === 'object') {
+          this.transformDates(event[property]);
+        }
+      }
+    }
   }
 }
