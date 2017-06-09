@@ -27,6 +27,9 @@ export class RestService<T>{
     let options: RequestOptions = this.authService.authOptions();
     if (params) {
       for (let param of params) {
+        if (param.val instanceof Date) {
+          param.val = this.transformDate(param.val);
+        }
         options.params.append(param.param, param.val);
       }
     }
@@ -88,12 +91,15 @@ export class RestService<T>{
     for (var property in event) {
       if (event.hasOwnProperty(property)) {
         if (event[property] instanceof Date) {
-          let date: Date = event[property];
-          event[property] = moment(date).format("YYYY-MM-DD[T]hh:mm:ss.SSS");;
+          event[property] = this.transformDate(event[property]);
         } else if (typeof event[property] === 'object') {
           this.transformDates(event[property]);
         }
       }
     }
+  }
+
+  transformDate(date: Date): string {
+    return moment(date).format("YYYY-MM-DD[T]hh:mm:ss[Z]");
   }
 }
