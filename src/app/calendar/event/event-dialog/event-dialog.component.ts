@@ -98,11 +98,13 @@ export class EventDialogComponent implements OnInit {
 
   setEvent(event) {
     this.event = _.cloneDeep(event);
-    console.log(event);
+    this.event.start = moment(this.event.start).toDate();
+    this.event.end = moment(this.event.end).toDate();
     this.time = this.times.filter(t =>
       t.getHours() == this.event.start.getHours()
       && t.getMinutes() == this.event.start.getMinutes())[0];
     this.duration = moment.duration(moment(this.event.end).diff(this.event.start)).asMinutes();
+    this.duration = this.duration || 15;
   }
 
   // filter(val: string): string[] {
