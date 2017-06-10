@@ -1,18 +1,16 @@
 <!--<p>{{user.name}} - {{user.username}} - {{user.password}} - {{user.enabled}} - {{user.roles}}</p>-->
 
 <ss-row>
-    <ss-button (click)="createNew()" col columns="3">
-        New
-    </ss-button>
+    <ss-button col columns="3" i18n-label (click)="createNew()" label="Novo"></ss-button>
 </ss-row>
 <ss-row>
     <table col columns="12">
         <tr>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Enabled</th>
-            <th>Roles</th>
+            <th i18n>Nome</th>
+            <th i18n>Usuário</th>
+            <th i18n>Senha</th>
+            <th i18n>Ativo</th>
+            <th i18n>Nível</th>
             <th></th>
             <th></th>
         </tr>

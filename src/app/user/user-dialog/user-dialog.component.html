@@ -2,16 +2,16 @@
 <div md-dialog-content>
   <ss-container>
     <ss-row>
-      <ss-input col placeholder="Name" [(ngModel)]="user.name"></ss-input>
-      <ss-input col placeholder="Username" [(ngModel)]="user.username"></ss-input>
-      <ss-input col placeholder="Password" [(ngModel)]="user.password" type="password"></ss-input>
-      <ss-checkbox col label="Enable" [(ngModel)]="user.enabled"></ss-checkbox>
-      <ss-select col placeholder="Roles" [(ngModel)]="user.roles" [options]="roles"></ss-select>
+      <ss-input col i18n-placeholder placeholder="Nome" [(ngModel)]="user.name"></ss-input>
+      <ss-input col i18n-placeholder placeholder="Usuário" [(ngModel)]="user.username"></ss-input>
+      <ss-input col i18n-placeholder placeholder="Senha" [(ngModel)]="user.password" type="password"></ss-input>
+      <ss-checkbox col i18n-label label="Ativo" [(ngModel)]="user.enabled"></ss-checkbox>
+      <ss-select col i18n-placeholder placeholder="Papel" [(ngModel)]="user.roles" [options]="roles"></ss-select>
     </ss-row>
   </ss-container>
 </div>
 <div md-dialog-actions>
   <!--<button md-raised-button md-dialog-close>Close</button>-->
-  <ss-button (click)="delete()" *ngIf="user.id">Delete</ss-button>
-  <ss-button (click)="saveOrUpdate()">{{user.id?"Update":"Insert"}}</ss-button>
+  <ss-button i18n-label (click)="delete()" *ngIf="user.id" label="Excluir"></ss-button>
+  <ss-button i18n-label (click)="saveOrUpdate()" label="{{user.id?'Atualizar':'Inserir'}}"></ss-button>
 </div>

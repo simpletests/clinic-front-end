@@ -1,23 +1,17 @@
 <h1 md-dialog-title>Dialog</h1>
+
 <div md-dialog-content>
   <br/>
-
-  <ss-button md-dialog-close [routerLink]="['attendance',event.id]" *ngIf="event.id">
-    Start attendance
-  </ss-button>
+  <ss-button i18n-label md-dialog-close [routerLink]="['attendance',event.id]" *ngIf="event.id" label="Iniciar atendimento"></ss-button>
   <br/>
-  <ss-datepicker placeholder="Início" [(ngModel)]="event.start">
-  </ss-datepicker>
-  <ss-select col placeholder="Horário" [(ngModel)]="time" [options]="times"
-    [displayFn]="displayHoras"></ss-select>
-  <ss-slider [(ngModel)]="duration" placeholder="Duração" min="5" max="55">
-  </ss-slider>
-  <ss-autocomplete [(ngModel)]="event.patient" placeholder="Patient" [displayFn]="displayFn"
-    [querySearch]="querySearch.bind(this)">
-  </ss-autocomplete>
+  <ss-datepicker i18n-placeholder placeholder="Início" [(ngModel)]="event.start"></ss-datepicker>
+  <ss-select col i18n-placeholder placeholder="Horário" [(ngModel)]="time" [options]="times" [displayFn]="displayHoras"></ss-select>
+  <ss-slider i18n-placeholder placeholder="Duração" min="5" max="55" [(ngModel)]="duration"></ss-slider>
+  <ss-autocomplete i18n-placeholder placeholder="Paciente" [(ngModel)]="event.patient" [displayFn]="displayFn" [querySearch]="querySearch.bind(this)"></ss-autocomplete>
 </div>
+
 <div md-dialog-actions>
   <!--<button md-raised-button md-dialog-close>Close</button>-->
-  <ss-button (click)="delete(event)" *ngIf="event.id">Delete</ss-button>
-  <ss-button (click)="saveOrUpdate()">{{event.id?"Update":"Insert"}}</ss-button>
+  <ss-button i18n-label (click)="delete(event)" *ngIf="event.id" label="Deletar"></ss-button>
+  <ss-button i18n-label (click)="saveOrUpdate()" label="{{event.id?'Atualizar':'Inserir'}}"></ss-button>
 </div>

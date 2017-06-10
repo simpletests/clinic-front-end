@@ -3,7 +3,7 @@ import { TRANSLATION_EN, TRANSLATION_ES, TRANSLATION_FR } from "../locale/messag
 
 export function getTranslationProviders(): Promise<Object[]> {
 
-    const locale: string = 'fr';
+    const locale: string = 'pt';
 
     const noProviders: Object[] = [];
     if (!locale || locale === 'pt') {

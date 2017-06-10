@@ -6,13 +6,13 @@
     <thead>
         <tr [ngSwitch]="day.date.getDay()">
             <th class="weekDays" style="width:50px"></th>
-            <th class="weekDays" *ngSwitchCase="0">{{'Sun'}}</th>
-            <th class="weekDays" *ngSwitchCase="1">{{'Mon'}}</th>
-            <th class="weekDays" *ngSwitchCase="2">{{'Tue'}}</th>
-            <th class="weekDays" *ngSwitchCase="3">{{'Wed'}}</th>
-            <th class="weekDays" *ngSwitchCase="4">{{'Thr'}}</th>
-            <th class="weekDays" *ngSwitchCase="5">{{'Fri'}}</th>
-            <th class="weekDays" *ngSwitchCase="6">{{'Sat'}}</th>
+            <th class="weekDays" *ngSwitchCase="0" i18n>{{'Dom'}}</th>
+            <th class="weekDays" *ngSwitchCase="1" i18n>{{'Seg'}}</th>
+            <th class="weekDays" *ngSwitchCase="2" i18n>{{'Ter'}}</th>
+            <th class="weekDays" *ngSwitchCase="3" i18n>{{'Qua'}}</th>
+            <th class="weekDays" *ngSwitchCase="4" i18n>{{'Qui'}}</th>
+            <th class="weekDays" *ngSwitchCase="5" i18n>{{'Sex'}}</th>
+            <th class="weekDays" *ngSwitchCase="6" i18n>{{'Sab'}}</th>
         </tr>
     </thead>
     <tbody>

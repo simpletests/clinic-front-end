@@ -46,7 +46,7 @@ export class PatientComponent implements OnInit {
 
     confirmDelete(deletedPatient) {
         let dialogRef = this.dialog.open(ConfirmComponent)
-        dialogRef.componentInstance.message = "Are you sure?";
+        dialogRef.componentInstance.message = "Tem certeza?";
         dialogRef.afterClosed().subscribe(confirm => {
             if (confirm) {
                 this.patientService.delete(deletedPatient.id).subscribe(response => this.getList());

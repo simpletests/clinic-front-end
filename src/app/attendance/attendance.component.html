@@ -10,27 +10,29 @@
             </ss-button>
         </ss-row>
         <ss-row *ngIf="pastHandbook">
-            <br/> Resume: {{pastHandbook.resume}}
+            <br/> 
+            <p i18n>Resumo:</p> {{pastHandbook.resume}}
         </ss-row>
     </ss-card>
     <ss-card>
         <ss-row>
-            <p style="text-align:center">Handbook</p>
+            <p style="text-align:center" i18n>Prontuário</p>
         </ss-row>
         <ss-row *ngIf="event">
             <br/>
-            <ss-input col placeholder="Disease" [(ngModel)]="event.handbook.disease"></ss-input>
-            <ss-input col placeholder="Observations" [(ngModel)]="event.handbook.observations"></ss-input>
+            <ss-input col i18n-placeholder placeholder="Doença" [(ngModel)]="event.handbook.disease"></ss-input>
+            <ss-input col i18n-placeholder placeholder="Observações" [(ngModel)]="event.handbook.observations"></ss-input>
         </ss-row>
     </ss-card>
 </div>
 
-<br/>Duration {{currentDate|async|date:"mm:ss"}}
+<br/><p>Duração</p> {{currentDate|async|date:"mm:ss"}}
 <br/>
 <div *ngIf="event">
-    Event: {{event.start | date:"dd/MM/yy hh:mm"}} - {{event.end | date:"dd/MM/yy hh:mm"}}
-    <br/> Patient: {{event.patient.name}}
+    <p i18n>Evento:</p> {{event.start | date:"dd/MM/yy hh:mm"}} - {{event.end | date:"dd/MM/yy hh:mm"}}
+    <br/>
+    <p i18n>Paciente:</p> {{event.patient.name}}
 </div>
-<ss-button (click)="save()">
-    <i class="material-icons">save</i> Save
+<ss-button i18n-label (click)="save()" label="Salvar">
+    <i class="material-icons">save</i>
 </ss-button>

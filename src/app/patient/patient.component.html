@@ -1,21 +1,16 @@
-Patient
+<p i18n>Paciente</p>
 <br/>
 <ss-container>
     <ss-row>
-        <ss-button col columns="3" label="New" (click)="newPatient()"></ss-button>
-        <ss-input col placeholder="Search" [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()"></ss-input>
+        <ss-button col columns="3" i18n-label label="Novo" (click)="newPatient()"></ss-button>
+        <ss-input col i18n-placeholder placeholder="Perquisar" [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()"></ss-input>
     </ss-row>
     <ss-row *ngIf="pageContent.content && pageContent.content.length>0">
-        <!--<ss-datatable value="[nome:'aa']">
-            <ss-datatable-column headerText="Nome" value="nome">
-
-            </ss-datatable-column>
-        </ss-datatable>-->
         <table style="width:100%">
             <tr>
-                <th>Name</th>
-                <th>E-mail</th>
-                <th>Address</th>
+                <th i18n>Nome</th>
+                <th i18n>E-mail</th>
+                <th i18n>Endereço</th>
             </tr>
             <tr *ngFor="let p of pageContent.content">
                 <td>{{p.name}}</td>
@@ -33,8 +28,7 @@ Patient
         </table>
     </ss-row>
     <ss-row>
-        <ss-button col columns="1" offsets="2" (click)="pageRequest.firstPage()" [disabled]="pageRequest.first"
-            icon="keyboard_arrow_left">
+        <ss-button col columns="1" offsets="2" (click)="pageRequest.firstPage()" [disabled]="pageRequest.first" icon="keyboard_arrow_left">
         </ss-button>
         <ss-button col columns="1" (click)="pageRequest.previousPage()" [disabled]="pageRequest.first">
             <i class="material-icons">keyboard_arrow_left</i>

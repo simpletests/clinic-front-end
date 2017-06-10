@@ -1,5 +1,4 @@
 <h3 style="text-align:center;width:100%">
-
     {{week[0].date| date:"dd/MM"}} - {{week[week.length-1].date | date:"dd/MM"}}
 </h3>
 
@@ -7,13 +6,13 @@
     <thead>
         <tr>
             <th class="weekDays" style="width:50px"></th>
-            <th class="weekDays">{{'Sun'}}</th>
-            <th class="weekDays">{{'Mon'}}</th>
-            <th class="weekDays">{{'Tue'}}</th>
-            <th class="weekDays">{{'Wed'}}</th>
-            <th class="weekDays">{{'Thr'}}</th>
-            <th class="weekDays">{{'Fri'}}</th>
-            <th class="weekDays">{{'Sat'}}</th>
+            <th class="weekDays" i18n>{{'Dom'}}</th>
+            <th class="weekDays" i18n>{{'Seg'}}</th>
+            <th class="weekDays" i18n>{{'Ter'}}</th>
+            <th class="weekDays" i18n>{{'Qua'}}</th>
+            <th class="weekDays" i18n>{{'Qui'}}</th>
+            <th class="weekDays" i18n>{{'Sex'}}</th>
+            <th class="weekDays" i18n>{{'Sab'}}</th>
         </tr>
     </thead>
     <tbody>
@@ -22,8 +21,7 @@
                 {{hour}}:00
             </td>
             <td *ngFor="let day of week">
-
-                <p *ngFor="let event of day.events | calendarHourFilter:{hour:hour} " style="background-color:blanchedalmond " (click)="this.eventClick.emit(event)">
+                <p *ngFor="let event of day.events | calendarHourFilter:{hour:hour}" style="background-color:blanchedalmond" (click)="this.eventClick.emit(event)">
                     {{event.start | date:"HH:mm "}} - {{event.end | date:"HH:mm "}} {{event.patient.name}}
                 </p>
             </td>

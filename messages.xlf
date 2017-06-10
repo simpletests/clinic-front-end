@@ -6,7 +6,7 @@
         <source>Login</source>
         <target/>
         <context-group purpose="location">
-          <context context-type="sourcefile">C:/Users/Desenvolvimento02/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts</context>
+          <context context-type="sourcefile">C:/Users/wesle/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
@@ -14,7 +14,7 @@
         <source>Usuário</source>
         <target/>
         <context-group purpose="location">
-          <context context-type="sourcefile">C:/Users/Desenvolvimento02/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts</context>
+          <context context-type="sourcefile">C:/Users/wesle/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
@@ -22,7 +22,7 @@
         <source>Senha</source>
         <target/>
         <context-group purpose="location">
-          <context context-type="sourcefile">C:/Users/Desenvolvimento02/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts</context>
+          <context context-type="sourcefile">C:/Users/wesle/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
@@ -30,9 +30,27 @@
         <source>Entrar</source>
         <target/>
         <context-group purpose="location">
-          <context context-type="sourcefile">C:/Users/Desenvolvimento02/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts</context>
+          <context context-type="sourcefile">C:/Users/wesle/Documents/NetBeansProjects/clinic-front-end/src/app/login/login.component.ts</context>
           <context context-type="linenumber">15</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="3f7014144edfc28396885a86161e316a09161c5c" datatype="html">
+        <source>Clinic</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">C:/Users/wesle/Documents/NetBeansProjects/clinic-front-end/src/app/app.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Nome da aplicação</note>
+      </trans-unit>
+      <trans-unit id="802ff88a55cf376948d33f8f9f1526b15d99d8f4" datatype="html">
+        <source><x id="INTERPOLATION"/></source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">C:/Users/wesle/Documents/NetBeansProjects/clinic-front-end/src/app/app.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">Menus</note>
       </trans-unit>
     </body>
   </file>

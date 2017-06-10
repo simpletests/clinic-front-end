@@ -15,12 +15,12 @@ export class AppComponent implements OnInit {
     /** AuthorizedRoles: ['MEDICO', 'SECRETARIA', 'ADMINISTRADOR'] */
     navItems = [
         { route: "login", name: "Login", icon: "vpn_key", authorizedRoles: ['MEDICO', 'ADMINISTRADOR'] },
-        { route: "dashboard", name: "Dashboard", icon: "home", authorizedRoles: ['MEDICO', 'ADMINISTRADOR'] },
-        { route: "calendar", name: "Calendar", icon: "date_range", authorizedRoles: ['MEDICO'] },
-        { route: "patient", name: "Patient", icon: "person", authorizedRoles: ['MEDICO'] },
+        { route: "dashboard", name: "Início", icon: "home", authorizedRoles: ['MEDICO', 'ADMINISTRADOR'] },
+        { route: "calendar", name: "Agenda", icon: "date_range", authorizedRoles: ['MEDICO'] },
+        { route: "patient", name: "Pacientes", icon: "person", authorizedRoles: ['MEDICO'] },
         // { route: "financial", name: "Financial", icon: "attach_money", authorizedRoles: ['MEDICO'] },
         // { route: "report", name: "Report", icon: "description", authorizedRoles: ['MEDICO'] },
-        { route: "user", name: "User", icon: "sentiment_very_dissatisfied", authorizedRoles: ['ADMINISTRADOR'] }
+        { route: "user", name: "Usuários", icon: "sentiment_very_dissatisfied", authorizedRoles: ['ADMINISTRADOR'] }
     ];
 
     @ViewChild('sidenav') sidenav: MdSidenav;

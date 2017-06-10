@@ -2,9 +2,10 @@
 <div md-dialog-content>
 </div>
 <div md-dialog-actions>
-  <ss-row>
-    <ss-button col columns="2" offsets="2" md-dialog-close
-      (click)="dialog.close(false)">No</ss-button>
-    <ss-button col columns="2" offsets="4" (click)="dialog.close(true)">Yes</ss-button>
-  </ss-row>
+  <ss-container>
+    <ss-row>
+      <ss-button col columns="6" i18n-label md-dialog-close (click)="dialog.close(false)" label="Não"></ss-button>
+      <ss-button col columns="6" i18n-label (click)="dialog.close(true)" label="Sim"></ss-button>
+    </ss-row>
+  </ss-container>
 </div>

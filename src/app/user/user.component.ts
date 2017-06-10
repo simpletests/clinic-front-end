@@ -57,7 +57,7 @@ export class UserComponent implements OnInit {
 
   confirmDelete(deletedUser) {
     let dialogRef = this.dialog.open(ConfirmComponent)
-    dialogRef.componentInstance.message = "Are you sure?";
+    dialogRef.componentInstance.message = "Tem certeza?";
     dialogRef.afterClosed().subscribe(confirm => {
       if (confirm) {
         this.userService.delete(deletedUser.id).subscribe(response => this.getUsers());
