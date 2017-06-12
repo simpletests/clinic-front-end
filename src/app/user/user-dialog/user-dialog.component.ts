@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialogRef } from "@angular/material";
 import { UserService } from "app/user/user.service";
+import { RoleService } from "app/user/role.service";
 
 @Component({
   selector: 'app-user-dialog',
@@ -10,10 +11,19 @@ import { UserService } from "app/user/user.service";
 export class UserDialogComponent implements OnInit {
 
   user: any;
+  roles: any[];
 
-  constructor(public dialogRef: MdDialogRef<UserDialogComponent>, public userService: UserService) { }
+  constructor(private dialogRef: MdDialogRef<UserDialogComponent>, private userService: UserService,
+    private roleService: RoleService) { }
 
   ngOnInit() {
+    this.getRoles();
+  }
+
+  getRoles() {
+    this.roleService.getRoles()
+      .map(response => response.json())
+      .subscribe(data => this.roles = data);
   }
 
   delete() {
@@ -25,6 +35,4 @@ export class UserDialogComponent implements OnInit {
     this.userService.saveOrUpdate(this.user)
       .subscribe(event => event.ok ? this.dialogRef.close(true) : null);;
   }
-
-
 }

@@ -14,24 +14,16 @@ import { ConfirmComponent } from "app/commons/components/dialogs/confirm/confirm
 export class UserComponent implements OnInit {
 
   users: any[];
-  roles: any[];
 
   constructor(private userService: UserService, private roleService: RoleService, public dialog: MdDialog) { }
 
   ngOnInit() {
     this.getUsers();
-    this.getRoles();
   }
 
   getUsers() {
     this.userService.getList()
       .subscribe(data => this.users = data.content);
-  }
-
-  getRoles() {
-    this.roleService.getRoles()
-      .map(response => response.json())
-      .subscribe(data => this.roles = data);
   }
 
   createNew() {

@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   isLogged(): boolean {
-    console.log('Getting IsLogged: ' + this.getCredentials() && this.getDetails());
+    // console.log('Getting IsLogged: ' + this.getCredentials() && this.getDetails());
     return this.getCredentials() && this.getDetails() ? true : false;
   }
 
@@ -50,23 +50,18 @@ export class AuthService {
   }
 
   authOptions(): RequestOptions {
-    console.log('Getting UserCredentials: ' + this.getCredentials());
-
+    // console.log('Getting UserCredentials: ' + this.getCredentials());
     let credentials = JSON.parse(this.getCredentials());
-
     let headers = new Headers();
     if (credentials) {
       headers.append('Authorization', credentials.token_type + ' ' + credentials.access_token);
     }
-
     let options = new RequestOptions({ headers: headers, params: new URLSearchParams() });
-
     return options;
   }
 
   userId(): string {
-    console.log('Getting UserDetails: ' + this.getDetails());
-
+    // console.log('Getting UserDetails: ' + this.getDetails());
     let details = JSON.parse(this.getDetails());
     if (details) {
       return details.id;

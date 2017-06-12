@@ -4,9 +4,11 @@
     <ss-row>
       <ss-input col i18n-placeholder placeholder="Nome" [(ngModel)]="user.name"></ss-input>
       <ss-input col i18n-placeholder placeholder="Usuário" [(ngModel)]="user.username"></ss-input>
-      <ss-input col i18n-placeholder placeholder="Senha" [(ngModel)]="user.password" type="password"></ss-input>
+      <ss-input col i18n-placeholder placeholder="Senha" [(ngModel)]="user.password"
+        type="password"></ss-input>
       <ss-checkbox col i18n-label label="Ativo" [(ngModel)]="user.enabled"></ss-checkbox>
-      <ss-select col i18n-placeholder placeholder="Papel" [(ngModel)]="user.roles" [options]="roles"></ss-select>
+      <ss-select col i18n-placeholder placeholder="Papel" [(ngModel)]="user.role"
+        [options]="roles"></ss-select>
     </ss-row>
   </ss-container>
 </div>
