@@ -98,8 +98,8 @@ export class EventDialogComponent implements OnInit {
 
   setEvent(event) {
     this.event = _.cloneDeep(event);
-    this.event.start = moment(this.event.start).toDate();
-    this.event.end = moment(this.event.end).toDate();
+    this.event.start = this.transformDate(this.event.start);
+    this.event.end = this.transformDate(this.event.end);
     this.time = this.times.filter(t =>
       t.getHours() == this.event.start.getHours()
       && t.getMinutes() == this.event.start.getMinutes())[0];
@@ -117,5 +117,8 @@ export class EventDialogComponent implements OnInit {
   //     .subscribe(data => this.patients = data.content);
   // }
 
+  transformDate(str: string): Date { //FIXME
+    return moment(str).toDate();
+  }
 
 }

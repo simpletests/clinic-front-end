@@ -58,7 +58,7 @@ export class PatientComponent implements OnInit {
         let d = this.dialog.open(PatientDialogComponent, {
             // width: '300px'
         });
-        d.componentInstance.patient = _.cloneDeep(patient);
+        d.componentInstance.setPatient(patient);
         d.afterClosed().subscribe(hasChanged => {
             if (hasChanged) {
                 this.getList();

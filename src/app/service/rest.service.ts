@@ -99,7 +99,7 @@ export class RestService<T>{
     }
   }
 
-  transformDate(date: Date): string {
-    return moment(date).format("YYYY-MM-DD[T]hh:mm:ss[Z]");
+  transformDate(date: Date): string { //FIXME
+    return moment(date).format("YYYY-MM-DD[T]HH:mm:ss[Z]");
   }
 }

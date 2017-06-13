@@ -1,5 +1,6 @@
 import { CalendarPeriodView } from './calendar-period-view.enum'
 import { EventService } from './event/event.service'
+import * as moment from 'moment';
 export class Calendar {
 
     now: Date;
@@ -233,10 +234,12 @@ export class Calendar {
             .subscribe(events => {
                 this.clearEvents();
                 for (var i = 0; i < events.length; i++) {
-                    events[i].start = new Date(events[i].start);
-                    events[i].end = new Date(events[i].end);
+                    events[i].start = this.transformDate(events[i].start);
+                    events[i].end = this.transformDate(events[i].end);
                     var date = this.findDate(events[i].start);
-                    date.events.push(events[i]);
+                    if (date) {
+                        date.events.push(events[i]);
+                    }
                 }
             });
     };
@@ -244,7 +247,9 @@ export class Calendar {
     findDate(date) {
         for (var i = 0; i < this.weeks.length; i++) {
             for (var j = 0; j < this.weeks[i].length; j++) {
-                if (this.weeks[i][j].date.getDate() == date.getDate()) {
+                if (this.weeks[i][j].date.getDate() == date.getDate()
+                    && this.weeks[i][j].date.getMonth() == date.getMonth()
+                    && this.weeks[i][j].date.getFullYear() == date.getFullYear()) {
                     return this.weeks[i][j];
                 }
             }
@@ -257,6 +262,10 @@ export class Calendar {
                 this.weeks[i][j].events = [];
             }
         }
+    }
+
+    transformDate(str: string): Date {  //FIXME
+        return moment(str).toDate();
     }
 
 }
