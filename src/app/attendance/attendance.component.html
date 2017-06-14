@@ -1,38 +1,50 @@
-<div fxLayout="row" fxLayout.sm="column" fxLayoutWrap fxLayoutGap="5%">
+<ss-container>
     <ss-card>
         <ss-row *ngIf="pastHandbook">
-            <ss-button [disabled]="handbookPageRequest.last" (click)="handbookPageRequest.nextPage()">
-                <i class="material-icons">keyboard_arrow_left</i>
+            <ss-button col columns="2" [disabled]="handbookPageRequest.last"
+                (click)="handbookPageRequest.nextPage()"
+                icon="keyboard_arrow_left">
             </ss-button>
-            <p fxFlex style="text-align:center">{{pastHandbook.dateTime| date:"dd/MM/yy"}}</p>
-            <ss-button [disabled]="handbookPageRequest.first" (click)="handbookPageRequest.previousPage()">
-                <i class="material-icons">keyboard_arrow_right</i>
+            <h3 col columns="8" style="text-align:center">
+                {{pastHandbook.dateTime+"-03:00" | date:"dd/MM/yy HH:mm"}}
+            </h3>
+            <ss-button col columns="2" [disabled]="handbookPageRequest.first"
+                (click)="handbookPageRequest.previousPage()"
+                icon="keyboard_arrow_right">
             </ss-button>
-        </ss-row>
-        <ss-row *ngIf="pastHandbook">
-            <br/> 
-            <p i18n>Resumo:</p> {{pastHandbook.resume}}
+            <h4 col columns="12" i18n>Resumo:</h4>
+            <h5 col columns="12">{{pastHandbook.resumo}}</h5>
         </ss-row>
     </ss-card>
-    <ss-card>
+    <ss-row>
+        <br/>
         <ss-row>
-            <p style="text-align:center" i18n>Prontuário</p>
+            <h1 col columns="12" style="text-align:center" i18n>Prontuário</h1>
         </ss-row>
+        <br/>
         <ss-row *ngIf="event">
-            <br/>
-            <ss-input col i18n-placeholder placeholder="Doença" [(ngModel)]="event.handbook.disease"></ss-input>
-            <ss-input col i18n-placeholder placeholder="Observações" [(ngModel)]="event.handbook.observations"></ss-input>
-        </ss-row>
-    </ss-card>
-</div>
 
-<br/><p>Duração</p> {{currentDate|async|date:"mm:ss"}}
-<br/>
-<div *ngIf="event">
-    <p i18n>Evento:</p> {{event.start | date:"dd/MM/yy hh:mm"}} - {{event.end | date:"dd/MM/yy hh:mm"}}
-    <br/>
-    <p i18n>Paciente:</p> {{event.patient.name}}
-</div>
-<ss-button i18n-label (click)="save()" label="Salvar">
-    <i class="material-icons">save</i>
-</ss-button>
+            <ss-input col columns="4" i18n-placeholder placeholder="Queixa principal"
+                [(ngModel)]="event.handbook.queixaPrincipal"></ss-input>
+            <ss-input col columns="4" i18n-placeholder placeholder="História da doença atual"
+                [(ngModel)]="event.handbook.historiaDoencaAtual"></ss-input>
+            <ss-input col columns="4" i18n-placeholder placeholder="Antecedentes fisiológicos e patológicos"
+                [(ngModel)]="event.handbook.antecedentesFisiologicosPatologicos"></ss-input>
+            <ss-input col columns="4" i18n-placeholder placeholder="História patológica"
+                [(ngModel)]="event.handbook.historiaPatologica"></ss-input>
+            <ss-input col columns="4" i18n-placeholder placeholder="Hábitos de vida"
+                [(ngModel)]="event.handbook.habitosDeVida"></ss-input>
+            <ss-input col columns="4" i18n-placeholder placeholder="Observações"
+                [(ngModel)]="event.handbook.observations"></ss-input>
+            <ss-input col columns="4" i18n-placeholder placeholder="Resumo"
+                [(ngModel)]="event.handbook.resumo"></ss-input>
+        </ss-row>
+
+        <ss-row>
+            <h3>Duração</h3> {{currentDate|async|date:"mm:ss"}}
+            <ss-button i18n-label (click)="save()" label="Salvar"
+                icon="save">
+            </ss-button>
+        </ss-row>
+    </ss-row>
+</ss-container>

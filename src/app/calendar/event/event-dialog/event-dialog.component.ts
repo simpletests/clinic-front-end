@@ -6,6 +6,7 @@ import 'rxjs/add/operator/mergeMap';
 import { MdDialogRef } from "@angular/material";
 import { PatientService } from "app/patient/patient.service";
 import { EventService } from "app/calendar/event/event.service";
+import { DatePipe } from '@angular/common';
 
 import * as _ from 'lodash';
 import * as moment from 'moment';
@@ -25,7 +26,8 @@ export class EventDialogComponent implements OnInit {
   times: Date[];
   duration: number;
 
-  constructor(public dialogRef: MdDialogRef<EventDialogComponent>, public patientService: PatientService
+  constructor(public dialogRef: MdDialogRef<EventDialogComponent>,
+    public patientService: PatientService
     , public eventService: EventService) {
     this.filteredOptions = this.myControl.valueChanges
       .flatMap(qry => this.querySearch(qry));
@@ -46,9 +48,10 @@ export class EventDialogComponent implements OnInit {
   }
 
   displayHoras(date: Date): string {
-    var str = date.toLocaleTimeString();
-    return str.substring(0, str.length - 3);
-    // return date.getHours() + ":" + date.getMinutes();
+    // var str = date.toLocaleTimeString();
+    // return str.substring(0, str.length - 3);
+    // return new DatePipe("us").transform(date+"", "HH:mm");
+    return date.getHours() + ":" + (date.getMinutes() < 10 ? date.getMinutes() + "0" : date.getMinutes());
   }
 
   querySearch(qry: string): Observable<any[]> {

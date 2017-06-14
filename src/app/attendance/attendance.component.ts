@@ -5,6 +5,8 @@ import { PageRequest } from "app/service/page-request";
 import { Observable } from "rxjs/Rx";
 import { ActivatedRoute } from "@angular/router";
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.component.html',
@@ -16,7 +18,7 @@ export class AttendanceComponent implements OnInit {
   currentDate: Observable<Date>;
   startDateTime: Date;
   handbookPageRequest: PageRequest;
-  constructor(public eventService: EventService, public handbookService: HandbookService, route: ActivatedRoute) {
+  constructor(public eventService: EventService, public handbookService: HandbookService, route: ActivatedRoute, public parentRouter: Router) {
     this.startDateTime = new Date();
     this.handbookPageRequest = new PageRequest();
     this.handbookPageRequest.size = 1;
@@ -24,6 +26,10 @@ export class AttendanceComponent implements OnInit {
     this.currentDate = Observable.interval(1000).map(() => new Date(Math.abs(this.startDateTime.getTime() - new Date().getTime())));
     eventService.findOne(route.snapshot.params["eventId"]).subscribe(event => {
       this.event = event;
+      this.event.handbook = {
+        patient: event.patient,
+        dateTime: new Date()
+      };
       this.fillPastHandbook();
     });
   }
@@ -43,6 +49,7 @@ export class AttendanceComponent implements OnInit {
 
   save() {
     this.eventService.saveOrUpdate(this.event).subscribe(value => console.log("save ok"));
+    this.parentRouter.navigateByUrl('/calendar');
   }
 
 }
