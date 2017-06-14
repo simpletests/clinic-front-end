@@ -9,12 +9,14 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent {
 
-    user = {};
+    user = {
+        username: 'wesley',
+        password: '123'
+    };
 
     constructor(private loginService: LoginService, private router: Router) { }
 
     login(): void {
-        this.loginService.login(this.user);
-        this.router.navigate(['/dashboard']);
+        this.loginService.login(this.user, () => this.router.navigate(['/dashboard']));
     }
 }

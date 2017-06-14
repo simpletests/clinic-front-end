@@ -13,7 +13,7 @@ export class LoginService {
 
     constructor(private http: Http, private authService: AuthService, private userService: UserService) { }
 
-    login(usuario): void {
+    login(usuario, callback): void {
         let headers = new Headers();
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', 'Basic ' + btoa('foo:bar'));
@@ -29,8 +29,7 @@ export class LoginService {
         this.http.post(this.urlAuth, {}, options).subscribe(response => {
             if (response.ok) {
                 this.authService.saveCredentials(JSON.stringify(response.json()));
-                this.saveDetails(usuario.username, usuario.password);
-                // console.log('Hello World !');
+                this.saveDetails(usuario.username, usuario.password, callback);
             } else {
                 // TODO comunicar falha no login
             }
@@ -41,10 +40,9 @@ export class LoginService {
         this.authService.removeCredentials();
         this.authService.removeDetails();
         this.authService.emitUserLoggedOut();
-        // console.log('Goodbye !');
     }
 
-    private saveDetails(username, password): void {
+    private saveDetails(username, password, callback): void {
         let options = this.authService.authOptions();
         options.params.append("username", username);
         options.params.append("password", password);
@@ -52,6 +50,8 @@ export class LoginService {
             if (response.ok) {
                 this.authService.saveDetails(JSON.stringify(response.json()));
                 this.authService.emitUserLoggedIn();
+
+                callback();
             } else {
                 // TODO comunicar falha no login
             }
