@@ -42,7 +42,7 @@ export class RestService<T>{
   }
 
   url(pathParams?: string): string {
-    let serverUrl: string = 'http://localhost:8080/{idUser}/';
+    let serverUrl: string = 'http://back-end.jelasticlw.com.br/{idUser}/'; //FIXME
     if (pathParams) {
       serverUrl = serverUrl.concat(pathParams, "/");
     }

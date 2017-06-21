@@ -8,8 +8,10 @@ import { UserService } from "app/user/user.service";
 @Injectable()
 export class LoginService {
 
-    urlAuth = 'http://localhost:8080/oauth/token';
-    urlUser = 'http://localhost:8080/oauth/user';
+    // urlAuth = 'http://localhost:8080/oauth/token'; 
+    // urlUser = 'http://localhost:8080/oauth/user';
+    urlAuth = 'http://back-end.jelasticlw.com.br/oauth/token'; //FIXME
+    urlUser = 'http://back-end.jelasticlw.com.br/oauth/user';
 
     constructor(private http: Http, private authService: AuthService, private userService: UserService) { }
 

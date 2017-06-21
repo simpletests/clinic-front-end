@@ -7,7 +7,8 @@ import { AuthService } from "app/service/auth.service";
 @Injectable()
 export class RoleService {
 
-  url = 'http://localhost:8080/optionsSelect/roles';
+  // url = 'http://localhost:8080/optionsSelect/roles';
+  url = 'http://back-end.jelasticlw.com.br/optionsSelect/roles'; //FIXME
 
   constructor(private authService: AuthService, private http: Http) { }
 
