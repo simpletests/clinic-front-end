@@ -1,16 +1,19 @@
 <ss-row>
         <ss-button col columns="4" i18n-label label="Mês" (click)="periodView=0"></ss-button>
-        <ss-button col columns="4" i18n-label label="Semana" (click)="periodView=1"></ss-button>
+        <ss-button col columns="4" i18n-label label="Semana"
+                (click)="periodView=1"></ss-button>
         <ss-button col columns="4" i18n-label label="Dia" (click)="periodView=2"></ss-button>
 </ss-row>
 <!--layout-->
 <br/>
 <br/>
 <ss-row>
-        <ss-button col columns="3" (click)="changeDate(-1)" [disabled]="pagination.first">
+        <ss-button col columns="3" (click)="changeDate(-1)"
+                [disabled]="pagination.first">
                 <i class="material-icons">keyboard_arrow_left</i>
         </ss-button>
-        <ss-button col columns="3" (click)="changeDate(1)" [disabled]="pagination.last">
+        <ss-button col columns="3" (click)="changeDate(1)"
+                [disabled]="pagination.last">
                 <i class="material-icons">keyboard_arrow_right</i>
         </ss-button>
         <ss-button col columns="3" (click)="calendar.centerOnNow()">
@@ -21,11 +24,13 @@
         </ss-button>
 </ss-row>
 <ss-row [ngSwitch]="periodView">
-        <app-calendar-monthly-view [weeks]="calendar.weeks" *ngSwitchCase="0" (eventClick)="eventClick($event)">
+        <app-calendar-monthly-view [weeks]="calendar.weeks"
+                *ngSwitchCase="0" (eventClick)="eventClick($event)">
         </app-calendar-monthly-view>
-        <app-calendar-weekly-view [week]="calendar.weeks[calendar.currentWeekOfMonth]" *ngSwitchCase="1" (eventClick)="eventClick($event)">
+        <app-calendar-weekly-view [week]="calendar.weeks[calendar.currentWeekOfMonth]"
+                *ngSwitchCase="1" (eventClick)="eventClick($event)">
         </app-calendar-weekly-view>
-        <app-calendar-daily-view [day]="calendar.weeks[calendar.currentWeekOfMonth][calendar.currentDayOfWeek]" (eventClick)="eventClick($event)"
-                *ngSwitchCase="2">
+        <app-calendar-daily-view [day]="calendar.weeks[calendar.currentWeekOfMonth][calendar.currentDayOfWeek]"
+                (eventClick)="eventClick($event)" *ngSwitchCase="2">
         </app-calendar-daily-view>
 </ss-row>

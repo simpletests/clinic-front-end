@@ -12,6 +12,7 @@ import * as moment from 'moment';
 export class PatientDialogComponent {
 
   patient: any;
+  postalCode;
 
   constructor(public dialogRef: MdDialogRef<PatientDialogComponent>,
     public patientService: PatientService) {
