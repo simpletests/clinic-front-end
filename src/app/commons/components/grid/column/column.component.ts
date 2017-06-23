@@ -28,11 +28,11 @@ export class ColMd implements OnInit {
       if (this.coluns instanceof Array) {
         this.setColuns(this.coluns[0], this.coluns[1], this.coluns[2], this.coluns[3]);
       } else {
-        this.setColuns(this.coluns, this.coluns, this.coluns, this.coluns);
+        this.setColuns(12, 12, this.coluns, this.coluns);
       }
     }
     if (this.offsets) {
-      if(this.offsets instanceof Array){
+      if (this.offsets instanceof Array) {
         this.setOffsets(this.offsets[0], this.offsets[1], this.offsets[2], this.offsets[3])
       } else {
         this.setOffsets(this.offsets, this.offsets, this.offsets, this.offsets);

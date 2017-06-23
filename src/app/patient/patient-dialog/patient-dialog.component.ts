@@ -3,20 +3,25 @@ import { MdDialogRef } from "@angular/material";
 import { PatientService } from "app/patient/patient.service";
 import * as _ from 'lodash';
 import * as moment from 'moment';
+import { GenderService } from "app/commons/gender.service";
 
 @Component({
   selector: 'app-patient-dialog',
   templateUrl: './patient-dialog.component.html',
   styleUrls: ['./patient-dialog.component.scss']
 })
-export class PatientDialogComponent {
+export class PatientDialogComponent implements OnInit {
 
   patient: any;
   postalCode;
+  genders = [];
 
   constructor(public dialogRef: MdDialogRef<PatientDialogComponent>,
-    public patientService: PatientService) {
+    public patientService: PatientService, public genderService: GenderService) {
+  }
 
+  ngOnInit() {
+    this.genderService.fillOptions(this.genders);
   }
 
   delete() {
@@ -36,6 +41,10 @@ export class PatientDialogComponent {
 
   transformDate(str: string): Date { //FIXME
     return moment(str).toDate();
+  }
+
+  genderDisplayFn(gender) {
+    return gender;
   }
 
 }

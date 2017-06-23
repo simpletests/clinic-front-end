@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialogRef } from "@angular/material";
 import { UserService } from "app/user/user.service";
 import { RoleService } from "app/user/role.service";
+import { GenderService } from "app/commons/gender.service";
 
 @Component({
   selector: 'app-user-dialog',
@@ -11,19 +12,15 @@ import { RoleService } from "app/user/role.service";
 export class UserDialogComponent implements OnInit {
 
   user: any;
-  roles: any[];
+  roles = [];
+  genders = [];
 
   constructor(private dialogRef: MdDialogRef<UserDialogComponent>, private userService: UserService,
-    private roleService: RoleService) { }
+    private roleService: RoleService, private genderService: GenderService) { }
 
   ngOnInit() {
-    this.getRoles();
-  }
-
-  getRoles() {
-    this.roleService.getRoles()
-      .map(response => response.json())
-      .subscribe(data => this.roles = data);
+    this.roleService.fillOptions(this.roles);
+    this.genderService.fillOptions(this.genders);
   }
 
   delete() {
