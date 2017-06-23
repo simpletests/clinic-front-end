@@ -11,8 +11,8 @@ export class LoginService {
 
     // urlAuth = 'http://localhost:8080/oauth/token'; 
     // urlUser = 'http://localhost:8080/oauth/user';
-    urlAuth = urlBackEnd + "oauth/token'; //FIXME
-    urlUser = urlBackEnd + "oauth/user';
+    urlAuth = urlBackEnd + "oauth/token"; //FIXME
+    urlUser = urlBackEnd + "oauth/user";
 
     constructor(private http: Http, private authService: AuthService, private userService: UserService) { }
 

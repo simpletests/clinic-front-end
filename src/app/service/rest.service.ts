@@ -53,23 +53,23 @@ export class RestService<T>{
 
   getNew(): Observable<T> {
     let options = this.getOptions();
-    return this.http.get(this.url() + "/new", options)
+    return this.http.get(this.url() + "/new", options).share()
       .map(response => response.json());
   }
 
   findAllPathParams(pathParams?: string, params?: { param: string, val: any }[], pageRequest?: PageRequest): Observable<any> {
-    return this.http.get(this.url(pathParams), this.getOptions(params, pageRequest))
+    return this.http.get(this.url(pathParams), this.getOptions(params, pageRequest)).share()
       .map(response => response.json());
   }
 
   findAll(params?: { param: string, val: any }[], pageRequest?: PageRequest): Observable<any> {
-    return this.http.get(this.url(), this.getOptions(params, pageRequest))
+    return this.http.get(this.url(), this.getOptions(params, pageRequest)).share()
       .map(response => response.json());
   }
 
   findOne(id: string): Observable<T> {
     let options = this.getOptions();
-    return this.http.get(this.url() + "/" + id, options)
+    return this.http.get(this.url() + "/" + id, options).share()
       .map(response => response.json());
     //.map(content => <T>content);
   }
@@ -77,13 +77,13 @@ export class RestService<T>{
   saveOrUpdate(event): Observable<Response> {
     let copyEvent = _.cloneDeep(event);
     this.transformDates(copyEvent);
-    let response = this.http.post(this.url(), copyEvent, this.getOptions());
+    let response = this.http.post(this.url(), copyEvent, this.getOptions()).share();
     response.subscribe(event => this.snackbarService.info("Save status: " + event.status));
     return response;
   }
 
   delete(id: string): Observable<Response> {
-    let response = this.http.delete(this.url() + "/" + id, this.getOptions());
+    let response = this.http.delete(this.url() + "/" + id, this.getOptions()).share();
     response.subscribe(event => this.snackbarService.info("Delete status: " + event.status));
     return response;
   }
