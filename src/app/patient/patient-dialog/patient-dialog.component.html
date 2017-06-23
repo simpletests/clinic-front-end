@@ -2,33 +2,35 @@
 <div md-dialog-content>
   <ss-container>
     <ss-row>
-      <ss-input col i18n-placeholder placeholder="Nome" [(ngModel)]="patient.name"></ss-input>
-      <ss-input col i18n-placeholder placeholder="E-mail"
-        [(ngModel)]="patient.email" type="email"></ss-input>
-      <ss-input col i18n-placeholder placeholder="Cep" [(ngModel)]="postalCode"
+      <ss-input col columns="4" i18n-placeholder placeholder="Nome" [(ngModel)]="patient.name"></ss-input>
+      <ss-input col columns="4" i18n-placeholder placeholder="E-mail" [(ngModel)]="patient.email"
+        type="email"></ss-input>
+      <ss-select col columns="2" i18n-placeholder placeholder="Sexo" [(ngModel)]="patient.gender"
+        [options]="genders" [displayFn]="genderDisplayFn"></ss-select>
+      <ss-datepicker col columns="2" i18n-placeholder placeholder="Data de nascimento"
+        [(ngModel)]="patient.birthdate"></ss-datepicker>
+
+      <ss-input col columns="3" i18n-placeholder placeholder="Telefone" [(ngModel)]="patient.phone"
+        type="tel"></ss-input>
+      <ss-input col columns="3" i18n-placeholder placeholder="Celular" [(ngModel)]="patient.cellphone"
+        type="tel"></ss-input>
+
+
+      <ss-input col columns="3" i18n-placeholder placeholder="Cep" [(ngModel)]="postalCode"
         type="number"></ss-input>
 
-      <!--<ss-input col i18n-placeholder placeholder="City" [(ngModel)]="patient.address.city"></ss-input>
-  <ss-input col i18n-placeholder placeholder="Country" [(ngModel)]="patient.address.country"></ss-input>
-  <ss-input col i18n-placeholder placeholder="State" [(ngModel)]="patient.address.state"></ss-input>
-  <ss-input col i18n-placeholder placeholder="Street" [(ngModel)]="patient.address.street"></ss-input>-->
-      <ss-datepicker col i18n-placeholder placeholder="Data de nascimento"
-        [(ngModel)]="patient.birthdate"></ss-datepicker>
-      <ss-input col i18n-placeholder placeholder="Número"
-        [(ngModel)]="patient.address.number" type="number"></ss-input>
-      <ss-input col i18n-placeholder placeholder="Complemento"
-        [(ngModel)]="patient.address.complement"></ss-input>
-      <ss-input col i18n-placeholder placeholder="Sexo" [(ngModel)]="patient.gender"></ss-input>
-      <ss-input col i18n-placeholder placeholder="Telefone"
-        [(ngModel)]="patient.phone" type="tel"></ss-input>
-      <ss-input col i18n-placeholder placeholder="Celular"
-        [(ngModel)]="patient.cellphone" type="tel"></ss-input>
+      <ss-input col columns="3" i18n-placeholder placeholder="País" [(ngModel)]="patient.address.country"></ss-input>
+      <ss-input col columns="2" i18n-placeholder placeholder="Estado" [(ngModel)]="patient.address.state"></ss-input>
+      <ss-input col columns="5" i18n-placeholder placeholder="Cidade" [(ngModel)]="patient.address.city"></ss-input>
+      <ss-input col columns="5" i18n-placeholder placeholder="Rua" [(ngModel)]="patient.address.street"></ss-input>
+      <ss-input col columns="2" i18n-placeholder placeholder="Número" [(ngModel)]="patient.address.number"
+        type="number"></ss-input>
+      <ss-input col columns="3" i18n-placeholder placeholder="Complemento" [(ngModel)]="patient.address.complement"></ss-input>
     </ss-row>
   </ss-container>
 </div>
 <div md-dialog-actions>
   <!--<button md-raised-button md-dialog-close>Close</button>-->
-  <ss-button i18n-label (click)="delete()" *ngIf="patient.id"
-    label="Excluir"></ss-button>
+  <ss-button i18n-label (click)="delete()" *ngIf="patient.id" label="Excluir"></ss-button>
   <ss-button i18n-label (click)="saveOrUpdate()" label="{{patient.id?'Atualizar':'Inserir'}}"></ss-button>
 </div>

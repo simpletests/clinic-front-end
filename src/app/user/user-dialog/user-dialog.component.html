@@ -2,13 +2,13 @@
 <div md-dialog-content>
   <ss-container>
     <ss-row>
-      <ss-input col i18n-placeholder placeholder="Nome" [(ngModel)]="user.name"></ss-input>
-      <ss-input col i18n-placeholder placeholder="Usuário" [(ngModel)]="user.username"></ss-input>
-      <ss-input col i18n-placeholder placeholder="Senha" [(ngModel)]="user.password"
+      <ss-input col columns="6" i18n-placeholder placeholder="Nome" [(ngModel)]="user.name"></ss-input>
+      <ss-input col columns="3" i18n-placeholder placeholder="Usuário" [(ngModel)]="user.username"></ss-input>
+      <ss-input col columns="3" i18n-placeholder placeholder="Senha" [(ngModel)]="user.password"
         type="password"></ss-input>
-      <ss-checkbox col i18n-label label="Ativo" [(ngModel)]="user.enabled"></ss-checkbox>
-      <ss-select col i18n-placeholder placeholder="Papel" [(ngModel)]="user.role"
+      <ss-select col columns="3" i18n-placeholder placeholder="Papel" [(ngModel)]="user.role"
         [options]="roles"></ss-select>
+      <ss-checkbox col columns="3" i18n-label label="Ativo" [(ngModel)]="user.enabled"></ss-checkbox>
     </ss-row>
   </ss-container>
 </div>

@@ -13,7 +13,7 @@ import { ConfirmComponent } from "app/commons/components/dialogs/confirm/confirm
 })
 export class UserComponent implements OnInit {
 
-  users: any[];
+  users = [];
 
   constructor(private userService: UserService, private roleService: RoleService, public dialog: MdDialog) { }
 

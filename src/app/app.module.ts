@@ -56,6 +56,7 @@ import { TestsComponent } from './tests/tests.component';
 import { IconComponent } from './commons/components/icon/icon.component';
 import { DatepickerComponent } from './commons/components/datepicker/datepicker.component';
 import { SliderComponent } from './commons/components/slider/slider.component';
+import { GenderService } from "app/commons/gender.service";
 
 @NgModule({
     declarations: [
@@ -110,6 +111,7 @@ import { SliderComponent } from './commons/components/slider/slider.component';
         AuthService,
         UserService,
         RoleService,
+        GenderService,
         HandbookService,
         MdSnackBar,
         SnackbarService,

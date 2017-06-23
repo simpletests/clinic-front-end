@@ -7,10 +7,9 @@ import { urlBackEnd } from "app/url-back-end";
 import { OptionsService } from "app/commons/options.service";
 
 @Injectable()
-export class RoleService extends OptionsService {
+export class GenderService extends OptionsService {
 
   constructor(authService: AuthService, http: Http) {
-    super(authService, http, "roles");
+    super(authService, http, "gender");
   }
-
 }
