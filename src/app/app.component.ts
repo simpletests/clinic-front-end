@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, DoCheck } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from "app/service/auth.service";
 import { LoginService } from "app/login/login.service";
@@ -9,12 +9,13 @@ import { MdSidenav } from "@angular/material";
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements DoCheck {
+
     title = 'app works! ';
 
     /** AuthorizedRoles: ['MEDICO', 'SECRETARIA', 'ADMINISTRADOR'] */
     navItems = [
-        { route: "login", name: "Login", icon: "vpn_key", authorizedRoles: ['MEDICO', 'ADMINISTRADOR'] },
+        // { route: "login", name: "Login", icon: "vpn_key", authorizedRoles: ['MEDICO', 'ADMINISTRADOR'] },
         { route: "dashboard", name: "Início", icon: "home", authorizedRoles: ['MEDICO', 'ADMINISTRADOR'] },
         { route: "calendar", name: "Agenda", icon: "date_range", authorizedRoles: ['MEDICO'] },
         { route: "patient", name: "Pacientes", icon: "person", authorizedRoles: ['MEDICO'] },
@@ -25,14 +26,14 @@ export class AppComponent implements OnInit {
 
     @ViewChild('sidenav') sidenav: MdSidenav;
 
-    userLogged = false;
+    isLogged: boolean = false;
 
-    constructor(private authService: AuthService, private loginService: LoginService, private router: Router) { }
+    constructor(private authService: AuthService, private loginService: LoginService, private router: Router) {
+        this.isLogged = authService.isLogged();
+    }
 
-    ngOnInit() {
-        this.authService.emitterUserLogged.subscribe(
-            bool => this.userLogged = bool
-        );
+    ngDoCheck(): void {
+        this.isLogged = this.authService.isLogged();
     }
 
     logout(): void {
