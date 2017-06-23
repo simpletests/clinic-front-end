@@ -4,14 +4,15 @@ import { Subject, Observable } from 'rxjs';
 
 import { AuthService } from "app/service/auth.service";
 import { UserService } from "app/user/user.service";
+import { urlBackEnd } from "app/url-back-end";
 
 @Injectable()
 export class LoginService {
 
     // urlAuth = 'http://localhost:8080/oauth/token'; 
     // urlUser = 'http://localhost:8080/oauth/user';
-    urlAuth = 'http://back-end.jelasticlw.com.br/oauth/token'; //FIXME
-    urlUser = 'http://back-end.jelasticlw.com.br/oauth/user';
+    urlAuth = urlBackEnd + "oauth/token'; //FIXME
+    urlUser = urlBackEnd + "oauth/user';
 
     constructor(private http: Http, private authService: AuthService, private userService: UserService) { }
 

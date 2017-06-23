@@ -7,6 +7,7 @@ import { SnackbarService } from "app/commons/snackbar.service";
 
 import * as _ from 'lodash';
 import * as moment from 'moment';
+import { urlBackEnd } from "app/url-back-end";
 
 @Injectable()
 export class RestService<T>{
@@ -42,7 +43,7 @@ export class RestService<T>{
   }
 
   url(pathParams?: string): string {
-    let serverUrl: string = 'http://back-end.jelasticlw.com.br/{idUser}/'; //FIXME
+    let serverUrl: string = urlBackEnd + "{idUser}/"; //FIXME
     if (pathParams) {
       serverUrl = serverUrl.concat(pathParams, "/");
     }
