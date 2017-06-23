@@ -9,10 +9,7 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent {
 
-    user = {
-        username: 'wesley',
-        password: '123'
-    };
+    user = {};
 
     constructor(private loginService: LoginService, private router: Router) { }
 
