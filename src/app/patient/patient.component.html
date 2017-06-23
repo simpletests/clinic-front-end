@@ -3,8 +3,11 @@
 <ss-container>
     <ss-row>
         <ss-button col columns="3" i18n-label label="Novo" (click)="newPatient()"></ss-button>
-        <ss-input col i18n-placeholder placeholder="Perquisar" [(ngModel)]="pageRequest.search" (keyup)="pageRequest.ngOnChanges()"></ss-input>
+        <ss-input col i18n-placeholder placeholder="Perquisar" [(ngModel)]="pageRequest.search"
+            (keyup)="pageRequest.ngOnChanges()"></ss-input>
     </ss-row>
+    <br/>
+    <br/>
     <ss-row *ngIf="pageContent.content && pageContent.content.length>0">
         <table style="width:100%">
             <tr>
@@ -28,12 +31,14 @@
         </table>
     </ss-row>
     <ss-row>
-        <ss-button col columns="1" offsets="2" (click)="pageRequest.firstPage()" [disabled]="pageRequest.first" icon="keyboard_arrow_left">
+        <ss-button col columns="1" offsets="2" (click)="pageRequest.firstPage()"
+            [disabled]="pageRequest.first" icon="keyboard_arrow_left">
         </ss-button>
         <ss-button col columns="1" (click)="pageRequest.previousPage()" [disabled]="pageRequest.first">
             <i class="material-icons">keyboard_arrow_left</i>
         </ss-button>
-        <ss-button col columns="1" (click)="pageRequest.setNumber(i)" [disabled]="pageRequest.number==i" *ngFor="let i of pageRequest.buttonPages">
+        <ss-button col columns="1" (click)="pageRequest.setNumber(i)" [disabled]="pageRequest.number==i"
+            *ngFor="let i of pageRequest.buttonPages">
             {{i}}
         </ss-button>
 
