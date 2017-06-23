@@ -116,7 +116,7 @@ export class Calendar {
         }
     };
     prevMonth() {
-        if (this.month) {
+        if (this.month > 0) {
             this.init(this.start.getFullYear(), this.start.getMonth() - 1, 1);
         } else {
             this.init(this.start.getFullYear() - 1, 11, 1);
@@ -160,7 +160,7 @@ export class Calendar {
     init(year, month, day) {
         var now = new Date();
         this.year = year ? year : now.getFullYear();
-        this.month = month ? month : now.getMonth();
+        this.month = month != undefined ? month : now.getMonth();
         this.day = day ? day : now.getDate();
         this.currentDayOfWeek = 0;
         this.currentWeekOfMonth = 0;
