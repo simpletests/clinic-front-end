@@ -1,7 +1,7 @@
-import { AsyncValidatorFn, ValidatorFn, Validator, AbstractControl, Validators } from "@angular/forms";
-import { Observable } from "rxjs";
+import { AsyncValidatorFn, ValidatorFn, Validator, AbstractControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
-export type ValidationResult = { [validator: string]: string | boolean };
+export interface ValidationResult { [validator: string]: string | boolean }
 
 export type AsyncValidatorArray = Array<Validator | AsyncValidatorFn>;
 

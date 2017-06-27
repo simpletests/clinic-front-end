@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from "@angular/http";
-import { Observable } from "rxjs/Observable";
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
-import { AuthService } from "app/service/auth.service";
-import { urlBackEnd } from "app/url-back-end";
-import { OptionsService } from "app/commons/options.service";
+import { AuthService } from 'app/service/auth.service';
+import { urlBackEnd } from 'app/url-back-end';
+import { OptionsService } from 'app/commons/options.service';
 
 @Injectable()
 export class GenderService extends OptionsService {
 
   constructor(authService: AuthService, http: Http) {
-    super(authService, http, "gender");
+    super(authService, http, 'gender');
   }
 }

@@ -40,7 +40,7 @@ export class AuthService {
     return this.getCredentials() && this.getDetails() ? true : false;
   }
 
-  //FIXME Problemas com usuário ao recarregar a tela podem ter haver com esse emitter, verificar
+  // FIXME Problemas com usuário ao recarregar a tela podem ter haver com esse emitter, verificar
   emitUserLoggedIn() {
     this.emitterUserLogged.emit(true);
   }
@@ -51,18 +51,18 @@ export class AuthService {
 
   authOptions(): RequestOptions {
     // console.log('Getting UserCredentials: ' + this.getCredentials());
-    let credentials = JSON.parse(this.getCredentials());
-    let headers = new Headers();
+    const credentials = JSON.parse(this.getCredentials());
+    const headers = new Headers();
     if (credentials) {
       headers.append('Authorization', credentials.token_type + ' ' + credentials.access_token);
     }
-    let options = new RequestOptions({ headers: headers, params: new URLSearchParams() });
+    const options = new RequestOptions({ headers: headers, params: new URLSearchParams() });
     return options;
   }
 
   userId(): string {
     // console.log('Getting UserDetails: ' + this.getDetails());
-    let details = JSON.parse(this.getDetails());
+    const details = JSON.parse(this.getDetails());
     if (details) {
       return details.id;
     } else {

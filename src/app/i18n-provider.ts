@@ -1,9 +1,9 @@
-import { TRANSLATIONS, TRANSLATIONS_FORMAT, LOCALE_ID } from "@angular/core";
-import { TRANSLATION_EN, TRANSLATION_ES, TRANSLATION_FR } from "../locale/messages";
+import { TRANSLATIONS, TRANSLATIONS_FORMAT, LOCALE_ID } from '@angular/core';
+import { TRANSLATION_EN, TRANSLATION_ES, TRANSLATION_FR } from '../locale/messages';
 
 export function getTranslationProviders(): Promise<Object[]> {
 
-    const locale: string = 'pt';
+    const locale = 'pt';
 
     const noProviders: Object[] = [];
     if (!locale || locale === 'pt') {

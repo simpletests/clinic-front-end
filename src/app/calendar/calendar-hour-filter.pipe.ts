@@ -6,10 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class CalendarHourFilterPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    let vals: any[] = [];
-    for (var i = 0; i < value.length; i++) {
-      if (value[i].start.getHours() == args.hour) {
-          vals.push(value[i]);
+    const vals: any[] = [];
+    for (let i = 0; i < value.length; i++) {
+      if (value[i].start.getHours() === args.hour) {
+        vals.push(value[i]);
       }
     }
     return vals;

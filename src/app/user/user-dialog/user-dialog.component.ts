@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from "@angular/material";
-import { UserService } from "app/user/user.service";
-import { RoleService } from "app/user/role.service";
-import { GenderService } from "app/commons/gender.service";
+import { MdDialogRef } from '@angular/material';
+import { UserService } from 'app/user/user.service';
+import { RoleService } from 'app/user/role.service';
+import { GenderService } from 'app/commons/gender.service';
 
 @Component({
   selector: 'app-user-dialog',
@@ -30,6 +30,6 @@ export class UserDialogComponent implements OnInit {
 
   saveOrUpdate() {
     this.userService.saveOrUpdate(this.user)
-      .subscribe(event => event.ok ? this.dialogRef.close(true) : null);;
+      .subscribe(event => event.ok ? this.dialogRef.close(true) : null); ;
   }
 }

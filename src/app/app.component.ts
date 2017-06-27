@@ -1,8 +1,8 @@
 import { Component, Input, ViewChild, DoCheck } from '@angular/core';
-import { Router } from "@angular/router";
-import { AuthService } from "app/service/auth.service";
-import { LoginService } from "app/login/login.service";
-import { MdSidenav } from "@angular/material";
+import { Router } from '@angular/router';
+import { AuthService } from 'app/service/auth.service';
+import { LoginService } from 'app/login/login.service';
+import { MdSidenav } from '@angular/material';
 
 @Component({
     selector: 'app-root',
@@ -15,18 +15,18 @@ export class AppComponent implements DoCheck {
 
     /** AuthorizedRoles: ['MEDICO', 'SECRETARIA', 'ADMINISTRADOR'] */
     navItems = [
-        // { route: "login", name: "Login", icon: "vpn_key", authorizedRoles: ['MEDICO', 'ADMINISTRADOR'] },
-        { route: "dashboard", name: "Início", icon: "home", authorizedRoles: ['MEDICO', 'ADMINISTRADOR'] },
-        { route: "calendar", name: "Agenda", icon: "date_range", authorizedRoles: ['MEDICO'] },
-        { route: "patient", name: "Pacientes", icon: "person", authorizedRoles: ['MEDICO'] },
-        // { route: "financial", name: "Financial", icon: "attach_money", authorizedRoles: ['MEDICO'] },
-        // { route: "report", name: "Report", icon: "description", authorizedRoles: ['MEDICO'] },
-        { route: "user", name: "Usuários", icon: "sentiment_very_dissatisfied", authorizedRoles: ['ADMINISTRADOR'] }
+        // { route: 'login', name: 'Login', icon: 'vpn_key', authorizedRoles: ['MEDICO', 'ADMINISTRADOR'] },
+        { route: 'dashboard', name: 'Início', icon: 'home', authorizedRoles: ['MEDICO', 'ADMINISTRADOR'] },
+        { route: 'calendar', name: 'Agenda', icon: 'date_range', authorizedRoles: ['MEDICO'] },
+        { route: 'patient', name: 'Pacientes', icon: 'person', authorizedRoles: ['MEDICO'] },
+        // { route: 'financial', name: 'Financial', icon: 'attach_money', authorizedRoles: ['MEDICO'] },
+        // { route: 'report', name: 'Report', icon: 'description', authorizedRoles: ['MEDICO'] },
+        { route: 'user', name: 'Usuários', icon: 'sentiment_very_dissatisfied', authorizedRoles: ['ADMINISTRADOR'] }
     ];
 
     @ViewChild('sidenav') sidenav: MdSidenav;
 
-    isLogged: boolean = false;
+    isLogged = false;
 
     constructor(private authService: AuthService, private loginService: LoginService, private router: Router) {
         this.isLogged = authService.isLogged();

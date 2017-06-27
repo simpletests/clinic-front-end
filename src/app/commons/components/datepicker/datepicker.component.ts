@@ -1,7 +1,7 @@
 import { Component, OnInit, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from "@angular/forms";
-import { Observable } from "rxjs/Rx";
-import { ValueAccessor } from "app/commons/components/value-accessor";
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Observable } from 'rxjs/Rx';
+import { ValueAccessor } from 'app/commons/components/value-accessor';
 
 export const CUSTOM_DATEPICKER_CONTROL_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -15,7 +15,7 @@ export const CUSTOM_DATEPICKER_CONTROL_VALUE_ACESSOR: any = {
   providers: [CUSTOM_DATEPICKER_CONTROL_VALUE_ACESSOR]
 })
 export class DatepickerComponent extends ValueAccessor<Date> {
-  @Input() startView = "year";
+  @Input() startView = 'year';
   @Input() startAt;
   @Input() placeholder: string;
   defaultStartDate = new Date(1980, 1, 1);

@@ -1,33 +1,34 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
-import { Subject, Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
-import { AuthService } from "app/service/auth.service";
-import { UserService } from "app/user/user.service";
-import { urlBackEnd } from "app/url-back-end";
+import { AuthService } from 'app/service/auth.service';
+import { UserService } from 'app/user/user.service';
+import { urlBackEnd } from 'app/url-back-end';
 
 @Injectable()
 export class LoginService {
 
-    // urlAuth = 'http://localhost:8080/oauth/token'; 
+    // urlAuth = 'http://localhost:8080/oauth/token';
     // urlUser = 'http://localhost:8080/oauth/user';
-    urlAuth = urlBackEnd + "oauth/token"; //FIXME
-    urlUser = urlBackEnd + "oauth/user";
+    urlAuth = urlBackEnd + 'oauth/token'; // FIXME
+    urlUser = urlBackEnd + 'oauth/user';
 
     constructor(private http: Http, private authService: AuthService, private userService: UserService) { }
 
     login(usuario, callback): void {
-        let headers = new Headers();
+        const headers = new Headers();
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', 'Basic ' + btoa('foo:bar'));
 
-        let params = new URLSearchParams();
+        const params = new URLSearchParams();
         params.set('username', usuario.username);
         params.set('password', usuario.password);
         params.set('grant_type', 'password');
         params.set('scope', 'read');
 
-        let options = new RequestOptions({ headers: headers, search: params });
+        const options = new RequestOptions({ headers: headers, search: params });
 
         this.http.post(this.urlAuth, {}, options).subscribe(response => {
             if (response.ok) {
@@ -46,9 +47,9 @@ export class LoginService {
     }
 
     private saveDetails(username, password, callback): void {
-        let options = this.authService.authOptions();
-        options.params.append("username", username);
-        options.params.append("password", password);
+        const options = this.authService.authOptions();
+        options.params.append('username', username);
+        options.params.append('password', password);
         this.http.get(this.urlUser, options).subscribe(response => {
             if (response.ok) {
                 this.authService.saveDetails(JSON.stringify(response.json()));

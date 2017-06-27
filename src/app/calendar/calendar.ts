@@ -33,7 +33,7 @@ export class Calendar {
     }
 
     setWeekStartsOn(i?: string): number {
-        var d: number = parseInt(i || "0", 10);
+        const d: number = parseInt(i || '0', 10);
         if (!isNaN(d) && d >= 0 && d <= 6) {
             this.weekStartsOn = d;
         } else {
@@ -43,7 +43,7 @@ export class Calendar {
     };
 
     setStartDateOfMonth(i?: string): number {
-        var d = parseInt(i || "1", 10);
+        const d = parseInt(i || '1', 10);
         if (!isNaN(d) && d >= 1 && d <= 31) {
             this.startDateOfMonth = d;
         } else {
@@ -52,7 +52,7 @@ export class Calendar {
         return this.startDateOfMonth;
     };
     setNoOfDays(i?: string): number {
-        var d = parseInt(i || "0", 10);
+        const d = parseInt(i || '0', 10);
         if (!isNaN(d) && d > 0) {
             this.noOfDays = d;
         } else {
@@ -63,11 +63,11 @@ export class Calendar {
 
 
     centerOnNow() {
-        var currentDate = new Date();
-        if (this.month != currentDate.getMonth()) {
+        const currentDate = new Date();
+        if (this.month !== currentDate.getMonth()) {
             this.init(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDay());
         }
-        for (var i = 0; i < this.weeks.length; i++) {
+        for (let i = 0; i < this.weeks.length; i++) {
             if (this.weeks[i][0].date.getDate() <= currentDate.getDate() &&
                 this.weeks[i][this.weeks[i].length - 1].date.getDate() >= currentDate.getDate()) {
                 this.currentWeekOfMonth = i;
@@ -158,14 +158,14 @@ export class Calendar {
     }
     // Month should be the javascript indexed month, 0 is January, etc.
     init(year, month, day) {
-        var now = new Date();
+        const now = new Date();
         this.year = year ? year : now.getFullYear();
-        this.month = month != undefined ? month : now.getMonth();
+        this.month = month !== undefined ? month : now.getMonth();
         this.day = day ? day : now.getDate();
         this.currentDayOfWeek = 0;
         this.currentWeekOfMonth = 0;
-        var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        var monthLength = daysInMonth[this.month];
+        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        let monthLength = daysInMonth[this.month];
         // Figure out if is a leap year.
         if (this.month === 1) {
             if ((this.year % 4 === 0 && this.year % 100 !== 0) || this.year % 400 === 0) {
@@ -177,7 +177,7 @@ export class Calendar {
 
         this.start = new Date(this.year, this.month, 1);
 
-        var date = new Date(this.start.getTime())
+        const date = new Date(this.start.getTime())
         if (date.getDate() === 1) {
             while (date.getDay() !== this.weekStartsOn) {
                 date.setDate(date.getDate() - 1);
@@ -203,7 +203,7 @@ export class Calendar {
         }
 
         this.weeks = [];
-        for (var i = 0; i < monthLength; ++i) {
+        for (let i = 0; i < monthLength; ++i) {
             // Let's start a new week.
             if (i % 7 === 0) {
                 this.weeks.push([]);
@@ -212,7 +212,7 @@ export class Calendar {
             // Add copy of the date. If not a copy,
             // it will get updated shortly.
             this.weeks[this.weeks.length - 1].push({ date: new Date(date.getTime()), events: [] });
-            if (date == new Date()) {
+            if (date === new Date()) {
                 this.currentDayOfWeek = this.weeks[this.weeks.length - 1].length - 1;
                 this.currentWeekOfMonth = this.weeks.length - 1;
             }
@@ -223,8 +223,8 @@ export class Calendar {
     };
 
     refreshEvents() {
-        var start = this.weeks[0][0].date;
-        var end = this.weeks[this.weeks.length - 1]
+        const start = this.weeks[0][0].date;
+        const end = this.weeks[this.weeks.length - 1]
         [this.weeks[this.weeks.length - 1].length - 1].date;
         this.fillEvents();
     }
@@ -233,10 +233,10 @@ export class Calendar {
         return this.eventService.getEvents(this.getStartDate(), this.getEndDate())
             .subscribe(events => {
                 this.clearEvents();
-                for (var i = 0; i < events.length; i++) {
+                for (let i = 0; i < events.length; i++) {
                     events[i].start = this.transformDate(events[i].start);
                     events[i].end = this.transformDate(events[i].end);
-                    var date = this.findDate(events[i].start);
+                    const date = this.findDate(events[i].start);
                     if (date) {
                         date.events.push(events[i]);
                     }
@@ -245,11 +245,11 @@ export class Calendar {
     };
 
     findDate(date) {
-        for (var i = 0; i < this.weeks.length; i++) {
-            for (var j = 0; j < this.weeks[i].length; j++) {
-                if (this.weeks[i][j].date.getDate() == date.getDate()
-                    && this.weeks[i][j].date.getMonth() == date.getMonth()
-                    && this.weeks[i][j].date.getFullYear() == date.getFullYear()) {
+        for (let i = 0; i < this.weeks.length; i++) {
+            for (let j = 0; j < this.weeks[i].length; j++) {
+                if (this.weeks[i][j].date.getDate() === date.getDate()
+                    && this.weeks[i][j].date.getMonth() === date.getMonth()
+                    && this.weeks[i][j].date.getFullYear() === date.getFullYear()) {
                     return this.weeks[i][j];
                 }
             }
@@ -257,14 +257,14 @@ export class Calendar {
     }
 
     clearEvents() {
-        for (var i = 0; i < this.weeks.length; i++) {
-            for (var j = 0; j < this.weeks[i].length; j++) {
+        for (let i = 0; i < this.weeks.length; i++) {
+            for (let j = 0; j < this.weeks[i].length; j++) {
                 this.weeks[i][j].events = [];
             }
         }
     }
 
-    transformDate(str: string): Date {  //FIXME
+    transformDate(str: string): Date {  // FIXME
         return moment(str).toDate();
     }
 

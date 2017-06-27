@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "app/user/user.service";
-import { RoleService } from "app/user/role.service";
-import { MdDialog, MdDialogRef } from "@angular/material";
+import { UserService } from 'app/user/user.service';
+import { RoleService } from 'app/user/role.service';
+import { MdDialog, MdDialogRef } from '@angular/material';
 import * as _ from 'lodash';
-import { UserDialogComponent } from "app/user/user-dialog/user-dialog.component";
-import { ConfirmComponent } from "app/commons/components/dialogs/confirm/confirm.component";
+import { UserDialogComponent } from 'app/user/user-dialog/user-dialog.component';
+import { ConfirmComponent } from 'app/commons/components/dialogs/confirm/confirm.component';
 
 @Component({
   selector: 'app-user',
@@ -36,7 +36,7 @@ export class UserComponent implements OnInit {
   }
 
   private openFormDialog(user) {
-    let dialogRef = this.dialog.open(UserDialogComponent, {
+    const dialogRef = this.dialog.open(UserDialogComponent, {
 
     });
     dialogRef.componentInstance.user = _.cloneDeep(user);
@@ -48,8 +48,8 @@ export class UserComponent implements OnInit {
   }
 
   confirmDelete(deletedUser) {
-    let dialogRef = this.dialog.open(ConfirmComponent)
-    dialogRef.componentInstance.message = "Tem certeza?";
+    const dialogRef = this.dialog.open(ConfirmComponent)
+    dialogRef.componentInstance.message = 'Tem certeza?';
     dialogRef.afterClosed().subscribe(confirm => {
       if (confirm) {
         this.userService.delete(deletedUser.id).subscribe(response => this.getUsers());

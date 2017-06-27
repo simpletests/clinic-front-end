@@ -1,4 +1,4 @@
-import { ControlValueAccessor } from "@angular/forms";
+import { ControlValueAccessor } from '@angular/forms';
 
 export abstract class ValueAccessor<T> implements ControlValueAccessor {
 
@@ -8,11 +8,11 @@ export abstract class ValueAccessor<T> implements ControlValueAccessor {
 
     constructor() { }
 
-    get value(): T {
+    public get value(): T {
         return this.innerValue;
     }
 
-    set value(value: T) {
+    public set value(value: T) {
         if (this.innerValue !== value) {
             this.innerValue = value;
             this.changed.forEach(f => f(value));
@@ -32,6 +32,6 @@ export abstract class ValueAccessor<T> implements ControlValueAccessor {
     }
 
     setDisabledState(isDisabled: boolean): void {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
 }

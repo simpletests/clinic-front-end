@@ -4,8 +4,8 @@ import { CalendarPeriodView } from './calendar-period-view.enum'
 import { Calendar } from './calendar';
 import { FormControl } from '@angular/forms';
 import { EventService } from './event/event.service'
-import { PatientService } from "app/patient/patient.service";
-import { MdDialog, MdDialogRef } from "@angular/material";
+import { PatientService } from 'app/patient/patient.service';
+import { MdDialog, MdDialogRef } from '@angular/material';
 import { EventDialogComponent } from './event/event-dialog/event-dialog.component';
 
 @Component({
@@ -50,7 +50,7 @@ export class CalendarComponent implements OnInit {
     };
 
     private createDialog(event) {
-        let d = this.dialog.open(EventDialogComponent, {
+        const d = this.dialog.open(EventDialogComponent, {
             width: '300px'
         });
         d.componentInstance.setEvent(event);

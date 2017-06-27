@@ -7,10 +7,10 @@ import { PatientComponent } from 'app/patient/patient.component';
 import { FinancialComponent } from 'app/financial/financial.component';
 import { ReportComponent } from 'app/report/report.component';
 import { LoginComponent } from 'app/login/login.component';
-import { UserComponent } from "app/user/user.component";
+import { UserComponent } from 'app/user/user.component';
 
-import { AuthGuard } from "app/guard/auth.guard";
-import { TestsComponent } from "app/tests/tests.component";
+import { AuthGuard } from 'app/guard/auth.guard';
+import { TestsComponent } from 'app/tests/tests.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },

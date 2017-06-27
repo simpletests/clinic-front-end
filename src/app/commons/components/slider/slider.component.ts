@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, forwardRef } from '@angular/core';
-import { FormControl, NG_VALUE_ACCESSOR } from "@angular/forms/";
-import { Observable } from "rxjs/Rx";
-import { ValueAccessor } from "app/commons/components/value-accessor";
+import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms/';
+import { Observable } from 'rxjs/Rx';
+import { ValueAccessor } from 'app/commons/components/value-accessor';
 
 export const CUSTOM_SLIDER_CONTROL_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -22,9 +22,6 @@ export class SliderComponent extends ValueAccessor<string> {
   @Input() step = 5;
   constructor() {
     super();
-  }
-
-  ngOnInit() {
   }
 
 }

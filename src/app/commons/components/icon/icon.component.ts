@@ -7,6 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class IconComponent {
 
-  @Input('color') color: string = '';
+  @Input('color') color = '';
   @Input('icon') icon: string;
 }

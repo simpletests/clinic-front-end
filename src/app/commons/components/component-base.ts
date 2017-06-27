@@ -1,7 +1,7 @@
-import { ValueAccessor } from "app/commons/components/value-accessor";
-import { ValidatorArray, AsyncValidatorArray, ValidationResult, validate, message } from "app/commons/components/validator";
-import { NgModel } from "@angular/forms";
-import { Observable } from "rxjs";
+import { ValueAccessor } from 'app/commons/components/value-accessor';
+import { ValidatorArray, AsyncValidatorArray, ValidationResult, validate, message } from 'app/commons/components/validator';
+import { NgModel } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 export abstract class ComponentBase<T> extends ValueAccessor<T> {
 

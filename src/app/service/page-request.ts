@@ -2,11 +2,11 @@ import { EventEmitter } from 'events';
 import { OnChanges, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-export class PageRequest {
+export class PageRequest implements OnChanges {
     change = new EventEmitter();
     number: number;
-    size: number;               // "max"size of the page
-    search: string = "";
+    size: number;               // 'max'size of the page
+    search = '';
     first: boolean;
     last: boolean;
     totalPages: number;
@@ -60,6 +60,6 @@ export class PageRequest {
     }
 
     ngOnChanges() {
-        this.change.emit("change");
+        this.change.emit('change');
     }
 }

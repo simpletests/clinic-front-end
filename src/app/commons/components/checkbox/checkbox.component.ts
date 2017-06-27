@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from "@angular/forms";
-import { ValueAccessor } from "app/commons/components/value-accessor";
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ValueAccessor } from 'app/commons/components/value-accessor';
 
 export const CUSTOM_CHECKBOX_CONTROL_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,

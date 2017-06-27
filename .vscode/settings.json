@@ -1,0 +1,8 @@
+{
+    "window.zoomLevel": 0,
+    "editor.formatOnSave": true,
+    "editor.fontSize": 15,
+    "html.format.wrapLineLength": 70,
+    "git.confirmSync": false,
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\Sysnative\\cmd.exe"
+}

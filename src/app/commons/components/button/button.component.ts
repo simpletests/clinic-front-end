@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { EventEmitter } from "events";
-import { Observable } from "rxjs/Rx";
+import { EventEmitter } from 'events';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'ss-button',
@@ -12,9 +12,9 @@ export class ButtonComponent implements OnInit {
   @Input() label: string;
   @Input() disabled: Observable<boolean>;
   @Input() icon: string;
-  @Input() shape = "button";
+  @Input() shape = 'button';
   @Output() eventClick = new EventEmitter();
-  @Input() color = "";
+  @Input() color = '';
 
   constructor() { }
 

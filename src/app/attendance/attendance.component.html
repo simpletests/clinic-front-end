@@ -1,15 +1,13 @@
 <ss-container>
     <ss-card>
         <ss-row *ngIf="pastHandbook">
-            <ss-button col columns="2" [disabled]="handbookPageRequest.last"
-                (click)="handbookPageRequest.nextPage()"
+            <ss-button col columns="2" [disabled]="handbookPageRequest.last" (click)="handbookPageRequest.nextPage()"
                 icon="keyboard_arrow_left">
             </ss-button>
             <h3 col columns="8" style="text-align:center">
                 {{pastHandbook.dateTime+"-03:00" | date:"dd/MM/yy HH:mm"}}
             </h3>
-            <ss-button col columns="2" [disabled]="handbookPageRequest.first"
-                (click)="handbookPageRequest.previousPage()"
+            <ss-button col columns="2" [disabled]="handbookPageRequest.first" (click)="handbookPageRequest.previousPage()"
                 icon="keyboard_arrow_right">
             </ss-button>
             <h4 col columns="12" i18n>Resumo:</h4>
@@ -34,16 +32,13 @@
                 [(ngModel)]="event.handbook.historiaPatologica"></ss-input>
             <ss-input col columns="4" i18n-placeholder placeholder="Hábitos de vida"
                 [(ngModel)]="event.handbook.habitosDeVida"></ss-input>
-            <ss-input col columns="4" i18n-placeholder placeholder="Observações"
-                [(ngModel)]="event.handbook.observations"></ss-input>
-            <ss-input col columns="4" i18n-placeholder placeholder="Resumo"
-                [(ngModel)]="event.handbook.resumo"></ss-input>
+            <ss-input col columns="4" i18n-placeholder placeholder="Observações" [(ngModel)]="event.handbook.observations"></ss-input>
+            <ss-input col columns="4" i18n-placeholder placeholder="Resumo" [(ngModel)]="event.handbook.resumo"></ss-input>
         </ss-row>
-
+        <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>        <br/> <br/> <br/> <br/> <br/><br/> <br/> <br/> <br/> <br/> <br/>        <br/> <br/> <br/> <br/> <br/>
         <ss-row>
             <h3>Duração</h3> {{currentDate|async|date:"mm:ss"}}
-            <ss-button i18n-label (click)="save()" label="Salvar"
-                icon="save">
+            <ss-button i18n-label (click)="save()" label="Salvar" icon="save">
             </ss-button>
         </ss-row>
     </ss-row>

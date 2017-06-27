@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from "app/calendar/event/event.service";
-import { HandbookService } from "app/attendance/handbook.service";
-import { PageRequest } from "app/service/page-request";
-import { Observable } from "rxjs/Rx";
-import { ActivatedRoute } from "@angular/router";
+import { EventService } from 'app/calendar/event/event.service';
+import { HandbookService } from 'app/attendance/handbook.service';
+import { PageRequest } from 'app/service/page-request';
+import { Observable } from 'rxjs/Rx';
+import { ActivatedRoute } from '@angular/router';
 
 import { Router } from '@angular/router';
 
@@ -18,13 +18,14 @@ export class AttendanceComponent implements OnInit {
   currentDate: Observable<Date>;
   startDateTime: Date;
   handbookPageRequest: PageRequest;
-  constructor(public eventService: EventService, public handbookService: HandbookService, route: ActivatedRoute, public parentRouter: Router) {
+  constructor(public eventService: EventService, public handbookService: HandbookService,
+    route: ActivatedRoute, public parentRouter: Router) {
     this.startDateTime = new Date();
     this.handbookPageRequest = new PageRequest();
     this.handbookPageRequest.size = 1;
-    this.handbookPageRequest.change.addListener("change", this.fillPastHandbook.bind(this));
+    this.handbookPageRequest.change.addListener('change', this.fillPastHandbook.bind(this));
     this.currentDate = Observable.interval(1000).map(() => new Date(Math.abs(this.startDateTime.getTime() - new Date().getTime())));
-    eventService.findOne(route.snapshot.params["eventId"]).subscribe(event => {
+    eventService.findOne(route.snapshot.params['eventId']).subscribe(event => {
       this.event = event;
       this.event.handbook = {
         patient: event.patient,
@@ -48,7 +49,7 @@ export class AttendanceComponent implements OnInit {
   }
 
   save() {
-    this.eventService.saveOrUpdate(this.event).subscribe(value => console.log("save ok"));
+    this.eventService.saveOrUpdate(this.event).subscribe(value => console.log('save ok'));
     this.parentRouter.navigateByUrl('/calendar');
   }
 

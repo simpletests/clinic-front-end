@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs/Rx";
-import { EventService } from "app/calendar/event/event.service";
+import { Observable } from 'rxjs/Rx';
+import { EventService } from 'app/calendar/event/event.service';
 
 @Component({
   selector: 'app-tests',
@@ -9,14 +9,14 @@ import { EventService } from "app/calendar/event/event.service";
 export class TestsComponent implements OnInit {
 
   date;
+  dateText;
 
   constructor(public eventService: EventService) { this.date = new Date(); }
-  dateText;
   ngOnInit() {
   }
 
   testEvent() {
-    console.log("test");
+    console.log('test');
     this.eventService.saveOrUpdate({
       start: this.dateText,
       end: this.dateText,

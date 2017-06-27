@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, HostListener, OnInit } from '@angular/core';
-import { AuthService } from "app/service/auth.service";
+import { AuthService } from 'app/service/auth.service';
 
 @Directive({
   selector: '[authorizedRoles]'
@@ -15,8 +15,8 @@ export class AuthorizedRoleDirective implements OnInit {
 
     let igual = false;
     if (userObject) {
-      for (let elRole of this.authorizedRoles) {
-        if (userObject.role == elRole) {
+      for (const elRole of this.authorizedRoles) {
+        if (userObject.role === elRole) {
           igual = true;
         }
       }

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from "app/service/auth.service";
-import { PageRequest } from "app/service/page-request";
-import { SnackbarService } from "app/commons/snackbar.service";
+import { AuthService } from 'app/service/auth.service';
+import { PageRequest } from 'app/service/page-request';
+import { SnackbarService } from 'app/commons/snackbar.service';
 
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { urlBackEnd } from "app/url-back-end";
+import { urlBackEnd } from 'app/url-back-end';
 
 @Injectable()
 export class RestService<T>{
@@ -25,9 +25,9 @@ export class RestService<T>{
   }
 
   private getOptions(params?, pageRequest?: PageRequest): RequestOptions {
-    let options: RequestOptions = this.authService.authOptions();
+    const options: RequestOptions = this.authService.authOptions();
     if (params) {
-      for (let param of params) {
+      for (const param of params) {
         if (param.val instanceof Date) {
           param.val = this.transformDate(param.val);
         }
@@ -35,25 +35,25 @@ export class RestService<T>{
       }
     }
     if (pageRequest) {
-      options.params.append("page", pageRequest.number.toString());
-      options.params.append("size", pageRequest.size.toString());
-      options.params.append("search", pageRequest.search || "".toString());
+      options.params.append('page', pageRequest.number.toString());
+      options.params.append('size', pageRequest.size.toString());
+      options.params.append('search', pageRequest.search || ''.toString());
     }
     return options;
   }
 
   url(pathParams?: string): string {
-    let serverUrl: string = urlBackEnd + "{idUser}/"; //FIXME
+    let serverUrl: string = urlBackEnd + '{idUser}/'; // FIXME
     if (pathParams) {
-      serverUrl = serverUrl.concat(pathParams, "/");
+      serverUrl = serverUrl.concat(pathParams, '/');
     }
-    let user: string = this.authService.userId();
-    return serverUrl.replace("{idUser}", user) + this.path;
+    const user: string = this.authService.userId();
+    return serverUrl.replace('{idUser}', user) + this.path;
   }
 
   getNew(): Observable<T> {
-    let options = this.getOptions();
-    return this.http.get(this.url() + "/new", options).share()
+    const options = this.getOptions();
+    return this.http.get(this.url() + '/new', options).share()
       .map(response => response.json());
   }
 
@@ -68,28 +68,28 @@ export class RestService<T>{
   }
 
   findOne(id: string): Observable<T> {
-    let options = this.getOptions();
-    return this.http.get(this.url() + "/" + id, options).share()
+    const options = this.getOptions();
+    return this.http.get(this.url() + '/' + id, options).share()
       .map(response => response.json());
-    //.map(content => <T>content);
+    // .map(content => <T>content);
   }
 
   saveOrUpdate(event): Observable<Response> {
-    let copyEvent = _.cloneDeep(event);
+    const copyEvent = _.cloneDeep(event);
     this.transformDates(copyEvent);
-    let response = this.http.post(this.url(), copyEvent, this.getOptions()).share();
-    response.subscribe(event => this.snackbarService.info("Save status: " + event.status));
+    const response = this.http.post(this.url(), copyEvent, this.getOptions()).share();
+    response.subscribe(e => this.snackbarService.info('Save status: ' + e.status));
     return response;
   }
 
   delete(id: string): Observable<Response> {
-    let response = this.http.delete(this.url() + "/" + id, this.getOptions()).share();
-    response.subscribe(event => this.snackbarService.info("Delete status: " + event.status));
+    const response = this.http.delete(this.url() + '/' + id, this.getOptions()).share();
+    response.subscribe(event => this.snackbarService.info('Delete status: ' + event.status));
     return response;
   }
 
   transformDates(event) {
-    for (var property in event) {
+    for (const property in event) {
       if (event.hasOwnProperty(property)) {
         if (event[property] instanceof Date) {
           event[property] = this.transformDate(event[property]);
@@ -100,7 +100,7 @@ export class RestService<T>{
     }
   }
 
-  transformDate(date: Date): string { //FIXME
-    return moment(date).format("YYYY-MM-DD[T]HH:mm:ss[Z]");
+  transformDate(date: Date): string { // FIXME
+    return moment(date).format('YYYY-MM-DD[T]HH:mm:ss[Z]');
   }
 }

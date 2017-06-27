@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from "@angular/http";
-import { Observable } from "rxjs/Observable";
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
-import { AuthService } from "app/service/auth.service";
-import { urlBackEnd } from "app/url-back-end";
+import { AuthService } from 'app/service/auth.service';
+import { urlBackEnd } from 'app/url-back-end';
 
 @Injectable()
 export class OptionsService {
-  url = urlBackEnd + 'optionsSelect/'; //FIXME  
+  url = urlBackEnd + 'optionsSelect/'; // FIXME
 
   constructor(public authService: AuthService, public http: Http, public path: string) { }
 

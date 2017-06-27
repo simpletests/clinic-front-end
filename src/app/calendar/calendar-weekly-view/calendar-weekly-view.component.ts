@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
-import { Observable } from "rxjs/Rx";
+import { Observable } from 'rxjs/Rx';
 
 @Component({
     selector: 'app-calendar-weekly-view',
@@ -17,8 +17,8 @@ export class CalendarWeeklyViewComponent implements OnInit {
 
     ngOnInit() {
         this.hoursTier = [];
-        let minHours = 8;
-        let maxHours = 18;
+        const minHours = 8;
+        const maxHours = 18;
         for (let i = minHours; i < maxHours; i++) {
             this.hoursTier.push(i);
         }

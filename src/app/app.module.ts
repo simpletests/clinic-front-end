@@ -26,22 +26,22 @@ import { UserComponent } from './user/user.component';
 
 import { PatientService } from './patient/patient.service';
 import { LoginService } from './login/login.service';
-import { EventService } from "./calendar/event/event.service";
+import { EventService } from './calendar/event/event.service';
 import { AuthService } from './service/auth.service';
 import { UserService } from 'app/user/user.service';
-import { RoleService } from "app/user/role.service";
-import { HandbookService } from "app/attendance/handbook.service";
+import { RoleService } from 'app/user/role.service';
+import { HandbookService } from 'app/attendance/handbook.service';
 
-import { AuthGuard } from "./guard/auth.guard";
+import { AuthGuard } from './guard/auth.guard';
 import { CalendarHourFilterPipe } from './calendar/calendar-hour-filter.pipe';
 import { ConfirmComponent } from './commons/components/dialogs/confirm/confirm.component';
 
-import { AuthorizedRoleDirective } from "app/directive/authorized-role.directive";
-import { MdSnackBar } from "@angular/material";
+import { AuthorizedRoleDirective } from 'app/directive/authorized-role.directive';
+import { MdSnackBar } from '@angular/material';
 
-import { ColumnComponent, ColMd } from './commons/components/grid/column/column.component';
+import { ColumnComponent, ColMdDirective } from './commons/components/grid/column/column.component';
 import { RowComponent } from './commons/components/grid/row/row.component';
-import { SnackbarService } from "app/commons/snackbar.service";
+import { SnackbarService } from 'app/commons/snackbar.service';
 import { PatientDialogComponent } from './patient/patient-dialog/patient-dialog.component';
 import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
 import { ContainerComponent } from './commons/components/grid/container/container.component';
@@ -56,7 +56,7 @@ import { TestsComponent } from './tests/tests.component';
 import { IconComponent } from './commons/components/icon/icon.component';
 import { DatepickerComponent } from './commons/components/datepicker/datepicker.component';
 import { SliderComponent } from './commons/components/slider/slider.component';
-import { GenderService } from "app/commons/gender.service";
+import { GenderService } from 'app/commons/gender.service';
 
 @NgModule({
     declarations: [
@@ -77,7 +77,7 @@ import { GenderService } from "app/commons/gender.service";
         ConfirmComponent,
         AuthorizedRoleDirective,
         ColumnComponent,
-        ColMd,
+        ColMdDirective,
         PatientDialogComponent,
         UserDialogComponent,
         RowComponent,

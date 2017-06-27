@@ -16,19 +16,19 @@ export class ColumnComponent implements OnInit {
 @Directive({
   selector: '[col]'
 })
-export class ColMd implements OnInit {
+export class ColMdDirective implements OnInit {
 
-  @Input('columns') coluns: number | number[] = 12;
+  @Input('columns') columns: number | number[] = 12;
   @Input('offsets') offsets: number | number[] = 0;
 
   constructor(private el: ElementRef, private renderer: Renderer) { }
 
   ngOnInit(): void {
-    if (this.coluns) {
-      if (this.coluns instanceof Array) {
-        this.setColuns(this.coluns[0], this.coluns[1], this.coluns[2], this.coluns[3]);
+    if (this.columns) {
+      if (this.columns instanceof Array) {
+        this.setColuns(this.columns[0], this.columns[1], this.columns[2], this.columns[3]);
       } else {
-        this.setColuns(12, 12, this.coluns, this.coluns);
+        this.setColuns(12, 12, this.columns, this.columns);
       }
     }
     if (this.offsets) {

@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 import { PatientService } from './patient.service';
-import { PageContent } from "app/service/page-content";
-import { PageRequest } from "app/service/page-request";
-import * as _ from "lodash";
-import { ConfirmComponent } from "app/commons/components/dialogs/confirm/confirm.component";
-import { MdDialog, MdDialogRef } from "@angular/material";
-import { SnackbarService } from "app/commons/snackbar.service";
-import { PatientDialogComponent } from "app/patient/patient-dialog/patient-dialog.component";
+import { PageContent } from 'app/service/page-content';
+import { PageRequest } from 'app/service/page-request';
+import * as _ from 'lodash';
+import { ConfirmComponent } from 'app/commons/components/dialogs/confirm/confirm.component';
+import { MdDialog, MdDialogRef } from '@angular/material';
+import { SnackbarService } from 'app/commons/snackbar.service';
+import { PatientDialogComponent } from 'app/patient/patient-dialog/patient-dialog.component';
 
 @Component({
     selector: 'app-patient',
@@ -24,7 +24,7 @@ export class PatientComponent implements OnInit {
         public snackbarService: SnackbarService) { }
 
     ngOnInit() {
-        this.pageRequest.change.addListener("change", this.getList.bind(this));
+        this.pageRequest.change.addListener('change', this.getList.bind(this));
         this.getList();
     }
 
@@ -45,8 +45,8 @@ export class PatientComponent implements OnInit {
     }
 
     confirmDelete(deletedPatient) {
-        let dialogRef = this.dialog.open(ConfirmComponent)
-        dialogRef.componentInstance.message = "Tem certeza?";
+        const dialogRef = this.dialog.open(ConfirmComponent)
+        dialogRef.componentInstance.message = 'Tem certeza?';
         dialogRef.afterClosed().subscribe(confirm => {
             if (confirm) {
                 this.patientService.delete(deletedPatient.id).subscribe(response => this.getList());
@@ -55,7 +55,7 @@ export class PatientComponent implements OnInit {
     }
 
     openFormDialog(patient) {
-        let d = this.dialog.open(PatientDialogComponent, {
+        const d = this.dialog.open(PatientDialogComponent, {
             // width: '300px'
         });
         d.componentInstance.setPatient(patient);
