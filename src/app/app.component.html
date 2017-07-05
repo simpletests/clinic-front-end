@@ -1,5 +1,5 @@
-<md-toolbar *ngIf="isLogged" color="primary" class="fixed-header mat-elevation-z4"
-    layout="row" style="margin-top: 85px;">
+<md-toolbar id="toolbar" *ngIf="isLogged" color="primary" class="fixed-header mat-elevation-z4"
+    layout="row">
 
     <ss-button icon="menu" shape="icon" color="white" (click)="sidenav.toggle()"></ss-button>
 
@@ -9,7 +9,7 @@
     <ss-button shape="icon" color="white" icon="exit_to_app" (click)="logout()"></ss-button>
 </md-toolbar>
 
-<md-sidenav-container id="sidenav-container" fullscreen style="margin-top: 85px;">
+<md-sidenav-container id="sidenav-container" fullscreen>
     <md-sidenav #sidenav *ngIf="isLogged" [mode]="isLargeScreen()?'side':'over'"
         [opened]="isLargeScreen()" style="width:200px" class="mat-elevation-z16">
         <md-nav-list style="width:100%">
